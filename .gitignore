@@ -1,0 +1,5 @@
+.env
+aoe-back/.env
+aoe-front/.env
+aoe-back/node_modules/*
+aoe-front/node_modules/*
