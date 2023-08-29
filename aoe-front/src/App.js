@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import civService from './services/civs'
+import CivsList from './components/CivsList'
 
 const App = () => {
   const [civs, setCivs] = useState([])
@@ -9,16 +10,16 @@ const App = () => {
       setCivs(civs))
   }, [])
   
-  console.log("NODE ENV:",process.env.NODE_ENV)
 
   return (
     <div>
       <h1>AoE2 app</h1>
-      <div>
+      <CivsList/>
+      <ul>
         {civs.map((c) =>(
-          <p>{c}</p>
+          <li key={c} >{c}</li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
