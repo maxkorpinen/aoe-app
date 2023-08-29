@@ -1,15 +1,28 @@
-import goths from "../images/goths.webp"
 import imageObj from "../utils/imageloader"
 
-const CivsList = () => {
+const CivsList = (props) => { //{changePage}
+  const {changePage, civ1, civ2, setCiv1, setCiv2} = props
   const imageNames = Object.keys(imageObj)
-  const buttFunc = (stuff) => {
-    console.log("stuff:", stuff)
+
+  const buttFunc = (civ) => {
+    const chosenCiv = civ.split(".")[0]
+    if(!civ1 && !civ2) {
+      setCiv1(chosenCiv)
+      console.log("civ1:", chosenCiv)
+      return
+    }
+    if(!civ2) {
+      setCiv2(chosenCiv)
+      console.log("civ2:", chosenCiv)
+      changePage({page:"matchup"})
+      return
+    }
+    console.log("error in Civslist -> shouldn't be here")  
   } 
 
   return (
     <div>
-      <p>Choose your civ</p>
+      <p>Choose your civ {civ1}</p>
       <div>
         {imageNames.map((n) => (
           <button key={n}>
