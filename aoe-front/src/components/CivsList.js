@@ -27,8 +27,6 @@ const CivsList = (props) => { //{changePage}
       }
       changePage('civguide')
     })
-
-    console.log("civ1", civ1)
   } 
 
   const isEmpty = (object) => {
