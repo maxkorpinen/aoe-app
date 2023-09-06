@@ -1,36 +1,59 @@
-import imageObj from "../utils/imageloader"
+import { useState } from 'react'
+import images from "../utils/imageloader"
+import civService from "../services/civs"
+import CivButton from "./CivButton"
 
 const CivsList = (props) => { //{changePage}
   const {changePage, civ1, civ2, setCiv1, setCiv2} = props
-  const imageNames = Object.keys(imageObj)
+  const imageNames = Object.keys(images.civImages)
 
   const buttFunc = (civ) => {
     const chosenCiv = civ.split(".")[0]
-    if(!civ1 && !civ2) {
-      setCiv1(chosenCiv)
-      console.log("civ1:", chosenCiv)
-      return
+    console.log("buttFunc,", chosenCiv)
+    const ids = {
+      'mongols': 5,
+      'britons': 1,
+      'goths': 3,
+      'franks': 2,
+      'mayans':4
     }
-    if(!civ2) {
-      setCiv2(chosenCiv)
-      console.log("civ2:", chosenCiv)
-      changePage({page:"matchup"})
-      return
-    }
-    console.log("error in Civslist -> shouldn't be here")  
+    civService.getCiv(ids[chosenCiv]).then(civ => {
+      if (isEmpty(civ1[0])){
+        setCiv1([{ civ: chosenCiv, unit: civ.unit }])
+        return
+      }
+      if (isEmpty(civ2[0])) {
+        setCiv2([{ civ: chosenCiv, unit: civ.unit }])
+      }
+      changePage('civguide')
+    })
+
+    console.log("civ1", civ1)
   } 
+
+  const isEmpty = (object) => {
+    if ( object == null) {
+      return true
+    }
+    return Object.keys(object).length===0
+  }
 
   return (
     <div>
-      <p>Choose your civ {civ1}</p>
+      {isEmpty(civ1[0]) &&
+      <p>Choose your civ </p>
+      }
+      {!isEmpty(civ1) &&
+      <p>Your civ: {civ1[0].civ}. Choose opponents civ!</p>
+      }
       <div>
         {imageNames.map((n) => (
-          <button key={n}>
-            <img src={imageObj[n]}
-              alt = {n}
-              onClick={() => buttFunc(n)}
-            />
-          </button>
+          <CivButton
+            key={n}
+            name={n}
+            image={images.civImages[n]} //imageObj[n]
+            buttFunc={buttFunc}
+          />
         ))}
       </div>
 

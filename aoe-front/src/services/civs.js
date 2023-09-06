@@ -6,4 +6,12 @@ const getAll = async () => {
   return res.data
 }
 
-export default {getAll}
+const getCiv = async (idnro) => {
+  //console.log("civservice idnro: ", idnro)
+  //console.log(baseUrl+'/'+idnro)
+  const res = await axios.get(baseUrl+'/'+idnro)
+  console.log("res:", res.data)
+  return res.data
+}
+
+export default {getAll, getCiv}
