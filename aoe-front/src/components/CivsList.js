@@ -4,7 +4,9 @@ import civService from "../services/civs"
 import CivButton from "./CivButton"
 
 const CivsList = (props) => { //{changePage}
-  const {changePage, civ1, civ2, setCiv1, setCiv2} = props
+  const {changePage, civ1, 
+        civ2, setCiv1, 
+        setCiv2, setGuideType} = props
   const imageNames = Object.keys(images.civImages)
 
   const buttFunc = (civ) => {
@@ -25,7 +27,8 @@ const CivsList = (props) => { //{changePage}
       if (isEmpty(civ2[0])) {
         setCiv2([{ civ: chosenCiv, unit: civ.unit }])
       }
-      changePage('civguide')
+      setGuideType('matchup')
+      changePage('guide')
     })
   } 
 

@@ -6,6 +6,7 @@ mongoose.set('strictQuery', false)
 const civilizations = require('./utils/civstats')
 const {punit} = require('./utils/CivUtils')
 const config = require('./utils/config')
+const middleware = require('./utils/middleware')
 
 const civRouter = require('./controllers/civs')
 
@@ -38,5 +39,6 @@ app.get('/api/civs/:id', (req, res) => {
   //console.log("jeejee",highestValueUnit, highestValue)
   res.send({unit: highestValueUnit, value: highestValue})
 }) */
+app.use(middleware.errorHandler)
 
 module.exports = app
