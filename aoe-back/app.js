@@ -1,13 +1,20 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-
+const mongoose = require('mongoose')
+mongoose.set('strictQuery', false)
 const civilizations = require('./utils/civstats')
 const {punit} = require('./utils/CivUtils')
+const config = require('./utils/config')
+
+const civRouter = require('./controllers/civs')
+
+const mongoUrl = config.MONGODB_URI
+mongoose.connect(mongoUrl)
 
 app.use(cors())
-
-app.get('/', (req, res) => {
+app.use('/api/civs', civRouter)
+/* app.get('/', (req, res) => {
   res.send('<h1>Hello World!</h1>')
 })
 
@@ -30,6 +37,6 @@ app.get('/api/civs/:id', (req, res) => {
   }
   //console.log("jeejee",highestValueUnit, highestValue)
   res.send({unit: highestValueUnit, value: highestValue})
-})
+}) */
 
 module.exports = app

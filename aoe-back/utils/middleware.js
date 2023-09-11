@@ -1,10 +1,12 @@
 const logger = require('./logger')
 
 const unknownEndpoint = (request, response) => {
+  console.log("UNKNONWENDPOINT")
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
 const errorHandler = (error, request, response, next) => {
+  console.log("ERRORHANDLER")
   logger.error(error.message)
 
   if (error.name === 'CastError') {

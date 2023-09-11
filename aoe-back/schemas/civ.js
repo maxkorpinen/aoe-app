@@ -16,7 +16,7 @@ const civSchema = new mongoose.Schema({
   }]
 })
 
-schema.set('toJSON', {
+civSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
