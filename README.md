@@ -13,7 +13,9 @@ Civ rankingit kerätty https://aoe2-de-tools.herokuapp.com/civ-ranking/
 |       | 1    | nappihommat ja sivu   |
 |       | 0.5  | matchup+ui pohdinta   |
 |       | 0.5  | suunnittelu           |
-|       |      |                       |
-|       |      |                       |
+| 5.09. | 1.5  | yksikköikonien säätö  |
+| 6.9.  | 0.5  | cypress               |
+| 6.9.  | 0.5  | cypress               |
+| 7.9   | 1.0  | mongo kanssasäätö     |
 
-Yht: 4 29.8. mennessä
+Yht: 6h 06.9. mennessä
