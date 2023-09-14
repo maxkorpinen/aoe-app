@@ -17,12 +17,16 @@ const punit = (id) => {
   return objektina
 }
 
+const isGoldUnit = (unit) => {
+  return units.filter(u => u.name === unit)[0].isGoldUnit
+}
+
 const getPowerUnit = (civ) => {
   const civUnits = civ[0].units[0]
   let highestValueUnit = ''
   let highestValue = 0
   for (let unit in civUnits) {
-    if (civUnits[unit] > highestValue) {
+    if (civUnits[unit] > highestValue && isGoldUnit(unit)) {
       highestValue = civUnits[unit]
       highestValueUnit = unit
     }
@@ -30,12 +34,12 @@ const getPowerUnit = (civ) => {
   return {unit: highestValueUnit, value: highestValue}
 }
 
-const isGoldUnit = (unit) => {
-  return units.filter(u => u.name === unit)[0].isGoldUnit
+const getCounters = (unit) => {
+  return units.filter(u => u.name === unit)[0].counteredBy
 }
 
 module.exports = {
   punit,
   getPowerUnit,
-  isGoldUnit
+  getCounters
 }

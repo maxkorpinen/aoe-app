@@ -21,11 +21,13 @@ const CivsList = (props) => { //{changePage}
     }
     civService.getCiv(ids[chosenCiv]).then(civ => {
       if (isEmpty(civ1[0])){
-        setCiv1([{ civ: chosenCiv, unit: civ.unit }])
+        civ.civ = chosenCiv
+        setCiv1([civ])
         return
       }
       if (isEmpty(civ2[0])) {
-        setCiv2([{ civ: chosenCiv, unit: civ.unit }])
+        civ.civ = chosenCiv
+        setCiv2([civ])
       }
       setGuideType('matchup')
       changePage('guide')

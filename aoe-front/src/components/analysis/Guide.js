@@ -14,7 +14,7 @@ const Guide = ({civ1, civ2, guideType}) => {
       <div className='boxrows'>
         <BuildOrderBox unit={civ1[0].unit} 
         img={images.unitImages[unitname]}/>
-        <CounterBox/>
+        <CounterBox civ={civ1}/>
       </div>
     }
     {guideType==='matchup' &&

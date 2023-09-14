@@ -2,7 +2,7 @@ const units = [
   {
     id: 1,
     name: "militia",
-    building: "varracks",
+    building: "barracks",
     isGoldUnit: true,
     counters: ["spearman", "eagle", "skirmisher"], // ids of units that militia counters
     counteredBy: ["archer", "carcher"], // ids of units that counter militia
@@ -17,15 +17,15 @@ const units = [
   },
   {
     id: 3,
-    name: "Eagle Scout",
-    building: "Barracks",
+    name: "eagle",
+    building: "barracks",
     isGoldUnit: true,
     counters: ["spearman", "scout", "archer", "skirmisher"],
     counteredBy: ["militia"],
   },
   {
     id: 4,
-    name: "Scout",
+    name: "scout",
     building: "stable",
     isGoldUnit: false,
     counters: ["archer", "skirmisher"],
@@ -41,7 +41,7 @@ const units = [
   },
   {
     id: 6,
-    name: "Camel",
+    name: "camel",
     building: "stable",
     isGoldUnit: true,
     counters: ["scout", "knight", "skirmisher", "carcher"],
@@ -49,24 +49,24 @@ const units = [
   },
   {
     id: 7,
-    name: "Archer",
-    building: "Archery Range",
+    name: "archer",
+    building: "archery range",
     isGoldUnit: true,
     counters: ["militia", "spearman"],
     counteredBy: ["eagle", "scout", "knight", "skirmisher"],
   },
   {
     id: 8,
-    name: "Skirmisher",
-    building: "Archery Range",
+    name: "skirmisher",
+    building: "archery range",
     isGoldUnit: false,
     counters: ["spearman", "archer", "carcher"],
     counteredBy: ["militia", "eagle", "scout", "knight", "camel"],
   },
   {
     id: 9,
-    name: "Cavalry Archer",
-    building: "Archery Range",
+    name: "carcher",
+    building: "archery range",
     isGoldUnit: true,
     counters: ["militia"],
     counteredBy: ["eagle", "knight", "camel", "skirmisher"],
