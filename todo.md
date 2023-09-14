@@ -8,14 +8,11 @@
 - käy läpi lista bäkkärin middlewareja
   - oma loggeri
   - unknownpendpoint
-- eriytä app omaksi jutukseen bäkkärin indeksistä
-- läimi bäkkäri kiinni mongoon (ESIM?)
-  - user
-    - tokensysteemi?
+- käyttäjät
 - testit
   - jest
   - cypress
 - testit cicd eli github actions
 
-- civstatit bäkkiin
+- civstatit bäkkiin X
   - joku helpohko tapa päivittää civstatteja

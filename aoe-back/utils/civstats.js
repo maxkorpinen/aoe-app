@@ -86,4 +86,6 @@ const civilizations = [
   }
 ]
 
-module.exports = civilizations
+module.exports = {
+  civilizations
+}

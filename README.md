@@ -21,5 +21,6 @@ Civ rankingit kerätty https://aoe2-de-tools.herokuapp.com/civ-ranking/
 | 11.9  | 5    | backin refaktorointi  |
 |       |      | middlewarejudduja     |
 |       |      | civit mongosta        |
+|       | 0.5  | front korjailua       |
 
-Yht: 13.5h 11.9. mennessä
+Yht: 14h 11.9. mennessä
