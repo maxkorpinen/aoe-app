@@ -6,12 +6,12 @@ const getAll = async () => {
   return res.data
 }
 
-const getCiv = async (idnro) => {
+const getCivPowerUnit = async (idnro) => {
   //console.log("civservice idnro: ", idnro)
   //console.log(baseUrl+'/'+idnro)
-  const res = await axios.get(baseUrl+'/'+idnro)
+  const res = await axios.get(baseUrl+'/powerunit/'+idnro)
   console.log("res:", res.data)
   return res.data
 }
 
-export default {getAll, getCiv}
+export default {getAll, getCivPowerUnit}

@@ -1,4 +1,4 @@
-const BuildOrderBox = ({unit, img}) => {
+const BuildOrderBox = ({unit, img, seenUnit}) => {
 
   return (
     <div>
@@ -8,6 +8,11 @@ const BuildOrderBox = ({unit, img}) => {
           <img src={img} 
           height="200"
           width="200"/>          
+        </div>
+        }
+        {seenUnit &&
+        <div>
+          <p>{seenUnit}</p>
         </div>
         }
       </div>

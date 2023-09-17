@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Matchup from './Matchup'
 import CivGuide from './CivGuide'
 import images from '../../utils/imageloader'
@@ -6,15 +7,17 @@ import CounterBox from './CounterBox'
 import './guide.css'
 
 const Guide = ({civ1, civ2, guideType}) => {
-  //console.log(civ1[0].civ, civ1[0].unit)
+  const [seenUnit, setSeenUnit] = useState('')
   let unitname = civ1[0].unit+'.png'
   return(
     <div>
     {guideType==='civguide' &&
       <div className='boxrows'>
         <BuildOrderBox unit={civ1[0].unit} 
-        img={images.unitImages[unitname]}/>
-        <CounterBox civ={civ1}/>
+        img={images.unitImages[unitname]}
+        seenUnit={seenUnit}/>
+        <CounterBox civ={civ1}
+          setSeenUnit={setSeenUnit}/>
       </div>
     }
     {guideType==='matchup' &&

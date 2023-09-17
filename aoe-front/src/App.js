@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import civService from './services/civs'
+import unitService from './services/units'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
 import f from './utils/helpfuncs'
@@ -8,6 +9,7 @@ import Notification from './components/Notification'
 
 const App = () => {
   const [civs, setCivs] = useState([])
+  const [units, setUnits] = useState([])
   const [page, setPage] = useState('choose')
   const [civ1, setCiv1 ] = useState([])
   const [civ2, setCiv2] = useState([])
@@ -18,6 +20,12 @@ const App = () => {
   useEffect(() => {
     civService.getAll().then(civs =>
       setCivs(civs))
+  }, [])
+
+  useEffect(() => {
+    unitService.getAll().then(unitss => 
+      console.log(unitss)
+      /* setUnits(unitss) */)
   }, [])
   
   const changePage = ({page}) => {
@@ -54,6 +62,11 @@ const App = () => {
 
   return (
     <div>
+      {units && 
+       units.map((u) => (
+        <p>{u}</p>
+       ))
+       }
       <Notification message={errorMessage}/>
       <div>
         <button onClick={() => beginning()}>Start over</button>

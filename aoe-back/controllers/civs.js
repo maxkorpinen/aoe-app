@@ -17,4 +17,14 @@ router.get('/:id', async (req, res) => {
   res.send(powerunit)
 })
 
+router.get('/powerunit/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  const civ = await Civ.find({ _id:id})
+  let powerunit = getPowerUnit(civ)
+  const counters = getCounters(powerunit.unit)
+  powerunit.counters = counters
+  console.log(powerunit)
+  res.send(powerunit)
+})
+
 module.exports = router

@@ -1,8 +1,12 @@
 # Fullstack open - projekti
 
-## AoE2 app
+## AoE2 guide app
 
-Civ rankingit kerätty https://aoe2-de-tools.herokuapp.com/civ-ranking/
+Ohjelma pyrkii auttamaan keskitasoista tai tätä huonompaa pelaajaa tarjoamalla yksinkertaisia ohjeita.
+
+- yksinkertaisessa, helposti ymmärrettävässä muodossa
+- mahdollista käyttää ilman pelaajan ennakkovalmistelua
+  - esim. kun pelaaja näkee vastustajansa valitseman civin, niin tiedon syöttäminen on yksinkertaista, ja ohjelma tarjoaa välittömästi ohjeita järkevässä aikajärjestyksessä
 
 ## työaikakirjanpito
 
@@ -22,5 +26,13 @@ Civ rankingit kerätty https://aoe2-de-tools.herokuapp.com/civ-ranking/
 |       |      | middlewarejudduja     |
 |       |      | civit mongosta        |
 |       | 0.5  | front korjailua       |
+|       |      |                       |
+| 14.9  | 3.5  | pari yksikkökuvaa,    |
+|       |      | counterit näkyviin &  |
+|       |      | yksikköarvoja         |
 
-Yht: 14h 11.9. mennessä
+Yht: 17.5h 14.9. mennessä
+
+## Muu
+
+Yksiköitten rankingit kerätty https://aoe2-de-tools.herokuapp.com/civ-ranking/

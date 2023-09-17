@@ -19,7 +19,7 @@ const CivsList = (props) => { //{changePage}
       'franks': 2,
       'mayans':4
     }
-    civService.getCiv(ids[chosenCiv]).then(civ => {
+    civService.getCivPowerUnit(ids[chosenCiv]).then(civ => {
       if (isEmpty(civ1[0])){
         civ.civ = chosenCiv
         setCiv1([civ])

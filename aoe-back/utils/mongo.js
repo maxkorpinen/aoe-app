@@ -14,11 +14,29 @@ const url =
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
 
-const noteSchema = new mongoose.Schema({
-  content: String,
-  important: Boolean,
-})
+const asynkroninenKonteksti = async () => {
+  const un = await Unit.deleteMany({})
+  console.log(un)
+}
 
+const Unit= require('../schemas/unit')
+const units = require('./units')
+//asynkroninenKonteksti()
+
+let saved = []
+for (i in units) {
+  let newunit = Unit(units[i])
+  console.log(newunit)
+  newunit.save().then(result => {
+    console.log(units[i].name, " saved")
+    saved = saved.concat(units[i].id )
+    if (saved.length === 9) {
+      mongoose.connection.close()
+    }
+  })
+}
+
+/* 
 const civSchema = new mongoose.Schema({
   _id: Number,
   name: String,
@@ -35,7 +53,6 @@ const civSchema = new mongoose.Schema({
   }]
 })
 
-const Note = mongoose.model('Note', noteSchema)
 const Civ = mongoose.model('Civ', civSchema)
 
 const civ1 = new Civ({
@@ -56,17 +73,10 @@ const civ1 = new Civ({
   ]
 })
 
-const note = new Note({
-  content: 'HTML is Easy',
-  important: true,
-})
 
 civ1.save().then(result => {
   console.log("civ saved")
   mongoose.connection.close()
 })
+ */
 
-/* note.save().then(result => {
-  console.log('note saved!')
-  mongoose.connection.close()
-}) */
