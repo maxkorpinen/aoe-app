@@ -33,6 +33,10 @@ Ohjelma pyrkii auttamaan keskitasoista tai tätä huonompaa pelaajaa tarjoamalla
 |       |      |                         |
 | 17.9  | 2.5  | bäkkärin refaktorointia |
 |       |      | yms mongon pläräämistä  |
+| 19.9  | 1.5  | backendtestejä          |
+|       |      |                         |
+| 22.9  | 2    | lisää backtestisäätöä   |
+|       |      |                         |
 
 Yht: 17.5h 14.9. mennessä
 
