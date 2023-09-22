@@ -2,11 +2,14 @@
 
 ## AoE2 guide app
 
-Ohjelma pyrkii auttamaan keskitasoista tai tätä huonompaa pelaajaa tarjoamalla yksinkertaisia ohjeita.
+Ohjelma pyrkii auttamaan keskitasoista tai tätä huonompaa pelaajaa Age of Empires II pelissä, tarjoamalla yksinkertaisia ohjeita.
+
+Vinkit ja ohjeet halutaan tarjota:
 
 - yksinkertaisessa, helposti ymmärrettävässä muodossa
 - mahdollista käyttää ilman pelaajan ennakkovalmistelua
   - esim. kun pelaaja näkee vastustajansa valitseman civin, niin tiedon syöttäminen on yksinkertaista, ja ohjelma tarjoaa välittömästi ohjeita järkevässä aikajärjestyksessä
+- Käytännössä siis halutaan antaa karkeita ohjeita mitä yksiköitä tulisi valmistaa, ja miten vastustajan yksikkövalintoihin tulisi reagoida yleisimmissä tapauksissa.
 
 ## työaikakirjanpito
 
