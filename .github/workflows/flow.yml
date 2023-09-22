@@ -1,4 +1,4 @@
-name: test
+name: Main flow
 
 on:
   push:
@@ -9,6 +9,13 @@ jobs:
   hello_job:
     runs-on: ubuntu-20.04
     steps:
-      - name: test hello
-        run: |
-          echo "Hello world---!"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Back dependencies
+        working-directory: ./aoe-back
+        run: npm install
+      - name: Tests
+        working-directory: ./bloglist-back
+        run: npm run test
