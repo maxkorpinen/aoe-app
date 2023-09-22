@@ -17,5 +17,5 @@ jobs:
         working-directory: ./aoe-back
         run: npm install
       - name: Tests
-        working-directory: ./bloglist-back
+        working-directory: ./aoe-back
         run: npm run test
