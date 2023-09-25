@@ -39,6 +39,8 @@ Vinkit ja ohjeet halutaan tarjota:
 | 19.9  | 1.5  | backendtestejä          |
 |       |      |                         |
 | 22.9  | 2    | lisää backtestisäätöä   |
+|       | 2    | workflown näperrys      |
+|       |      |                         |
 |       |      |                         |
 
 Yht: 17.5h 14.9. mennessä

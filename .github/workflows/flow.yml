@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  hello_job:
+  test_pipeline:
     runs-on: ubuntu-20.04
     env:
       TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
@@ -16,9 +16,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - name: Back dependencies
+      - name: Back install
         working-directory: ./aoe-back
         run: npm install
       - name: Tests
         working-directory: ./aoe-back
         run: npm run test
+        shell: bash
+      - name: Check test results
+        run: |
+          # This step will fail the workflow if any tests failed
+          if [ $? -ne 0 ]; then
+            echo "Tests failed. Failing the workflow."
+            exit 1
+          fi
