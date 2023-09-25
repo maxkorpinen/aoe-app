@@ -13,6 +13,10 @@ beforeEach(async () => {
   }
 })
 
+test('expect this to fail', async() => {
+  expect(1).toEqual(2)
+})
+
 test('find all, length matches', async () => {
   const res = await api.get('/api/units/')
   expect(res.body).toHaveLength(units.length)
@@ -29,10 +33,6 @@ const res = await api.get(`/api/units/1`)
   .expect(200)
 
 expect(res.body[0].name).toEqual('militia')
-})
-
-test('expect this to fail', async() => {
-  expect(1).toEqual(2)
 })
 
 afterAll(async () => {
