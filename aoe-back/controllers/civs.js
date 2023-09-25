@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   const civ = await Civ.find({ _id:id})
-  console.log(civ)
+  //(civ)
   res.json(civ)
 })
 
@@ -20,7 +20,6 @@ router.get('/powerunit/:id', async (req, res) => {
   let powerunit = getPowerUnit(civ)
   const counters = getCounters(powerunit.unit)
   powerunit.counters = counters
-  console.log(powerunit)
   res.send(powerunit)
 })
 
