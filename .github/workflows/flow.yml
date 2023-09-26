@@ -34,8 +34,8 @@ jobs:
         working-directory: ./aoe-front
         run: npm install
       - name: e2e tests
-        uses: cypress-io/github-action@v5
         working-directory: ./aoe-back
+        uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
           start: npm run start_test, npm run start_front
