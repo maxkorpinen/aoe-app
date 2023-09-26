@@ -36,6 +36,7 @@ jobs:
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
+          working-directory: ./aoe-back
           command: npm run test:e2e
           start: npm run start_test, npm run start_front
           wait-on: http://localhost:3000
