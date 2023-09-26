@@ -41,9 +41,11 @@ Vinkit ja ohjeet halutaan tarjota:
 | 22.9  | 2    | lisää backtestisäätöä   |
 |       | 2    | workflown näperrys      |
 |       |      |                         |
-|       |      |                         |
+| 25.9  | 4    | github actionsin säätöä |
+|       |      | test fail -> pipefail.  |
+|       | 0.5  | suunnittelu             |
 
-Yht: 17.5h 14.9. mennessä
+Yht: 30h 25.9. mennessä
 
 ## Muu
 

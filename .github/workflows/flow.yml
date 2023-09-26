@@ -30,3 +30,13 @@ jobs:
             echo "Tests failed. Failing the workflow."
             exit 1
           fi
+      - name: Install dependencies front
+        working-directory: ./aoe-front
+        run: npm install
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        working-directory: ./aoe-back
+        with:
+          command: npm run test:e2e
+          start: npm run start_test, npm run start_front
+          wait-on: http://localhost:3000
