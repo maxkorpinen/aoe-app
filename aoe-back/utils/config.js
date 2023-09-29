@@ -6,6 +6,10 @@ const MONGODB_URI = process.env.NODE_ENV === 'test'
 
 let PORT = process.env.PORT
 
+if (typeof MONGODB_URI !== undefined) {
+  console.log("MONGODB_URI IS UNDEFINED")
+}
+
 module.exports = {
   MONGODB_URI,
   PORT

@@ -17,6 +17,7 @@ mongoose.connect(mongoUrl)
 app.use(cors())
 app.use('/api/civs', civRouter)
 app.use('/api/units', unitRouter)
+app.use(express.static('build'))
 app.use(middleware.errorHandler)
 console.log("NODE_ENV:", process.env.NODE_ENV)
 module.exports = app
