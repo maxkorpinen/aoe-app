@@ -1,34 +1,37 @@
 import { useState } from 'react'
 import images from "../utils/imageloader"
+import ids from "../utils/civ_ids"
 import civService from "../services/civs"
 import CivButton from "./CivButton"
 
 const CivsList = (props) => { //{changePage}
   const {changePage, civ1, 
         civ2, setCiv1, 
-        setCiv2, setGuideType} = props
+        setCiv2, setGuideType,
+        setPu1, setPu2,
+        pu1, pu2} = props
   const imageNames = Object.keys(images.civImages)
 
   const buttFunc = (civ) => {
     const chosenCiv = civ.split(".")[0]
-    console.log("buttFunc,", chosenCiv)
-    const ids = {
-      'mongols': 5,
-      'britons': 1,
-      'goths': 3,
-      'franks': 2,
-      'mayans':4
-    }
     civService.getCivPowerUnit(ids[chosenCiv]).then(civ => {
-      if (isEmpty(civ1[0])){
+      if (isEmpty(pu1[0])){
         civ.civ = chosenCiv
-        setCiv1([civ])
+        setPu1([civ])
         return
       }
-      if (isEmpty(civ2[0])) {
+      if (isEmpty(pu2[0])) {
         civ.civ = chosenCiv
-        console.log(civ)
-        setCiv2([civ])
+        setPu2([civ])
+      }
+    })
+    civService.getWithId(ids[chosenCiv]).then(civ => {
+      if (isEmpty(civ1[0])){
+        setCiv1(civ)
+        return
+      }
+      if (isEmpty(civ2[0])){
+        setCiv2(civ)
       }
       setGuideType('matchup')
       changePage('guide')

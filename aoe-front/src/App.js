@@ -9,10 +9,11 @@ import Notification from './components/Notification'
 
 const App = () => {
   const [civs, setCivs] = useState([])
-  const [units, setUnits] = useState([])
   const [page, setPage] = useState('choose')
   const [civ1, setCiv1 ] = useState([])
   const [civ2, setCiv2] = useState([])
+  const [pu1, setPu1] = useState([])
+  const [pu2, setPu2] = useState([])
   const [guideType, setGuideType] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
   const isEmpty = f.isEmpty
@@ -22,21 +23,11 @@ const App = () => {
       setCivs(civs))
   }, [])
 
-  useEffect(() => {
-    unitService.getAll().then(unitss => 
-      console.log(unitss)
-      /* setUnits(unitss) */)
-  }, [])
-  
-  const changePage = ({page}) => {
-    console.log("CHANGE PAGE TO: ",page)
-    console.log("civ1:",civ1, "civ2:", civ2)
-    setPage(page)
-  }
-
   const beginning = () => {
     setCiv1('')
     setCiv2('')
+    setPu1([])
+    setPu2([])
     setPage('choose')
     setGuideType('')
   }
@@ -62,11 +53,6 @@ const App = () => {
 
   return (
     <div>
-      {units && 
-       units.map((u) => (
-        <p>{u}</p>
-       ))
-       }
       <Notification message={errorMessage}/>
       <div>
         <button onClick={() => beginning()}>Start over</button>
@@ -79,9 +65,13 @@ const App = () => {
         setCiv1={setCiv1}
         civ2={civ2}
         setCiv2={setCiv2}
-        setGuideType={setGuideType}/>}
+        setGuideType={setGuideType}
+        setPu1={setPu1}
+        setPu2={setPu2}
+        pu1={pu1}
+        pu2={pu2}/>}
       {page ==='guide' &&
-        <Guide civ1={civ1} civ2={civ2} guideType={guideType}/>
+        <Guide civ1={pu1} civ2={pu2} guideType={guideType}/>
       }
       
     </div>

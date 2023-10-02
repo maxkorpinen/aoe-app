@@ -52,7 +52,7 @@ Vinkit ja ohjeet halutaan tarjota:
 | 29.9  | 1    | huolimaton              |
 |       |      |                         |
 | 2.10  | 1    | suunnittelu             |
-|       | 4.5  | front matchup +         |
+|       | 5.25 | front matchup +         |
 |       |      | refaktorointi           |
 
 Yht: 30h 25.9. mennessä

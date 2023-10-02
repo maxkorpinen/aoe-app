@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   const civ = await Civ.find({ _id:id})
-  //(civ)
   res.json(civ)
 })
 
