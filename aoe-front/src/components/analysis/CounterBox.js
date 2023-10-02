@@ -1,6 +1,6 @@
 import images from '../../utils/imageloader'
 
-const CounterBox = ({civ, setSeenUnit}) => {
+const CounterBox = ({civ, setSeenUnit, text}) => {
   //let unitname = civ[0].unit+'.png'
   let counters = civ[0].counters.map(unit => unit+'.png')
   console.log(counters)
@@ -10,7 +10,7 @@ const CounterBox = ({civ, setSeenUnit}) => {
   }
   return(
     <div>
-      <p> Counterbox</p>
+      <p> {text} </p>
       {counters.map(unitname => 
         <button key={unitname}>
           <img key={unitname} 

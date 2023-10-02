@@ -27,6 +27,7 @@ const CivsList = (props) => { //{changePage}
       }
       if (isEmpty(civ2[0])) {
         civ.civ = chosenCiv
+        console.log(civ)
         setCiv2([civ])
       }
       setGuideType('matchup')

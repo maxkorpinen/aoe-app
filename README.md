@@ -1,5 +1,7 @@
 # Fullstack open - projekti
 
+Ohjelma käynnissä osoitteessa https://fso-aoe.fly.dev/
+
 ## AoE2 guide app
 
 Ohjelma pyrkii auttamaan keskitasoista tai tätä huonompaa pelaajaa Age of Empires II pelissä, tarjoamalla yksinkertaisia ohjeita.
@@ -44,6 +46,14 @@ Vinkit ja ohjeet halutaan tarjota:
 | 25.9  | 4    | github actionsin säätöä |
 |       |      | test fail -> pipefail.  |
 |       | 0.5  | suunnittelu             |
+|       |      |                         |
+| 27.9  | 2    | Fly deployment on       |
+| 28.9  | 2    | vaikeaa, jos on         |
+| 29.9  | 1    | huolimaton              |
+|       |      |                         |
+| 2.10  | 1    | suunnittelu             |
+|       | 4.5  | front matchup +         |
+|       |      | refaktorointi           |
 
 Yht: 30h 25.9. mennessä
 
