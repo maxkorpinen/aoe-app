@@ -1,7 +1,6 @@
 
 
 const UnitBox = ({text, unit, imgs, seenUnit}) => {
-  console.log("imgs in unitsbox",imgs)
   return(
     <div>
       {unit &&

@@ -54,6 +54,11 @@ Vinkit ja ohjeet halutaan tarjota:
 | 2.10  | 1    | suunnittelu             |
 |       | 5.25 | front matchup +         |
 |       |      | refaktorointi           |
+|       |      |                         |
+| 3.10  | 0.5  | bugien korjailua        |
+|       | 2.25 | refaktorointia, matchup |
+|       |      | supunit paremmin        |
+|       |      |                         |
 
 Yht: 30h 25.9. mennessä
 

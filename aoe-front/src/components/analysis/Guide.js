@@ -5,24 +5,32 @@ import images from '../../utils/imageloader'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
 import './guide.css'
+import hf from '../../utils/helpfuncs' //eslint valittaa 
 
-const Guide = ({civ1, civ2, guideType}) => {
+const Guide = ({pu1, pu2, guideType, civ1, civ2}) => {
   const [seenUnit, setSeenUnit] = useState('')
-  let unitname = civ1[0].unit+'.png'
+  //return, jos statteihin ei ole asetettu vielä mitään
+  if([pu1,pu2,civ1,civ2].map(a => hf.isEmpty(a)).includes(true)) {
+    return
+  }
+  let unitname = pu1[0].unit+'.png'
   return(
     <div>
     {guideType==='civguide' &&
       <div className='boxrows'>
-        <UnitBox text={'Coreunit: '} unit={civ1[0].unit} 
+        <UnitBox text={'Coreunit: '} unit={pu1[0].unit} 
         imgs={[images.unitImages[unitname]]}
         seenUnit={seenUnit}/>
-        <CounterBox civ={civ1}
+        <CounterBox civ={pu1}
           setSeenUnit={setSeenUnit}/>
       </div>
     }
     {guideType==='matchup' &&
       <div>
-        <Matchup civ1={civ1} civ2={civ2}/>
+        <Matchup pu1={pu1} 
+        pu2={pu2}
+        civ1={civ1}
+        civ2={civ2}/>
       </div>
     }
   </div>

@@ -41,11 +41,9 @@ const App = () => {
       return
     }
     if(!isEmpty(civ1) && !isEmpty(civ2)) {
-      console.log("MATCHUP",civ2)
       setGuideType('matchup')
     }
     if(!isEmpty(civ1) && isEmpty(civ2)) {
-      console.log("CIVGUIDE")
       setGuideType('civguide')
     }
     setPage('guide')
@@ -71,7 +69,11 @@ const App = () => {
         pu1={pu1}
         pu2={pu2}/>}
       {page ==='guide' &&
-        <Guide civ1={pu1} civ2={pu2} guideType={guideType}/>
+        <Guide pu1={pu1} 
+        pu2={pu2} 
+        guideType={guideType}
+        civ1={civ1}
+        civ2={civ2}/>
       }
       
     </div>

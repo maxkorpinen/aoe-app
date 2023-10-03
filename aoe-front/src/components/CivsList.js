@@ -51,7 +51,7 @@ const CivsList = (props) => { //{changePage}
       <p>Choose your civ </p>
       }
       {!isEmpty(civ1) &&
-      <p>Your civ: {civ1[0].civ}. Choose opponents civ!</p>
+      <p>Your civ: {civ1[0].name}. Choose opponents civ!</p>
       }
       <div>
         {imageNames.map((n) => (
