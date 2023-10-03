@@ -7,6 +7,9 @@ import hf from '../../utils/helpfuncs' //eslint valittaa
 
 const Matchup = ({pu1, pu2, civ1, civ2}) => {
   const [seenUnit, setSeenUnit] = useState('')
+  if([pu1,pu2,civ1,civ2].map(a => hf.isEmpty(a)).includes(true)) {
+    return
+  }
   //console.log("civ2 all units",civ2[0].units[0])
   console.log("p2 powerunit: ",pu2[0])
   let p1counters = hf.filterCounters(pu1[0].counters, pu2[0].unit, civ2[0].units[0]) //for p1
