@@ -1,19 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
 import './guide.css'
 import images from '../../utils/imageloader'
 import hf from '../../utils/helpfuncs' //eslint valittaa 
+import unitService from '../../services/units'
+
 
 const Matchup = ({pu1, pu2, civ1, civ2}) => {
   const [seenUnit, setSeenUnit] = useState('')
-  if([pu1,pu2,civ1,civ2].map(a => hf.isEmpty(a)).includes(true)) {
+  const [allUnits, setAllUnits] = useState([])
+  useEffect(() => {
+    unitService.getAll().then(retUnits =>
+      setAllUnits(retUnits))
+
+  }, [])
+
+  if([pu1, pu2, civ1, civ2, allUnits].map(a => hf.isEmpty(a)).includes(true)) {
     return
   }
-  //console.log("civ2 all units",civ2[0].units[0])
-  console.log("p2 powerunit: ",pu2[0])
-  let p1counters = hf.filterCounters(pu1[0].counters, pu2[0].unit, civ2[0].units[0]) //for p1
-  let p2counters = hf.filterCounters(pu2[0].counters, pu1[0].unit, civ1[0].units[0])
+  let p1counters = hf.filterCounters(pu1[0].counters, pu2[0].unit, civ2[0].units[0], allUnits)
+  let p2counters = hf.filterCounters(pu2[0].counters, pu1[0].unit, civ1[0].units[0], allUnits)
   return (
     <div>
       <p>matchup stuff</p>

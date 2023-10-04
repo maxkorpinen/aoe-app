@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import images from "../utils/imageloader"
-import ids from "../utils/civ_ids"
+import civstuff from "../utils/civ_ids"
 import civService from "../services/civs"
 import CivButton from "./CivButton"
 
 const CivsList = (props) => { //{changePage}
+  const {ids} = civstuff
   const {changePage, civ1, 
         civ2, setCiv1, 
         setCiv2, setGuideType,

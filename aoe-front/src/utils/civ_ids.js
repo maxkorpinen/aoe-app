@@ -6,4 +6,4 @@ const ids = {
   'mayans':4
 }
 
-export default ids
+export default {ids}

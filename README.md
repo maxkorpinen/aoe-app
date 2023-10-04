@@ -58,7 +58,8 @@ Vinkit ja ohjeet halutaan tarjota:
 | 3.10  | 0.5  | bugien korjailua        |
 |       | 2.25 | refaktorointia, matchup |
 |       |      | supunit paremmin        |
-|       |      |                         |
+|       | 2    | suunnittelu, matchup    |
+|       |      | säätö jatkuu            |
 
 Yht: 30h 25.9. mennessä
 
