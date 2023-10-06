@@ -1,24 +1,20 @@
 import {useDispatch, useSelector} from "react-redux"
 import { pageChange } from '../reducers/pageReducer'
 import { setCiv1, setCiv2 } from '../reducers/civReducer'
+import { setPu1, setPu2 } from "../reducers/powerunitReducer"
 import images from "../utils/imageloader"
 import civstuff from "../utils/civ_ids"
 import civService from "../services/civs"
 import CivButton from "./CivButton"
 
 
-const CivsList = (props) => {
+const CivsList = ({setGuideType}) => {
   const dispatch = useDispatch() // uus
-  const storePage = useSelector(state => state.page) //uus
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
+  const pu1 = useSelector(state => state.powerunits['pu1'])
+  const pu2 = useSelector(state => state.powerunits['pu2'])
   const {ids} = civstuff
-  const {
-        //civ1,civ2, 
-        //setCiv1, setCiv2, 
-        setGuideType,
-        setPu1, setPu2,
-        pu1, pu2} = props
   const imageNames = Object.keys(images.civImages)
 
   const buttFunc = (civ) => {
@@ -26,12 +22,12 @@ const CivsList = (props) => {
     civService.getCivPowerUnit(ids[chosenCiv]).then(civ => {
       if (isEmpty(pu1[0])){
         civ.civ = chosenCiv
-        setPu1([civ])
+        dispatch(setPu1([civ]))
         return
       }
       if (isEmpty(pu2[0])) {
         civ.civ = chosenCiv
-        setPu2([civ])
+        dispatch(setPu2([civ]))
       }
     })
     civService.getWithId(ids[chosenCiv]).then(civ => {

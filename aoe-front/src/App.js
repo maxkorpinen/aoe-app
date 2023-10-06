@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import pageReducer, { pageChange } from './reducers/pageReducer'
-import { setCiv1, setCiv2 } from './reducers/civReducer'
-import civService from './services/civs'
+import { pageChange } from './reducers/pageReducer'
+import { resetCivs } from './reducers/civReducer'
+import { resetPu } from './reducers/powerunitReducer'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
 import f from './utils/helpfuncs'
@@ -12,28 +12,22 @@ import Notification from './components/Notification'
 const App = () => {
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
-  const [pu1, setPu1] = useState([])
-  const [pu2, setPu2] = useState([])
   const [guideType, setGuideType] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
   const isEmpty = f.isEmpty
-  const dispatch = useDispatch() // uus
-  const storePage = useSelector(state => state.page) //uus
-
-  /* useEffect(() => {
-    civService.getAll().then(civs =>
-      setCivs(civs))
-  }, []) */
+  const dispatch = useDispatch()
+  const storePage = useSelector(state => state.page)
 
   const beginning = () => {
-    dispatch(setCiv1([]))
-    dispatch(setCiv2([]))
-    setPu1([])
-    setPu2([])
+    dispatch(resetCivs())
+    dispatch(resetPu())
     dispatch(pageChange('choose')) 
     setGuideType('')
   }
   
+  /*
+  tän vois siirtää johonkin container komponenttiin
+  */
   const showGuide = () => {
     if(isEmpty(civ1)) {
       setErrorMessage('choose at least one civ')
@@ -48,7 +42,7 @@ const App = () => {
     if(!isEmpty(civ1) && isEmpty(civ2)) {
       setGuideType('civguide')
     }
-    dispatch(pageChange('guide')) // uus
+    dispatch(pageChange('guide'))
   }
   
 
@@ -61,27 +55,11 @@ const App = () => {
       </div>
       <h1>AoE2 app</h1>
       {storePage==='choose' &&
-      <CivsList
-        //civ1={civ1}
-        //setCiv1={setCiv1}
-        //civ2={civ2}
-        //setCiv2={setCiv2}
-        setGuideType={setGuideType}
-        setPu1={setPu1}
-        setPu2={setPu2}
-        pu1={pu1}
-        pu2={pu2}/>}
+        <CivsList setGuideType={setGuideType} />}
       {storePage ==='guide' &&
-        <Guide pu1={pu1} 
-        pu2={pu2} 
-        guideType={guideType}
-        civ1={civ1}
-        civ2={civ2}
-        />
-      }
-      
+        <Guide guideType={guideType} />}
     </div>
-  );
+  )
 }
 
 export default App;

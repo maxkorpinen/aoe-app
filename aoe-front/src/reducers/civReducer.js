@@ -13,9 +13,12 @@ const civsSlice = createSlice({
     },
     setCiv2(state, action) {
       return {'civ1': state.civ1, civ2: action.payload}
+    },
+    resetCivs(state, action) {
+      return {'civ1':[],'civ2':[]}
     }
   }
 })
 
-export const {setCiv1, setCiv2} = civsSlice.actions
+export const {setCiv1, setCiv2, resetCivs} = civsSlice.actions
 export default civsSlice.reducer

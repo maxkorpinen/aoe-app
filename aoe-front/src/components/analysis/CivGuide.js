@@ -1,12 +1,14 @@
 import { useState } from 'react'
+import {useSelector} from 'react-redux'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
 import images from '../../utils/imageloader'
 import './guide.css'
 
-const CivGuide= ({pu1}) => {
+const CivGuide= () => {
   const [seenUnit, setSeenUnit] = useState('')
-  console.log("counters",pu1[0].counters)
+  const pu1 = useSelector(state => state.powerunits.pu1)
+
   let unitname = pu1[0].unit+'.png'
   return (
     <div className='boxrows'>

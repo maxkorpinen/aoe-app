@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
-import './guide.css'
 import images from '../../utils/imageloader'
 import hf from '../../utils/helpfuncs' //eslint valittaa 
 import unitService from '../../services/units'
+import './guide.css'
 
 
-const Matchup = ({pu1, pu2, civ1, civ2}) => {
+const Matchup = () => {
   const [seenUnit, setSeenUnit] = useState('')
   const [allUnits, setAllUnits] = useState([])
+  const civ1 = useSelector(state => state.civs['civ1'])
+  const civ2 = useSelector(state => state.civs['civ2'])
+  const pu1 = useSelector(state => state.powerunits.pu1)
+  const pu2 = useSelector(state => state.powerunits.pu2)
+
   useEffect(() => {
     unitService.getAll().then(retUnits =>
       setAllUnits(retUnits))
-
   }, [])
 
   if([pu1, pu2, civ1, civ2, allUnits].map(a => hf.isEmpty(a)).includes(true)) {

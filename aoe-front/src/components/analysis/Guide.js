@@ -7,22 +7,17 @@ import CounterBox from './CounterBox'
 import {useSelector} from 'react-redux'
 import './guide.css'
 
-const Guide = ({pu1, pu2, guideType}) => { //, civ1, civ2
-  const civ1 = useSelector(state => state.civs['civ1'])
-  const civ2 = useSelector(state => state.civs['civ2'])
+const Guide = ({guideType}) => {
   return(
     <div>
     {guideType==='civguide' &&
       <div className='boxrows'>
-        <CivGuide pu1={pu1}/>
+        <CivGuide/>
       </div>
     }
     {guideType==='matchup' && 
       <div>
-        <Matchup pu1={pu1} 
-        pu2={pu2}
-        civ1={civ1}
-        civ2={civ2}/>
+        <Matchup/>
       </div>
     }
   </div>
