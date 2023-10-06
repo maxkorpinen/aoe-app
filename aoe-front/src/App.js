@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import pageReducer, { pageChange } from './reducers/pageReducer'
+import { setCiv1, setCiv2 } from './reducers/civReducer'
 import civService from './services/civs'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
@@ -9,8 +10,8 @@ import Notification from './components/Notification'
 
 
 const App = () => {
-  const [civ1, setCiv1 ] = useState([])
-  const [civ2, setCiv2] = useState([])
+  const civ1 = useSelector(state => state.civs['civ1'])
+  const civ2 = useSelector(state => state.civs['civ2'])
   const [pu1, setPu1] = useState([])
   const [pu2, setPu2] = useState([])
   const [guideType, setGuideType] = useState('')
@@ -19,17 +20,16 @@ const App = () => {
   const dispatch = useDispatch() // uus
   const storePage = useSelector(state => state.page) //uus
 
-  useEffect(() => {
+  /* useEffect(() => {
     civService.getAll().then(civs =>
       setCivs(civs))
-  }, [])
+  }, []) */
 
   const beginning = () => {
-    setCiv1('')
-    setCiv2('')
+    dispatch(setCiv1([]))
+    dispatch(setCiv2([]))
     setPu1([])
     setPu2([])
-    setPage('choose')
     dispatch(pageChange('choose')) 
     setGuideType('')
   }
@@ -49,8 +49,6 @@ const App = () => {
       setGuideType('civguide')
     }
     dispatch(pageChange('guide')) // uus
-    console.log( "Storepage",storePage)
-    setPage('guide')
   }
   
 
@@ -64,10 +62,10 @@ const App = () => {
       <h1>AoE2 app</h1>
       {storePage==='choose' &&
       <CivsList
-        civ1={civ1}
-        setCiv1={setCiv1}
-        civ2={civ2}
-        setCiv2={setCiv2}
+        //civ1={civ1}
+        //setCiv1={setCiv1}
+        //civ2={civ2}
+        //setCiv2={setCiv2}
         setGuideType={setGuideType}
         setPu1={setPu1}
         setPu2={setPu2}
@@ -78,7 +76,8 @@ const App = () => {
         pu2={pu2} 
         guideType={guideType}
         civ1={civ1}
-        civ2={civ2}/>
+        civ2={civ2}
+        />
       }
       
     </div>

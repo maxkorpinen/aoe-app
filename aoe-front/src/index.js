@@ -8,7 +8,7 @@ import civReducer from './reducers/civReducer'
 const store = configureStore({
   reducer: {
     page: pageReducer,
-    civ: civReducer
+    civs: civReducer
   }
 })
 

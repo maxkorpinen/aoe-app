@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from "react-redux"
 import { pageChange } from '../reducers/pageReducer'
+import { setCiv1, setCiv2 } from '../reducers/civReducer'
 import images from "../utils/imageloader"
 import civstuff from "../utils/civ_ids"
 import civService from "../services/civs"
@@ -9,10 +10,13 @@ import CivButton from "./CivButton"
 const CivsList = (props) => {
   const dispatch = useDispatch() // uus
   const storePage = useSelector(state => state.page) //uus
+  const civ1 = useSelector(state => state.civs['civ1'])
+  const civ2 = useSelector(state => state.civs['civ2'])
   const {ids} = civstuff
-  const {civ1, 
-        civ2, setCiv1, 
-        setCiv2, setGuideType,
+  const {
+        //civ1,civ2, 
+        //setCiv1, setCiv2, 
+        setGuideType,
         setPu1, setPu2,
         pu1, pu2} = props
   const imageNames = Object.keys(images.civImages)
@@ -32,11 +36,11 @@ const CivsList = (props) => {
     })
     civService.getWithId(ids[chosenCiv]).then(civ => {
       if (isEmpty(civ1[0])){
-        setCiv1(civ)
+        dispatch(setCiv1(civ))
         return
       }
       if (isEmpty(civ2[0])){
-        setCiv2(civ)
+        dispatch(setCiv2(civ))
       }
       setGuideType('matchup')
       dispatch(pageChange('guide')) 

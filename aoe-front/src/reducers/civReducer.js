@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-
+/*
+User chosen civs
+Format: 
+*/
 const civsSlice = createSlice({
   name: 'civs',
   initialState: {'civ1':[],'civ2':[]},
