@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import {useDispatch, useSelector} from "react-redux"
+import { pageChange } from '../reducers/pageReducer'
 import images from "../utils/imageloader"
 import civstuff from "../utils/civ_ids"
 import civService from "../services/civs"
 import CivButton from "./CivButton"
 
-const CivsList = (props) => { //{changePage}
+
+const CivsList = (props) => {
+  const dispatch = useDispatch() // uus
+  const storePage = useSelector(state => state.page) //uus
   const {ids} = civstuff
-  const {changePage, civ1, 
+  const {civ1, 
         civ2, setCiv1, 
         setCiv2, setGuideType,
         setPu1, setPu2,
@@ -35,7 +39,7 @@ const CivsList = (props) => { //{changePage}
         setCiv2(civ)
       }
       setGuideType('matchup')
-      changePage('guide')
+      dispatch(pageChange('guide')) 
     })
   } 
 

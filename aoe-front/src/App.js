@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import pageReducer, { pageChange } from './reducers/pageReducer'
 import civService from './services/civs'
-import unitService from './services/units'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
 import f from './utils/helpfuncs'
@@ -8,8 +9,6 @@ import Notification from './components/Notification'
 
 
 const App = () => {
-  const [civs, setCivs] = useState([])
-  const [page, setPage] = useState('choose')
   const [civ1, setCiv1 ] = useState([])
   const [civ2, setCiv2] = useState([])
   const [pu1, setPu1] = useState([])
@@ -17,6 +16,8 @@ const App = () => {
   const [guideType, setGuideType] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
   const isEmpty = f.isEmpty
+  const dispatch = useDispatch() // uus
+  const storePage = useSelector(state => state.page) //uus
 
   useEffect(() => {
     civService.getAll().then(civs =>
@@ -29,6 +30,7 @@ const App = () => {
     setPu1([])
     setPu2([])
     setPage('choose')
+    dispatch(pageChange('choose')) 
     setGuideType('')
   }
   
@@ -46,8 +48,11 @@ const App = () => {
     if(!isEmpty(civ1) && isEmpty(civ2)) {
       setGuideType('civguide')
     }
+    dispatch(pageChange('guide')) // uus
+    console.log( "Storepage",storePage)
     setPage('guide')
   }
+  
 
   return (
     <div>
@@ -57,8 +62,8 @@ const App = () => {
         <button onClick={() => showGuide()}>Analyse with chosen specs</button>
       </div>
       <h1>AoE2 app</h1>
-      {page==='choose' &&
-      <CivsList changePage={setPage}
+      {storePage==='choose' &&
+      <CivsList
         civ1={civ1}
         setCiv1={setCiv1}
         civ2={civ2}
@@ -68,7 +73,7 @@ const App = () => {
         setPu2={setPu2}
         pu1={pu1}
         pu2={pu2}/>}
-      {page ==='guide' &&
+      {storePage ==='guide' &&
         <Guide pu1={pu1} 
         pu2={pu2} 
         guideType={guideType}
