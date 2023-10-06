@@ -8,8 +8,9 @@ import civService from "../services/civs"
 import CivButton from "./CivButton"
 
 
+//tätä vois palotella jotenkin
 const CivsList = ({setGuideType}) => {
-  const dispatch = useDispatch() // uus
+  const dispatch = useDispatch()
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
   const pu1 = useSelector(state => state.powerunits['pu1'])
@@ -63,7 +64,7 @@ const CivsList = ({setGuideType}) => {
           <CivButton
             key={n}
             name={n}
-            image={images.civImages[n]} //imageObj[n]
+            image={images.civImages[n]}
             buttFunc={buttFunc}
           />
         ))}
@@ -72,12 +73,5 @@ const CivsList = ({setGuideType}) => {
     </div>
   )
 }
-
-/*
-<button><img src={goths}
-        alt="gothciv" 
-        onClick={() => buttFunc("gothciv")} 
-      /></button>
-*/
 
 export default CivsList

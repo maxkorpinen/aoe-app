@@ -1,9 +1,0 @@
-const CivChoosing = (props) => {
-  const {setPage, civ1, setCiv1, 
-    civ2, setCiv2, setGuideType,
-    setPu1, setPu2} = props
-
-  return(
-    <p></p>
-  )
-}
