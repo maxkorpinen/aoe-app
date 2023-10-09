@@ -65,8 +65,10 @@ Vinkit ja ohjeet halutaan tarjota:
 |       |      |                         |
 | 6.10  | 3    | reduxseikkailu jatkuu   |
 |       | 0.75 | fronttisäätö            |
+|       |      |                         |
+| 9.10  | 6    |                         |
 
-Yht: 47h 5.10. mennessä
+Yht: 50.75h 6.10. mennessä
 
 ## Muu
 

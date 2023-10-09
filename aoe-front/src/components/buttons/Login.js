@@ -1,13 +1,19 @@
-import { useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { useState } from 'react'
-import loginService from '../services/login'
-import { setError } from '../reducers/errorReducer'
+import loginService from '../../services/login'
+import { setError } from '../../reducers/errorReducer'
+import { setUser } from '../../reducers/userReducer'
 
 const Login = () => {
   const [showLogin, setShowLogin] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const token = useSelector(state => state.token)
+  const token = useSelector(state => state.user.token)
+  const dispatch = useDispatch()
+
+  if (token) {
+    return null
+  }
 
   const openLogin = () => {
     setShowLogin(true)
@@ -20,9 +26,8 @@ const Login = () => {
         password: password,
         username: username
       })
-      console.log("TOKEN:", token.token)
       window.localStorage.setItem('loggedUser', JSON.stringify(user))
-      console.log(window.localStorage.getItem('token'))
+      dispatch(setUser(user))
       setUsername('')
       setPassword('')
     } catch (excep) {
@@ -34,7 +39,7 @@ const Login = () => {
   }
 
   return(
-    <div>
+    <>
     { !token && !showLogin &&
       <button onClick={() => openLogin()}>Login</button>
     }
@@ -58,10 +63,7 @@ const Login = () => {
         <button type="submit">login</button>
       </form>
     }
-    { token &&
-      <p>sisäänkirjautunut</p>
-    }
-    </div>
+    </>
   )
 }
 

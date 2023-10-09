@@ -23,15 +23,12 @@ usersRouter.post('/', async (req, res, next) => {
 })
 
 usersRouter.put('/', async (req, res, next) => {
+  // VAADI TOKENIA
   const { username, token, favciv } = req.body
-
-  /* User.find({username:username}).then(result => {
-    console.log("usersrouter put",result)
-  }) */
   let doc = await User.findOneAndUpdate({username: username}, {favciv: favciv})
-  console.log(doc)
   doc = await User.findOne({username:username})
-  console.log(doc)
+  //miten saadaan virheet kiinni ts jos ei onnistu nii lähetä jotain muuta?
+  res.status(200) 
 })
 
 module.exports = usersRouter

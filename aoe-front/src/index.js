@@ -7,6 +7,7 @@ import civReducer from './reducers/civReducer'
 import puReducer from './reducers/powerunitReducer'
 import tokenReducer from './reducers/tokenReducer'
 import errorReducer from './reducers/errorReducer'
+import userReducer from './reducers/userReducer'
 
 const store = configureStore({
   reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
     civs: civReducer,
     powerunits: puReducer,
     token: tokenReducer,
-    errorMessage: errorReducer
+    errorMessage: errorReducer,
+    user: userReducer
   }
 })
 

@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { resetCivs } from '../reducers/civReducer'
-import { resetPu } from '../reducers/powerunitReducer'
-import { pageChange } from '../reducers/pageReducer'
-import { setError } from '../reducers/errorReducer'
+import { resetCivs } from '../../reducers/civReducer'
+import { resetPu } from '../../reducers/powerunitReducer'
+import { pageChange } from '../../reducers/pageReducer'
+import { setError } from '../../reducers/errorReducer'
 import Login from './Login'
-import f from '../utils/helpfuncs'
+import f from '../../utils/helpfuncs'
 
-const TopButtons = ({setGuideType, setErrorMessage}) => {
+const TopButtons = ({setGuideType}) => {
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
+  const user = useSelector(state => state.user.username)
   const dispatch = useDispatch()
   const isEmpty = f.isEmpty
   
@@ -36,11 +37,18 @@ const TopButtons = ({setGuideType, setErrorMessage}) => {
     dispatch(pageChange('guide'))
   }
 
+  const kakkatraktori = () => {
+    
+  }
+
   return(
     <div>
       <button onClick={() => beginning()}>Start over</button>
       <button onClick={() => showGuide()}>Analyse with chosen specs</button>
-      <Login /> 
+      <Login />
+      { user &&
+        <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
+      }
     </div>
   )
 }

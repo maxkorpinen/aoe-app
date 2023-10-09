@@ -7,4 +7,7 @@
 - väsää joku favorite civ picker sivu loggautuneille käyttäjille
 
 - civ matchup?
+
   - mistä haetaan matchup data -> https://aoe2.net/#api
+
+- formi uusien käyttäjien luomiseen
