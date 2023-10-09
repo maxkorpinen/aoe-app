@@ -2,17 +2,9 @@
 
 ## Tehtäviä juttuja
 
-- joku perusmatch representaatio jonka voi
-  - hakea bäkkäristä
-  - näyttää frontin matchup luokassa
-- käy läpi lista bäkkärin middlewareja
-  - oma loggeri
-  - unknownpendpoint
-- käyttäjät
-- testit
-  - jest
-  - cypress
-- testit cicd eli github actions
+- varmista että matchupissa näytettävät supportunitit tulee oikein
+-
+- väsää joku favorite civ picker sivu loggautuneille käyttäjille
 
-- civstatit bäkkiin X
-  - joku helpohko tapa päivittää civstatteja
+- civ matchup?
+  - mistä haetaan matchup data -> https://aoe2.net/#api

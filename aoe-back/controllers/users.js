@@ -22,4 +22,16 @@ usersRouter.post('/', async (req, res, next) => {
   res.status(201).json(savedUser)
 })
 
+usersRouter.put('/', async (req, res, next) => {
+  const { username, token, favciv } = req.body
+
+  /* User.find({username:username}).then(result => {
+    console.log("usersrouter put",result)
+  }) */
+  let doc = await User.findOneAndUpdate({username: username}, {favciv: favciv})
+  console.log(doc)
+  doc = await User.findOne({username:username})
+  console.log(doc)
+})
+
 module.exports = usersRouter

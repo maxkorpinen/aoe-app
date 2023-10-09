@@ -1,0 +1,9 @@
+PUT http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "testinimi3",
+    "password": "sunmutsis",
+    "token": "feikkitoken",
+    "favciv": "goths"
+}
