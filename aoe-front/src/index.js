@@ -5,12 +5,16 @@ import App from './App'
 import pageReducer from './reducers/pageReducer'
 import civReducer from './reducers/civReducer'
 import puReducer from './reducers/powerunitReducer'
+import tokenReducer from './reducers/tokenReducer'
+import errorReducer from './reducers/errorReducer'
 
 const store = configureStore({
   reducer: {
     page: pageReducer,
     civs: civReducer,
-    powerunits: puReducer
+    powerunits: puReducer,
+    token: tokenReducer,
+    errorMessage: errorReducer
   }
 })
 

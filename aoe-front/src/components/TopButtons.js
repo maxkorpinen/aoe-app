@@ -1,7 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { resetCivs } from '../reducers/civReducer'
 import { resetPu } from '../reducers/powerunitReducer'
 import { pageChange } from '../reducers/pageReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import { setError } from '../reducers/errorReducer'
 import Login from './Login'
 import f from '../utils/helpfuncs'
 
@@ -20,9 +21,9 @@ const TopButtons = ({setGuideType, setErrorMessage}) => {
 
   const showGuide = () => {
     if(isEmpty(civ1)) {
-      setErrorMessage('choose at least one civ')
+      dispatch(setError('choose at least one civ'))
       setTimeout(() => {
-        setErrorMessage(null)
+        dispatch(setError(null))
       }, 5000)
       return
     }

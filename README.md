@@ -60,8 +60,13 @@ Vinkit ja ohjeet halutaan tarjota:
 |       |      | supunit paremmin        |
 |       | 2    | suunnittelu, matchup    |
 |       |      | säätö jatkuu            |
+|       |      |                         |
+| 5.10  | 1    | reduxsäätö              |
+|       |      |                         |
+| 6.10  | 3    | reduxseikkailu jatkuu   |
+|       | 0.75 | fronttisäätö            |
 
-Yht: 30h 25.9. mennessä
+Yht: 47h 5.10. mennessä
 
 ## Muu
 
