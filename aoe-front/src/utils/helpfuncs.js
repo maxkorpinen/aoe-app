@@ -17,7 +17,10 @@ const filterCounters = (counters, punit, civUnits, allUnits) => {
   //remove non-buildable units from possible supporting units
   ret = ret.filter(unit => !(civUnits[unit] === null))
   return ret
-
 }
 
-export default {isEmpty, filterCounters}
+const addBearer = newToken => {
+  return `Bearer ${newToken}`
+}
+
+export default {isEmpty, filterCounters, addBearer}

@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const usersRouter = require('express').Router()
 const User = require('../schemas/user')
 
@@ -22,9 +23,22 @@ usersRouter.post('/', async (req, res, next) => {
   res.status(201).json(savedUser)
 })
 
+const getTokenFrom = request => {
+  const auth = request.get('authorization')
+  if (authorization && authorization.startsWith('Bearer ')) {
+    return auth.replace('Bearer ', '')
+  }
+  return null
+}
+
 usersRouter.put('/', async (req, res, next) => {
   // VAADI TOKENIA
   const { username, token, favciv } = req.body
+  const decoToken = jwt.verify(getTokenFrom(req), process.env.SEKRET)
+  if (!decodedToken.id) {
+    return response.status(401).json({error:"invalid token"})
+  }
+
   let doc = await User.findOneAndUpdate({username: username}, {favciv: favciv})
   doc = await User.findOne({username:username})
   //miten saadaan virheet kiinni ts jos ei onnistu nii lähetä jotain muuta?

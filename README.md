@@ -66,7 +66,9 @@ Vinkit ja ohjeet halutaan tarjota:
 | 6.10  | 3    | reduxseikkailu jatkuu   |
 |       | 0.75 | fronttisäätö            |
 |       |      |                         |
-| 9.10  | 6    |                         |
+| 9.10  | 6    | kirjautumissällää ja    |
+|       |      | frontin loputon         |
+|       |      | refaktorointi           |
 
 Yht: 50.75h 6.10. mennessä
 
