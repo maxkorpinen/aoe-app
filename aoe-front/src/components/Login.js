@@ -1,9 +1,7 @@
 import { useSelector} from 'react-redux'
 import { useState } from 'react'
 import loginService from '../services/login'
-/*
-Jos token on olemassa niin älä näytä login vaa njoku username tms
-*/
+import { setError } from '../reducers/errorReducer'
 
 const Login = () => {
   const [showLogin, setShowLogin] = useState(false)
@@ -18,14 +16,20 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault()
     try{
-      const token = await loginService.login({
+      const user = await loginService.login({
         password: password,
         username: username
       })
+      console.log("TOKEN:", token.token)
+      window.localStorage.setItem('loggedUser', JSON.stringify(user))
+      console.log(window.localStorage.getItem('token'))
       setUsername('')
       setPassword('')
     } catch (excep) {
-      console.log(excep)
+      setError('wrong credentials')
+      setTimeout(() => {
+        setError(null)
+      }, 5000)
     }
   }
 

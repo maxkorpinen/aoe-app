@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
@@ -8,6 +8,11 @@ import TopButtons from './components/TopButtons'
 const App = () => {
   const [guideType, setGuideType] = useState('')
   const storePage = useSelector(state => state.page)
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+    //tallenna uuseriin jos tarve?
+  })
   
   return (
     <div>
