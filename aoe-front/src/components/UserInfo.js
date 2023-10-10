@@ -10,9 +10,12 @@ const UserInfo = () => {
 
   const buttFunc = (civ) => {
     const chosenCiv = civ.split(".")[0]
+    const userdata = JSON.parse(window.localStorage.getItem('loggedUser'))
+    //console.log( "userdata",userdata,  " ",typeof(userdata))
+    //console.log(userdata.token. userdata.username)
     let newUserData = {
-      username: user.username,
-      token: user.token,
+      username: userdata.username,
+      token: userdata.token,
       favciv: chosenCiv
     }
     userService.update(newUserData)

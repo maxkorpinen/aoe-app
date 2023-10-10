@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
 import Notification from './components/Notification'
@@ -10,11 +10,13 @@ import { setUser } from './reducers/userReducer'
 const App = () => {
   const [guideType, setGuideType] = useState('')
   const page = useSelector(state => state.page)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
-    console.log(loggedUserJSON)
-    setUser(loggedUserJSON)
+    dispatch(setUser(loggedUserJSON))
+    console.log("app user:",user)
   })
   
   return (

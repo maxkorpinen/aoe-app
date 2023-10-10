@@ -4,22 +4,15 @@ const baseUrl = '/api/users'
 
 
 const update = async (userdata) => {
-  /*
-  Voiko sinne vaan tunkea suoraan {username: xxx, favciv:yyy}?
-  Pitääkö passua voida muuttaa?
-  lähetä token mukana
-  */
-  //const token = useSelector(state => state.user.token)
-  // _> syötä token argumenttina ei voi hakee useria täälllä
-  
-  console.log(userdata)
-  /* const token = ''
+  console.log("userdata in update",userdata)
+  const token = ''
   const config = {
     headers: {
       Authorization: hf.addBearer(token) }
     }
+  // käsittele error jotenkin
   const res = await axios.put(baseUrl, userdata, config)
-  console.log(res.data) */
+  console.log("RES.data: ",res.data)
 }
 
 export default { update }

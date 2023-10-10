@@ -8,10 +8,11 @@ const Login = () => {
   const [showLogin, setShowLogin] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const token = useSelector(state => state.user.token)
+  const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
   const dispatch = useDispatch()
-
-  if (token) {
+  let token = ''
+  if (userInfo) {
+    token = userInfo.token
     return null
   }
 

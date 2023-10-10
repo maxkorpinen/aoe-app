@@ -14,13 +14,46 @@ const errorHandler = (error, request, response, next) => {
   } else if (error.name === 'ValidationError') {
     return response.status(400).json({ error: error.message })
   } else if (error.name === 'JsonWebTokenError') {
-    return response.status(400).json({ error: 'token missing or invalid' })
+    return response.status(401).json({ error: 'token missing or invalid' })
+  } else if (error.name === 'TokenExpiredError') {
+    return response.status(401).json({
+      error:'token expired'
+    })
   }
 
   next(error)
 }
 
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7)
+  }
+  return null
+}
+
+const tokenExtractor = (req, res, next) => {
+  req.token = getTokenFrom(req)
+  console.log("tktktk",req.token)
+  next()
+}
+
+const userExtractor = async (req, res, next) => {
+  const token = getTokenFrom(req)
+  
+  if(token) {
+    const decoToken = jwt.verify(token, process.env.SEKRET)
+    if (!decoToken.id) {
+      return response.status(401).json({error: 'invalid token'})
+    }
+    //req.user = await User.findById(decodedToken.id)
+  }
+  next()
+}
+
 module.exports = {
   unknownEndpoint,
-  errorHandler
+  errorHandler,
+  tokenExtractor,
+  userExtractor,
 }

@@ -9,9 +9,14 @@ import f from '../../utils/helpfuncs'
 const TopButtons = ({setGuideType}) => {
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
-  const user = useSelector(state => state.user.username)
+  const userInfo = window.localStorage.getItem('loggedUser')
   const dispatch = useDispatch()
   const isEmpty = f.isEmpty
+
+  /* if (isEmpty(userInfo)) {
+    return null
+  }
+  const token = JSON.parse(userInfo).token */
   
   const beginning = () => {
     dispatch(resetCivs())
@@ -46,7 +51,7 @@ const TopButtons = ({setGuideType}) => {
       <button onClick={() => beginning()}>Start over</button>
       <button onClick={() => showGuide()}>Analyse with chosen specs</button>
       <Login />
-      { user &&
+      { !(isEmpty(userInfo)) &&
         <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
       }
     </div>
