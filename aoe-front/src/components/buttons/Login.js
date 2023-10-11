@@ -32,9 +32,9 @@ const Login = () => {
       setUsername('')
       setPassword('')
     } catch (excep) {
-      setError('wrong credentials')
+      dispatch(setError('wrong credentials'))
       setTimeout(() => {
-        setError(null)
+        dispatch(setError(null))
       }, 5000)
     }
   }

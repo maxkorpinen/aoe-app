@@ -20,6 +20,7 @@ const filterCounters = (counters, punit, civUnits, allUnits) => {
 }
 
 const addBearer = newToken => {
+  console.log("addbearer newtoken:", newToken)
   return `Bearer ${newToken}`
 }
 

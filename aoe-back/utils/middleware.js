@@ -1,4 +1,6 @@
 const logger = require('./logger')
+const jwt = require('jsonwebtoken')
+const User = require('../schemas/user')
 
 const unknownEndpoint = (request, response) => {
   console.log("UNKNONWENDPOINT")
@@ -42,12 +44,21 @@ const userExtractor = async (req, res, next) => {
   const token = getTokenFrom(req)
   
   if(token) {
-    const decoToken = jwt.verify(token, process.env.SEKRET)
-    if (!decoToken.id) {
-      return response.status(401).json({error: 'invalid token'})
+    try{
+      const decoToken = jwt.verify(token, process.env.SEKRET)
+      req.user = await User.findById(decoToken.id)
+    } catch(err) {
+      console.log("KESKELLÄ")
+      next(err)
+      return
     }
+    
+    /* if (!decoToken.id) {
+      return response.status(401).json({error: 'invalid token'})
+    } */
     //req.user = await User.findById(decodedToken.id)
   }
+  console.log("LOPPUSSA")
   next()
 }
 
