@@ -33,17 +33,17 @@ usersRouter.put('/', userExtractor, async (req, res, next) => {
     console.log("no token")
     return res.status(401).json({error:"invalid token"})
   }
-  console.log("pre decotok")
+  /* console.log("pre decotok")
   const decoToken = jwt.verify(getTokenFrom(req), process.env.SEKRET).catch(err => next(err))
   console.log(" post decotoken", decoToken)
   if (!decoToken.id) {
     console.log("xxxx")
-  }
+  } */
 
   let doc = await User.findOneAndUpdate({username: username}, {favciv: favciv})
   doc = await User.findOne({username:username})
   //miten saadaan virheet kiinni ts jos ei onnistu nii lähetä jotain muuta?
-  res.status(200) 
+  res.status(200).send(doc.favciv)
 
 })
 

@@ -14,7 +14,12 @@ const update = async (userdata, dispatch) => {
   // jos tulee unauthorized niin notif ja kirjaa ulos?
   // miks toi näyttää 
   axios.put(baseUrl, userdata, config)
-    .then(res => console.log("ONNISTUI JEE", res))
+    .then(res => {
+      dispatch(setError(`New favourite civ: ${res.data}.`))
+      setTimeout(() => {
+        dispatch(setError(null))
+      }, 5000)
+    })
     .catch(err => {
       dispatch(setError('invalid token'))
       setTimeout(() => {
