@@ -1,22 +1,20 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetCivs } from '../../reducers/civReducer'
 import { resetPu } from '../../reducers/powerunitReducer'
 import { pageChange } from '../../reducers/pageReducer'
 import { setError } from '../../reducers/errorReducer'
 import Login from './Login'
+import Logout from './Logout'
 import f from '../../utils/helpfuncs'
 
 const TopButtons = ({setGuideType}) => {
+  const [showLogin, setShowLogin] = useState(false)
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
   const userInfo = window.localStorage.getItem('loggedUser')
   const dispatch = useDispatch()
   const isEmpty = f.isEmpty
-
-  /* if (isEmpty(userInfo)) {
-    return null
-  }
-  const token = JSON.parse(userInfo).token */
   
   const beginning = () => {
     dispatch(resetCivs())
@@ -42,17 +40,16 @@ const TopButtons = ({setGuideType}) => {
     dispatch(pageChange('guide'))
   }
 
-  const kakkatraktori = () => {
-    
-  }
-
   return(
     <div>
       <button onClick={() => beginning()}>Start over</button>
       <button onClick={() => showGuide()}>Analyse with chosen specs</button>
-      <Login />
+      <Login showLogin={showLogin} setShowLogin={setShowLogin} />
       { !(isEmpty(userInfo)) &&
-        <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
+        <>
+          <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
+          <Logout setShowLogin={setShowLogin} />
+        </>
       }
     </div>
   )

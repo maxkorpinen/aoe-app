@@ -3,8 +3,6 @@
 ## Tehtäviä juttuja
 
 - varmista että matchupissa näytettävät supportunitit tulee oikein
--
-- väsää joku favorite civ picker sivu loggautuneille käyttäjille
 
 - civ matchup?
 
@@ -12,6 +10,8 @@
 
 - formi uusien käyttäjien luomiseen
 
-BUGIT
+- logout -> puhdista window.localStorage + muut(?)
 
-- userinfo ei näy refreshin jälkeen vaikka token olisi tallennetu
+- notifikaatio jos väärä salasana
+
+- selkeämpi notifikaatio (punaninen väri + fontti?)

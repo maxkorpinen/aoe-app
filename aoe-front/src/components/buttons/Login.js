@@ -1,11 +1,11 @@
-import { useDispatch, useSelector} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import loginService from '../../services/login'
 import { setError } from '../../reducers/errorReducer'
 import { setUser } from '../../reducers/userReducer'
 
-const Login = () => {
-  const [showLogin, setShowLogin] = useState(false)
+const Login = ({showLogin, setShowLogin}) => {
+  
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))

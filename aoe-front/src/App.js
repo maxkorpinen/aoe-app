@@ -16,7 +16,6 @@ const App = () => {
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
     dispatch(setUser(loggedUserJSON))
-    console.log("app user:",user)
   })
   
   return (

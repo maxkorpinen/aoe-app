@@ -6,9 +6,12 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action) {
       return action.payload
+    },
+    resetUser(state, action) {
+      return {user:'', token: '', favciv:''}
     }
   }
 })
 
-export const { setUser } = userSlice.actions
+export const { setUser, resetUser } = userSlice.actions
 export default userSlice.reducer
