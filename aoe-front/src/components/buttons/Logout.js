@@ -6,10 +6,10 @@ const Logout = ({setShowLogin}) => {
   const dispatch = useDispatch()
   const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
 
+
   if (! userInfo) {
     return null
   }
-  console.log("!!!", typeof(setShowLogin), " ", setShowLogin)
   const logout = () => {
     setShowLogin(false)
     dispatch(pageChange('choose'))

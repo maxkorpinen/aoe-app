@@ -15,3 +15,5 @@
 - notifikaatio jos väärä salasana
 
 - selkeämpi notifikaatio (punaninen väri + fontti?)
+
+- favciv näkyy ja vaihtuu userinfo screenissä

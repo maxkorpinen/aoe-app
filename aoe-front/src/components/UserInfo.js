@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
+import { setUser } from '../reducers/userReducer'
 import images from "../utils/imageloader"
 import CivButton from "./CivButton"
 import userService from '../services/users'
@@ -18,12 +19,16 @@ const UserInfo = () => {
       favciv: chosenCiv
     }
     userService.update(newUserData, dispatch)
+    dispatch(setUser({username:newUserData.username,token:newUserData.token,favciv:chosenCiv}))
+    console.log("user in userinfo inside buttfunc ", user)
+    //favcivmuutos pitää tulla myös usedataan
   }
-
+  console.log("user in userinfo",user, typeof(user))
+  console.log("user.username", user.username)
   return(
     <div>
       <p>Currently logged in as: {user.username}</p>
-      <p>Favourite civilization: {favciv}</p>
+      <p>Favourite civilization: {user.favciv}</p>
       <h4>Click icon to choose favourite civilization</h4>
       {imageNames.map((imgname) => (
         <CivButton

@@ -72,6 +72,11 @@ Vinkit ja ohjeet halutaan tarjota:
 |       |      |                         |
 | 10.10 | 4    | frontin korjailua       |
 |       |      | ja middlewaresäätöä     |
+|       |      |                         |
+| 11.10 | 4    |                         |
+|       |      |                         |
+|       |      |                         |
+|       |      |                         |
 
 Yht: 50.75h 6.10. mennessä
 

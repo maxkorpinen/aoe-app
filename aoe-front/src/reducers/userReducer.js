@@ -5,7 +5,7 @@ const userSlice = createSlice({
   initialState: {user:'', token: '', favciv:''},
   reducers: {
     setUser(state, action) {
-      return action.payload
+        return action.payload
     },
     resetUser(state, action) {
       return {user:'', token: '', favciv:''}

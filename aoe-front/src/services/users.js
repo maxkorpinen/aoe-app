@@ -10,9 +10,7 @@ const update = async (userdata, dispatch) => {
     headers: {
       authorization: hf.addBearer(token) }
     }
-  // käsittele error jotenkin
-  // jos tulee unauthorized niin notif ja kirjaa ulos?
-  // miks toi näyttää 
+  // jos tulee unauthorized niin kirjaa ulos?
   axios.put(baseUrl, userdata, config)
     .then(res => {
       dispatch(setError(`New favourite civ: ${res.data}.`))

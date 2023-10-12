@@ -14,9 +14,10 @@ const App = () => {
   const user = useSelector(state => state.user)
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+    const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))
     dispatch(setUser(loggedUserJSON))
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   
   return (
     <div>
