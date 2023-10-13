@@ -3,6 +3,7 @@ import { useState } from 'react'
 import loginService from '../../services/login'
 import { setError } from '../../reducers/errorReducer'
 import { setUser } from '../../reducers/userReducer'
+import NewUser from './NewUser'
 
 const Login = ({showLogin, setShowLogin}) => {
   
@@ -42,9 +43,10 @@ const Login = ({showLogin, setShowLogin}) => {
   return(
     <>
     { !token && !showLogin &&
-      <button onClick={() => openLogin()}>Login</button>
+      <button onClick={() => openLogin()}>Login or create new user</button>
     }
     { !token && showLogin &&
+    <>
       <form onSubmit={handleLogin}>
         <div>
           username
@@ -63,6 +65,8 @@ const Login = ({showLogin, setShowLogin}) => {
         </div>
         <button type="submit">login</button>
       </form>
+      <NewUser />
+      </>
     }
     </>
   )

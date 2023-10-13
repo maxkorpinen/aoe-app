@@ -18,14 +18,6 @@ usersRouter.post('/', async (req, res, next) => {
   res.status(201).json(savedUser)
 })
 
-const getTokenFrom = request => {
-  const auth = request.get('authorization')
-  if (auth && auth.startsWith('Bearer ')) {
-    return auth.replace('Bearer ', '')
-  }
-  return null
-}
-
 usersRouter.put('/', userExtractor, async (req, res, next) => {
   const { username, token, favciv } = req.body
   console.log("username:", username, " token:", token, " favciv:", favciv)
@@ -33,12 +25,6 @@ usersRouter.put('/', userExtractor, async (req, res, next) => {
     console.log("no token")
     return res.status(401).json({error:"invalid token"})
   }
-  /* console.log("pre decotok")
-  const decoToken = jwt.verify(getTokenFrom(req), process.env.SEKRET).catch(err => next(err))
-  console.log(" post decotoken", decoToken)
-  if (!decoToken.id) {
-    console.log("xxxx")
-  } */
 
   let doc = await User.findOneAndUpdate({username: username}, {favciv: favciv})
   doc = await User.findOne({username:username})

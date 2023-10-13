@@ -3,6 +3,10 @@ import axios from '../utils/apiClient'
 import hf from '../utils/helpfuncs'
 const baseUrl = '/api/users'
 
+const create = async (username, password) => {
+  const res = axios.post(baseUrl,{username: username, password: password})
+  return res.data
+}
 
 const update = async (userdata, dispatch) => {
   const token = userdata.token
@@ -26,4 +30,4 @@ const update = async (userdata, dispatch) => {
     })
 }
 
-export default { update }
+export default { update, create }

@@ -6,6 +6,7 @@ import { pageChange } from '../../reducers/pageReducer'
 import { setError } from '../../reducers/errorReducer'
 import Login from './Login'
 import Logout from './Logout'
+
 import f from '../../utils/helpfuncs'
 
 const TopButtons = ({setGuideType}) => {
