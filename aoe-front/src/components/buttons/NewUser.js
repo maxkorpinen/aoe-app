@@ -8,9 +8,7 @@ const NewUser = () => {
 	const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
 	const user = useSelector(state => state.user)
 
-	if(user) {
-		return null
-	}
+	
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()

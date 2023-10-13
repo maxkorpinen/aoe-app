@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import './notif.css'
 
 const Notification = () => {
   const errorMessage = useSelector(state => state.errorMessage)
