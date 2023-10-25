@@ -6,6 +6,10 @@
 
 - civ matchup?
 
-  - mistä haetaan matchup data -> https://aoe2.net/#api
+  - mistä haetaan matchup data -> https://librematch.org/ tai https://aoestats.io/api-info/
+  - result.json pitää lukea bäkkärissä ja paiskata fronttiin
+  - pitää näyttää matchupissa
 
-- logout -> puhdista window.localStorage + muut(?)
+- tee erikseen matchupdatan päivityshäkkyrä
+
+- oma buildorder tekstimuodossa, tallennettuna käyttäjään?
