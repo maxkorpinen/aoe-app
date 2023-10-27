@@ -8,6 +8,7 @@ import puReducer from './reducers/powerunitReducer'
 import tokenReducer from './reducers/tokenReducer'
 import errorReducer from './reducers/errorReducer'
 import userReducer from './reducers/userReducer'
+import statsReducer from './reducers/statsReducer'
 
 const store = configureStore({
   reducer: {
@@ -16,7 +17,8 @@ const store = configureStore({
     powerunits: puReducer,
     token: tokenReducer,
     errorMessage: errorReducer,
-    user: userReducer
+    user: userReducer,
+    stats: statsReducer
   }
 })
 

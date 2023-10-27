@@ -35,8 +35,15 @@ const getTokenFrom = request => {
 }
 
 const tokenExtractor = (req, res, next) => {
+  if(req.path=='/api/matches/winsagainst/') {
+    console.log("body:",req.body)
+    console.log("data:",req.data)
+    console.log("params: ",req.params)
+    console.log("query:", req.query)
+    //console.log(req)
+  }
   req.token = getTokenFrom(req)
-  console.log("tktktk",req.token)
+  //console.log("tktktk",req.token)
   next()
 }
 

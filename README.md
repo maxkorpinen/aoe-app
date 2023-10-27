@@ -89,4 +89,4 @@ Yht: 50.75h 6.10. mennessä
 ## Muu
 
 Yksiköitten rankingit kerätty https://aoe2-de-tools.herokuapp.com/civ-ranking/
-Sivilisaatioiden väliset voittotilastot kerätty https://aoestats.io/api-info/ aikaväliltä 30.7.23 - 8.5.23.
+Sivilisaatioiden väliset voittotilastot kerätty https://aoestats.io/api-info/ aikaväliltä 30.7.23 - 8.5.23. Alkuperäiset parkequet tiedostot aoe-back/data kansiossa
