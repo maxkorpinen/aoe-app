@@ -1,32 +1,38 @@
 # flyctl launch added from .gitignore
-**\.env
-**\aoe-back\.env
-**\aoe-front\.env
-**\aoe-back\node_modules\*
-**\aoe-front\node_modules\*
 
-# flyctl launch added from aoe-front\.gitignore
+**/.env
+**/aoe-back/.env
+**/aoe-front/.env
+**/aoe-back/node*modules/*
+\*\*/aoe-front/node*modules/*
+
+# flyctl launch added from aoe-front/.gitignore
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-aoe-front\node_modules
-aoe-front\.pnp
-aoe-front\**\.pnp.js
+
+aoe-front/node_modules
+aoe-front/.pnp
+aoe-front/\*\*/.pnp.js
 
 # testing
-aoe-front\coverage
+
+aoe-front/coverage
 
 # production
-aoe-front\build
+
+aoe-front/build
 
 # misc
-aoe-front\**\.DS_Store
-aoe-front\**\.env.local
-aoe-front\**\.env.development.local
-aoe-front\**\.env.test.local
-aoe-front\**\.env.production.local
 
-aoe-front\**\npm-debug.log*
-aoe-front\**\yarn-debug.log*
-aoe-front\**\yarn-error.log*
+aoe-front/**/.DS_Store
+aoe-front/**/.env.local
+aoe-front/**/.env.development.local
+aoe-front/**/.env.test.local
+aoe-front/\*\*/.env.production.local
+
+aoe-front/**/npm-debug.log\*
+aoe-front/**/yarn-debug.log*
+aoe-front/\*\*/yarn-error.log*
 fly.toml
