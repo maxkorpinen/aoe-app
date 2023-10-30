@@ -1,0 +1,8 @@
+1. Tiedosto joka hakee dataa á https://aoestats.io/media/db_dumps/date_range%3D2023-07-30_2023-08-05/players.parquet
+  1.1 Tiedoston voi käynnistää kutsumalla ja liittämällä oikean salasanan tms
+    -> adminkäyttäjä?
+2. Haun jälkeen ohjelma pyöräyttää python aliohjelman
+  2.1 python aliohjelma ajaa (jo kirjoitetun) koodin joka pruunaa hankittua dataa ja lyö sen json muotoon
+  2.2 json tallennetaan matches_update kansioon
+  2.3 jos datassa on jo result.json(vaihda nimi) niin siirretään se johonkin arkistoon
+  2.4 siirretään uusi result.json(vaihda nimi) data kansioon

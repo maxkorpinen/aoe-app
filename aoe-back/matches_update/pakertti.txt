@@ -1,0 +1,7 @@
+/media/db_dumps/date_range=2023-10-08_2023-10-14/matches.parquet
+
+https://aoestats.io/api/db_dumps/media/db_dumps/date_range=2023-10-08_2023-10-14/matches.parquet
+
+https://aoestats.io/api/db_dumps/media/db_dumps/date_range%3D2023-10-08_2023-10-14/matches.parquet
+
+https://aoestats.io/media/db_dumps/date_range%3D2023-07-30_2023-08-05/players.parquet

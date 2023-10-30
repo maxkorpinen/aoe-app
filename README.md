@@ -83,8 +83,9 @@ Vinkit ja ohjeet halutaan tarjota:
 |       |      |                          |
 | 24.10 | 2    | matsidatan säätöä        |
 |       |      |                          |
+| 26.10 | 3    | Matchup win% fronttiin   |
 
-Yht: 50.75h 6.10. mennessä
+Yht: 77.25h 26.10. mennessä
 
 ## Muu
 
