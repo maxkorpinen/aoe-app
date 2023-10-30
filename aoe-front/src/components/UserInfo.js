@@ -6,7 +6,6 @@ import userService from '../services/users'
 
 const UserInfo = () => {
   const dispatch = useDispatch()
-  const favciv = useSelector(state => state.user.favciv)
   const user = useSelector(state => state.user)
   const imageNames = Object.keys(images.civImages)
 

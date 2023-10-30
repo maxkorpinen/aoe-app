@@ -11,7 +11,6 @@ const App = () => {
   const [guideType, setGuideType] = useState('')
   const page = useSelector(state => state.page)
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
 
   useEffect(() => {
     const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))

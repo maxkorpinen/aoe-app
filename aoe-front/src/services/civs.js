@@ -16,4 +16,5 @@ const getCivPowerUnit = async (id) => {
   return res.data
 }
 
-export default {getAll, getCivPowerUnit, getWithId}
+//eslint-disable-next-line
+export default { getAll, getCivPowerUnit, getWithId }

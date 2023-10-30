@@ -1,14 +1,9 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import userService from '../../services/users'
 
 const NewUser = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
-	const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
-	const user = useSelector(state => state.user)
-
-	
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()

@@ -10,6 +10,7 @@ const UnitBox = ({text, unit, imgs, seenUnit, winpct}) => {
           {imgs.map((img) => (
             <img key={img} src={img} //vaihda avain!!!
             height="200"
+            alt=""
             width="200"/>
             ))}
         </div>

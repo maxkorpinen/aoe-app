@@ -13,10 +13,11 @@ const CounterBox = ({pu, setSeenUnit, text, suppUnits}) => {
       <p> {text} </p>
       {counters.map(unitname => 
         <button key={unitname}>
-          <img key={unitname} 
+          <img key={unitname+""} 
             src={images.unitImages[unitname]} 
             height="200"
             width="200"
+            alt=""
             onClick={() => seeUnit(unitname)}/>
         </button>
         )}

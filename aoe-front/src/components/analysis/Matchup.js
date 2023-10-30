@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
 import images from '../../utils/imageloader'
-import hf from '../../utils/helpfuncs' //eslint valittaa 
+import hf from '../../utils/helpfuncs'
 import unitService from '../../services/units'
 import './guide.css'
 
 
 const Matchup = () => {
+  // eslint-disable-next-line no-unused-vars
   const [seenUnit, setSeenUnit] = useState('')
   const [allUnits, setAllUnits] = useState([])
   const civ1 = useSelector(state => state.civs['civ1'])
