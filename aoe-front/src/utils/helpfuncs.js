@@ -23,5 +23,5 @@ const addBearer = newToken => {
   //console.log("addbearer newtoken:", newToken)
   return `Bearer ${newToken}`
 }
-
+//eslint-disable-next-line
 export default {isEmpty, filterCounters, addBearer}

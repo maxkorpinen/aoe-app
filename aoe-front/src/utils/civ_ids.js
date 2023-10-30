@@ -5,5 +5,5 @@ const ids = {
   'franks': 2,
   'mayans':4
 }
-
+//eslint-disable-next-line
 export default {ids}

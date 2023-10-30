@@ -8,5 +8,5 @@ const getWithCivs = async(civs) => {
   })
   return res.data
 }
-
+//eslint-disable-next-line
 export default { getWithCivs }

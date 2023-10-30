@@ -29,5 +29,5 @@ const update = async (userdata, dispatch) => {
       }, 5000)
     })
 }
-
+//eslint-disable-next-line
 export default { update, create }
