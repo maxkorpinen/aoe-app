@@ -13,7 +13,7 @@
     "test:e2e": "cd ../aoe-front && npm run test:e2e",
     "start_test": "cross-env NODE_ENV=test node index.js",
     "start_front": "cd ../aoe-front && npm run start",
-    "getbuild": "rm -r build && CD ../aoe-front && npm run build && cp -r build ../aoe-back"
+    "getbuild": "rm -r build && cd ../aoe-front && npm run build && cp -r build ../aoe-back && cd ../aoe-back"
   },
   "author": "",
   "license": "ISC",
