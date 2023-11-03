@@ -81,4 +81,13 @@ with open("result.json", "w") as fp:
 
 Path("./result.json").replace("../data/result.json")
 
+
+# Lokitetaan päivitys
+date_range = newest["start_date"] + " - " + newest["end_date"]
+curr_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+with open("../matches_update/updater_log.txt", "a+") as file:
+    file.write(
+        "Date range of matches:" + date_range + ". Time of writing: " + curr_time + "\n"
+    )
+
 print("end: ", time.time() - start_time)
