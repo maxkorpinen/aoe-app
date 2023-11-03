@@ -13,6 +13,10 @@ Vinkit ja ohjeet halutaan tarjota:
   - esim. kun pelaaja näkee vastustajansa valitseman civin, niin tiedon syöttäminen on yksinkertaista, ja ohjelma tarjoaa välittömästi ohjeita järkevässä aikajärjestyksessä
 - Käytännössä siis halutaan antaa karkeita ohjeita mitä yksiköitä tulisi valmistaa, ja miten vastustajan yksikkövalintoihin tulisi reagoida yleisimmissä tapauksissa.
 
+## Käyttöohje
+
+Ohjelma tarjoaa vivun ottelutilastojen päivittämiselle. Se tapahtuu lähettämällä GET osoitteeseen '/api/update'. Viestin sisällössä tulee olla avain "UPDATE_SECRET", jonka arvo on envissä asetettu halutuksi.
+
 ## työaikakirjanpito
 
 | päivä | aika | mitä tein                |
@@ -84,6 +88,16 @@ Vinkit ja ohjeet halutaan tarjota:
 | 24.10 | 2    | matsidatan säätöä        |
 |       |      |                          |
 | 26.10 | 3    | Matchup win% fronttiin   |
+|       |      |                          |
+| 30.10 | 4    | Deploaminen onnistuu     |
+|       |      | actionsista. Matsidatan  |
+|       |      | päivittämisjuttuja       |
+|       |      |                          |
+| 31.10 | 3    | Matchupdater             |
+|       |      |                          |
+| 02.10 | 5    | Matchupdater jatkuu      |
+|       |      |                          |
+| 03.10 | 1.5  | Matchupdater viimeistely |
 
 Yht: 77.25h 26.10. mennessä
 

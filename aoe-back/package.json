@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "apache-arrow": "^13.0.0",
+    "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
