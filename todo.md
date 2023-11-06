@@ -2,9 +2,11 @@
 
 ## Tehtäviä juttuja
 
-- matchupdater lokitus
+- tee enemmän testejä
 
-- frontin refaktorointia
+- näytä matsidatan versio ts miltä aikaväliltä ja millä spekseillä se data näytetään ja mistä se on haettu
+
+- frontin refaktorointia -> civlist
 
 - varmista että matchupissa näytettävät supportunitit tulee oikein
 
