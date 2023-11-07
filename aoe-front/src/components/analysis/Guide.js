@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux'
 import Matchup from './Matchup'
 import CivGuide from './CivGuide'
 import './guide.css'
 
-const Guide = ({guideType}) => {
+const Guide = () => {
+  const guideType = useSelector(state => state.pageState.guide)
   return(
     <div>
     {guideType==='civguide' &&

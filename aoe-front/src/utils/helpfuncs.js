@@ -1,7 +1,7 @@
-/* import { useDispatch } from 'react-redux'
-import { resetCivs } from '../../reducers/civReducer'
-import { resetPu } from '../../reducers/powerunitReducer'
-import { pageChange } from '../../reducers/pageReducer' */
+import { useDispatch } from 'react-redux'
+import { resetCivs } from '../reducers/civReducer'
+import { resetPu } from '../reducers/powerunitReducer'
+import { pageChange } from '../reducers/pageReducer'
 
 const isEmpty = (object) => {
   if ( object == null) {

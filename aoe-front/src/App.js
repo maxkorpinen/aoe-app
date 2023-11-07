@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CivsList from './components/CivsList'
 import Guide from './components/analysis/Guide'
@@ -8,7 +8,6 @@ import UserInfo from './components/UserInfo'
 import { setUser } from './reducers/userReducer'
 
 const App = () => {
-  const [guideType, setGuideType] = useState('')
   const page = useSelector(state => state.pageState.page)
   const dispatch = useDispatch()
 
@@ -18,16 +17,16 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
+  //splittaa omaan valintakomponenttiin toi page===, page=== osuus
   return (
     <div>
       <Notification/>
-      <TopButtons 
-        setGuideType={setGuideType}/>
+      <TopButtons />
       <h1>AoE2 app</h1>
       {page==='choose' &&
-        <CivsList setGuideType={setGuideType} />}
+        <CivsList />}
       {page ==='guide' &&
-        <Guide guideType={guideType} />}
+        <Guide/>}
       {page === 'user' &&
         <UserInfo />}
     </div>

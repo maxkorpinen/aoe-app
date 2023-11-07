@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux"
 import { useState } from "react"
-import { pageChange } from '../reducers/pageReducer'
+import { pageChange, guideChange } from '../reducers/pageReducer'
 import { setCiv1, setCiv2 } from '../reducers/civReducer'
 import { setPu1, setPu2 } from "../reducers/powerunitReducer"
 import {setCiv1Wins, setCiv2Wins} from "../reducers/statsReducer"
@@ -10,7 +10,7 @@ import matchService from "../services/matches"
 import CivButtonHolder from "./CivButtonHolder"
 import CivsListHeader from "./CivsListHeader"
 
-const CivsList = ({setGuideType}) => {
+const CivsList = () => {
   const dispatch = useDispatch()
   const [civsSet, setCivsSet] = useState(0)
   const civ1 = useSelector(state => state.civs['civ1'])
@@ -37,7 +37,7 @@ const CivsList = ({setGuideType}) => {
       dispatch(setCiv1Wins(matchups.civ1wins))
       dispatch(setCiv2Wins(matchups.civ2wins))
 
-      setGuideType('matchup')
+      dispatch(guideChange('matchup'))
       dispatch(pageChange('guide'))
     }
   } 
