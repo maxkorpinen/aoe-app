@@ -1,20 +1,21 @@
 ## Featureita
 
-## Tehtäviä juttuja
-
-- tee enemmän testejä
-
-  - kaikki ikkunat toimii (kaks civiä valittu, yks civiä valittu-> analyysi, logintouhut)
+- oma buildorder tekstimuodossa, tallennettuna käyttäjään?
 
 - näytä matsidatan versio ts miltä aikaväliltä ja millä spekseillä se data näytetään ja mistä se on haettu
 
-- refaktoroidaan beginning/reset/start over napin funktio yleisesti käsillä olevaksi
-  -> pitäiskö sama tehdä logoutille? logout vois periaatteessa vaan kutsua resettiä
+## Tehtäviä juttuja
 
-- highlighttaa valittu?
-
-- varmista että matchupissa näytettävät supportunitit tulee oikein
-
-- oma buildorder tekstimuodossa, tallennettuna käyttäjään?
+- Miksi testit feilaa actionssissa mutta menee läpi omalla koneella?
+  -> tsekkaa jumittaa ne vaan että pitääkö laittaa lisää waittia tms
 
 - BUGI: loginservice kippaa jos yrittää tehdä samalla nimellä uuden akkon
+
+- eslint
+
+- tee enemmän testejä
+
+  - uus käyttäjätesti miten kannattaa tehdä?
+  - muutenkin testihommien vieminen omaan testikantaan?
+
+- varmista että matchupissa näytettävät supportunitit tulee oikein

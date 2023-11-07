@@ -1,5 +1,4 @@
 import {useDispatch, useSelector} from "react-redux"
-import { useState } from "react"
 import { pageChange, guideChange, civsSetChange } from '../reducers/pageReducer'
 import { setCiv1, setCiv2 } from '../reducers/civReducer'
 import { setPu1, setPu2 } from "../reducers/powerunitReducer"

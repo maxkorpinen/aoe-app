@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux'
-import { useState } from 'react'
 import loginService from '../../services/login'
 import { setError } from '../../reducers/errorReducer'
 import { setUser } from '../../reducers/userReducer'

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector"
 import f from '../../utils/helpfuncs'
 
 const UnitBox = ({text, unit, imgs, seenUnit, winpct}) => {
-  const civ1 = useSelector(state => state.civs['civ1'])
+  //const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
   const {isEmpty} = f
 

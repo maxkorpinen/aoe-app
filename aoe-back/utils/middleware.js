@@ -35,15 +35,7 @@ const getTokenFrom = request => {
 }
 
 const tokenExtractor = (req, res, next) => {
-  if(req.path=='/api/matches/winsagainst/') {
-    console.log("body:",req.body)
-    console.log("data:",req.data)
-    console.log("params: ",req.params)
-    console.log("query:", req.query)
-    //console.log(req)
-  }
   req.token = getTokenFrom(req)
-  //console.log("tktktk",req.token)
   next()
 }
 
@@ -55,17 +47,10 @@ const userExtractor = async (req, res, next) => {
       const decoToken = jwt.verify(token, process.env.SEKRET)
       req.user = await User.findById(decoToken.id)
     } catch(err) {
-      console.log("KESKELLÄ")
       next(err)
       return
     }
-    
-    /* if (!decoToken.id) {
-      return response.status(401).json({error: 'invalid token'})
-    } */
-    //req.user = await User.findById(decodedToken.id)
   }
-  console.log("LOPPUSSA")
   next()
 }
 

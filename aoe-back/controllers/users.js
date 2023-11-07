@@ -20,7 +20,7 @@ usersRouter.post('/', async (req, res, next) => {
 
 usersRouter.put('/', userExtractor, async (req, res, next) => {
   const { username, token, favciv } = req.body
-  console.log("username:", username, " token:", token, " favciv:", favciv)
+  //console.log("username:", username, " token:", token, " favciv:", favciv)
   if (!req.token) {
     console.log("no token")
     return res.status(401).json({error:"invalid token"})

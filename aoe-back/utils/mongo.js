@@ -8,20 +8,18 @@ if (process.argv.length<3) {
 const password = process.argv[2]
 
 const url =
-  //`mongodb+srv://fullstack:${password}@cluster0.o1opl.mongodb.net/?retryWrites=true&w=majority`
   `mongodb+srv://fsokayttaja:${password}@23-klusteri.zbcqzfp.mongodb.net/fso-aoe?retryWrites=true&w=majority`
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
 
-const asynkroninenKonteksti = async () => {
+/* const asynkroninenKonteksti = async () => {
   const un = await Unit.deleteMany({})
   console.log(un)
-}
+} */
 
 const Unit= require('../schemas/unit')
 const units = require('./units')
-//asynkroninenKonteksti()
 
 let saved = []
 for (i in units) {
