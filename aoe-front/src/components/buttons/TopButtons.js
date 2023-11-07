@@ -12,6 +12,7 @@ const TopButtons = () => {
   const [showLogin, setShowLogin] = useState(false)
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
+  const showLogout = useSelector(state => state.buttonsState.logout)
   const userInfo = window.localStorage.getItem('loggedUser')
   const dispatch = useDispatch()
   const {isEmpty} = f
@@ -45,8 +46,10 @@ const TopButtons = () => {
     <div>
       <button onClick={() => beginning()}>Start over</button>
       <button onClick={() => showGuide()}>Analyse with chosen specs</button>
-      <Login showLogin={showLogin} setShowLogin={setShowLogin} />
-      { !(isEmpty(userInfo)) &&
+      { !showLogout &&
+        <Login showLogin={showLogin} setShowLogin={setShowLogin} />
+      }
+      { showLogout &&
         <>
           <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
           <Logout setShowLogin={setShowLogin} />

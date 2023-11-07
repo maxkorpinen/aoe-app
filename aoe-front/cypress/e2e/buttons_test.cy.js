@@ -1,8 +1,82 @@
-describe('template spec', () => {
-  it('passes', () => {
+describe('login & logout & userinfo', () => {
+  beforeEach(function() {
     cy.visit('http://localhost:3000')
+  })
+  it('Logintest', () => {
+    //cy.visit('http://localhost:3000')
     //cy.get('[data-cy="goths.webp"]').click()
-    cy.contains('Start over')
-    cy.contains('Analyse with chosen specs')
+    cy.contains('Login or create new user').click()
+    cy.get('input:first').type('reub')
+    cy.get('[name="Password"]').first().type('123123')
+    cy.contains('login').click()
+    cy.wait(100)
+    cy.contains('Userinfo').click()
+    cy.contains('Favourite civilization') 
+    cy.contains('Currently logged in as: reub')
+    cy.contains('Logout').click()
+    cy.wait(100)
+    cy.contains('Login or create new user')
   })
 })
+
+describe('unlogged tests', () => {
+
+  beforeEach(function() {
+    cy.visit('http://localhost:3000')
+  })
+
+  it('mainpage buttons exist', () => {
+    cy.contains('Start over')
+    cy.contains('Analyse with chosen specs')
+    cy.contains('Login or create new user')
+  })
+
+  it('mainpage civ clicks & start over', () =>{
+    cy.get('[alt="britons.webp"]').click() //britons.webp
+    cy.wait(400)
+    cy.contains('Analyse with chosen specs').click()
+    cy.contains('Coreunit: archer')
+    cy.contains('Counters to your powerunit')
+    cy.wait(400)
+    cy.contains('Start over').click()
+    cy.wait(250)
+    cy.get('[alt="britons.webp"]')
+  })
+
+  it('civclicks both', () => {
+    cy.get('[alt="britons.webp"]').click()
+    cy.wait(100)
+    cy.get('[alt="franks.webp"]').click()
+    cy.contains('Winpct')
+    cy.contains('Your core unit')
+    cy.contains('Opp core unit')
+  })
+})
+
+describe('logged in tests', () => {
+
+  beforeEach(function() {
+    cy.visit('http://localhost:3000')
+    cy.contains('Login or create new user').click()
+    cy.get('input:first').type('reub')
+    cy.get('[name="Password"]').first().type('123123')
+    cy.contains('login').click()
+    cy.wait(100)
+  })
+
+  it('one civ analysis', () => {
+    cy.get('[alt="britons.webp"]').click()
+    cy.wait(100)
+    cy.contains('Analyse with chosen specs').click()
+    cy.contains('Coreunit')
+    cy.contains('Counters to your powerunit')
+  })
+
+  it('two civ analysis', () => {
+    cy.get('[alt="britons.webp"]').click()
+    cy.wait(100)
+    cy.get('[alt="mayans.webp"]').click()
+  })
+})
+
+

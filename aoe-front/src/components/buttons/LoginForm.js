@@ -3,27 +3,13 @@ import { useState } from 'react'
 import loginService from '../../services/login'
 import { setError } from '../../reducers/errorReducer'
 import { setUser } from '../../reducers/userReducer'
-import NewUser from './NewUser'
-import LoginForm from './LoginForm'
+import { logoutChange } from '../../reducers/topButtonsReducer'
 
-const Login = ({showLogin, setShowLogin}) => {
-  
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
+const LoginForm = ({username, setUsername, password, setPassword}) => {
+  //const [username, setUsername] = useState('')
+  //const [password, setPassword] = useState('')
   const dispatch = useDispatch()
-  let token = ''
-  console.log("här är vi")
-  /* if (userInfo) {
-    console.log("och vi har userinfo")
-    token = userInfo.token
-    return null
-  } */
 
-  const openLogin = () => {
-    setShowLogin(true)
-  }
-  /* 
   const handleLogin = async (event) => {
     event.preventDefault()
     try{
@@ -32,7 +18,10 @@ const Login = ({showLogin, setShowLogin}) => {
         username: username
       })
       window.localStorage.setItem('loggedUser', JSON.stringify(user))
+      const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
+      console.log("userinfo in loginform",userInfo)
       dispatch(setUser(user))
+      dispatch(logoutChange(true))
       setUsername('')
       setPassword('')
     } catch (excep) {
@@ -41,32 +30,10 @@ const Login = ({showLogin, setShowLogin}) => {
         dispatch(setError(null))
       }, 5000)
     }
-  } */
+  }
 
   return(
-    <>
-    { !showLogin &&
-      <button onClick={() => openLogin()}>Login or create new user</button>
-    }
-    { showLogin &&
-    <>
-      <LoginForm
-        username={username}
-        setUsername={setUsername}
-        password={password}
-        setPassword={setPassword}
-      />
-      <NewUser/>
-      </>
-    }
-    </>
-  )
-}
-
-export default Login
-
-/*
-<form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin}>
         <div>
           username
           <input
@@ -84,4 +51,8 @@ export default Login
         </div>
         <button type="submit">login</button>
       </form>
-*/
+
+  )
+}
+
+export default LoginForm

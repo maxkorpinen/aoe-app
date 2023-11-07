@@ -10,6 +10,8 @@ import tokenReducer from './reducers/tokenReducer'
 import errorReducer from './reducers/errorReducer'
 import userReducer from './reducers/userReducer'
 import statsReducer from './reducers/statsReducer'
+import topButtonsReducer from './reducers/topButtonsReducer'
+
 
 const store = configureStore({
   reducer: {
@@ -19,7 +21,8 @@ const store = configureStore({
     token: tokenReducer,
     errorMessage: errorReducer,
     user: userReducer,
-    stats: statsReducer
+    stats: statsReducer,
+    buttonsState: topButtonsReducer
   }
 })
 
