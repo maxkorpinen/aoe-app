@@ -4,6 +4,8 @@
 
 - tee enemmän testejä
 
+  - kaikki ikkunat toimii (kaks civiä valittu, yks civiä valittu-> analyysi, logintouhut)
+
 - näytä matsidatan versio ts miltä aikaväliltä ja millä spekseillä se data näytetään ja mistä se on haettu
 
 - frontin refaktorointia -> civlist

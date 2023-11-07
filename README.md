@@ -103,6 +103,8 @@ Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei
 |       | 3    | librematch.org tutkailu,  |
 |       |      | suunnittelu, lokitus      |
 |       |      |                           |
+| 6.10  | 4    | frontin refaktorointi     |
+|       |      |                           |
 
 Yht: 77.25h 26.10. mennessä
 
