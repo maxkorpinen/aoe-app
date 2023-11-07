@@ -12,6 +12,9 @@
 
   - luultavasti se valitsija ei nollaannu at start over
 
+- refaktoroidaan beginning/reset/start over napin funktio yleisesti käsillä olevaksi
+  -> pitäiskö sama tehdä logoutille? logout vois periaatteessa vaan kutsua resettiä
+
 - highlighttaa valittu?
 
 - varmista että matchupissa näytettävät supportunitit tulee oikein

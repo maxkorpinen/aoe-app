@@ -9,7 +9,7 @@ import { setUser } from './reducers/userReducer'
 
 const App = () => {
   const [guideType, setGuideType] = useState('')
-  const page = useSelector(state => state.page)
+  const page = useSelector(state => state.pageState.page)
   const dispatch = useDispatch()
 
   useEffect(() => {
