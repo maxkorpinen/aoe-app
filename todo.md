@@ -8,7 +8,11 @@
 
 - näytä matsidatan versio ts miltä aikaväliltä ja millä spekseillä se data näytetään ja mistä se on haettu
 
-- frontin refaktorointia -> civlist
+- korjaa bugi: valitse yksi civi-> start over -> valitse joku civi -> virhe
+
+  - luultavasti se valitsija ei nollaannu at start over
+
+- highlighttaa valittu?
 
 - varmista että matchupissa näytettävät supportunitit tulee oikein
 
