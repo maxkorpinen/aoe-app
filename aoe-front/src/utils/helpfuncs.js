@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { resetCivs } from '../reducers/civReducer'
 import { resetPu } from '../reducers/powerunitReducer'
-import { pageChange } from '../reducers/pageReducer'
+import { pageChange, guideChange, civsSetChange } from '../reducers/pageReducer'
 
 const isEmpty = (object) => {
   if ( object == null) {
@@ -29,8 +29,5 @@ const addBearer = newToken => {
 }
 //eslint-disable-next-line
 
-const resetToBeginning = () => {
-
-}
 
 export default {isEmpty, filterCounters, addBearer}
