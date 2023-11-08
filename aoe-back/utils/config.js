@@ -5,7 +5,9 @@ const MONGODB_URI = process.env.NODE_ENV === 'test'
   : process.env.MONGODB_URI
 
 let PORT = process.env.PORT
-
+if(!PORT) {
+  PORT = 3001
+}
 if (typeof MONGODB_URI == 'undefined') {
   console.log("MONGODB_URI IS UNDEFINED")
 }
