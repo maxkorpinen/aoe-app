@@ -20,7 +20,7 @@ switch(process.env.NODE_ENV) {
   default:
     BACKEND = process.env.REACT_APP_BACKEND_URL_DEV
 }
-console.log("BACKEND", )
+console.log("BACKEND", BACKEND)
 
 const apiClient = axios.create({
   baseURL: BACKEND
