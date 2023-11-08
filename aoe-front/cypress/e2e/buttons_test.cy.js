@@ -1,3 +1,12 @@
+describe('backend test tests', () => {
+  it('mainpage buttons exist', () => {
+    cy.visit('http://localhost:3001')
+    cy.contains('Start over')
+    cy.contains('Analyse with chosen specs')
+    cy.contains('Login or create new user')
+  })
+})
+
 describe('unlogged tests', () => {
 
   beforeEach(function() {
