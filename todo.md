@@ -9,6 +9,10 @@
 - Miksi testit feilaa actionssissa mutta menee läpi omalla koneella?
   -> tsekkaa jumittaa ne vaan että pitääkö laittaa lisää waittia tms
 
+  - AxiosError: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.
+    > Request failed with status code 404
+    > !!!!-> testit actionssissa käyttänee fso-aoe-test kantaa jossa ei ole tuota annettua käyttäjää, joten varmista että se on siellä ennen testejä + korjaa loginservicen bugi
+
 - BUGI: loginservice kippaa jos yrittää tehdä samalla nimellä uuden akkon
 
 - eslint

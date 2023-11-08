@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import userService from '../../services/users'
 
 const NewUser = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
-
+  const dispatch = useDispatch()
+  
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 		console.log(username, password)
-		const res = await userService.create(username, password)
+		const res = await userService.create(username, password, dispatch)
     console.log(res)
 	}
 

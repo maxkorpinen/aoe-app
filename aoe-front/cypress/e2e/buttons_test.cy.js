@@ -11,7 +11,7 @@ describe('unlogged tests', () => {
   })
 
   it('mainpage civ clicks & start over', () =>{
-    cy.get('[alt="britons.webp"]').click() //britons.webp
+    cy.get('[alt="britons.webp"]').click()
     cy.wait(400)
     cy.contains('Analyse with chosen specs').click()
     cy.wait(400)

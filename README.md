@@ -105,8 +105,8 @@ Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei
 |       |      |                           |
 | 6.10  | 3.5  | frontin refaktorointi     |
 |       |      |                           |
-| 7.10  |      |                           |
-|       |      |                           |
+| 7.10  | 7.15 | testejä, refaktorointia,  |
+|       |      | säläfeatureita            |
 
 Yht: 97.25h 6.10. mennessä
 
