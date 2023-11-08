@@ -4,6 +4,8 @@ describe('backend test tests', () => {
     cy.contains('Start over')
     cy.contains('Analyse with chosen specs')
     cy.contains('Login or create new user')
+    cy.task('log', 'LOKIHOMMA: '+process.env.NODE_ENV)
+    cy.task('log', 'REACT_APP_BACKEND_URL_DEV: '+process.env.REACT_APP_BACKEND_URL_DEV)
   })
 })
 
