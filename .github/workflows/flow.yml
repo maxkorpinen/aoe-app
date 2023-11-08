@@ -39,7 +39,7 @@ jobs:
           working-directory: ./aoe-back
           command: npm run test:e2e
           start: npm run start_test, npm run start_front
-          wait-on: http://localhost:3001
+          wait-on: http://localhost:2999
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy app
         if: ${{ github.event_name == 'push' && contains( github.event.head_commit.message, '#deploy') }}
