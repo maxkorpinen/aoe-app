@@ -5,3 +5,4 @@ aoe-back/node_modules/*
 aoe-front/node_modules/*
 *.parquet
 aoe-back/matches_update/updater_log.txt
+aoe-front/cypress/screenshots

@@ -25,6 +25,10 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/matches', matchRouter)
 app.use('/api/update', updateRouter)
+if(process.env.NODE_ENV === 'test') {
+  const testingRouter = require('./controllers/testing')
+  app.use('/api/testing', testingRouter)
+}
 app.use(express.static('build'))
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

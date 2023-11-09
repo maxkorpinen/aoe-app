@@ -48,6 +48,13 @@ describe('unlogged tests', () => {
 describe('logged in tests', () => {
 
   beforeEach(function() {
+    cy.request('POST', 'http://localhost:3001/api/testing/reset')
+    const user = {
+      username: 'reub',
+      password: '123123'
+    }
+    cy.request('POST', 'http://localhost:3001/api/users/', user) 
+    cy.wait(500)
     cy.visit('http://localhost:3000')
     cy.wait(500)
     cy.contains('Login or create new user').click()
