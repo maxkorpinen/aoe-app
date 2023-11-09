@@ -49,10 +49,13 @@ describe('logged in tests', () => {
 
   beforeEach(function() {
     cy.visit('http://localhost:3000')
+    cy.wait(500)
     cy.contains('Login or create new user').click()
     cy.wait(200)
     cy.get('input:first').type('reub')
+    cy.wait(500)
     cy.get('[name="Password"]').first().type('123123')
+    cy.wait(500)
     cy.contains('login').click()
     cy.wait(300)
   })
@@ -61,6 +64,7 @@ describe('logged in tests', () => {
     cy.get('[alt="britons.webp"]').click()
     cy.wait(100)
     cy.contains('Analyse with chosen specs').click()
+    cy.wait(500)
     cy.contains('Coreunit')
     cy.contains('Counters to your powerunit')
   })
