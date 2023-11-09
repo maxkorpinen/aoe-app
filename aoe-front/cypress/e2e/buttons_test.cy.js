@@ -4,8 +4,8 @@ describe('backend test tests', () => {
     cy.contains('Start over')
     cy.contains('Analyse with chosen specs')
     cy.contains('Login or create new user')
-    cy.task('log', 'LOKIHOMMA: '+process.env.NODE_ENV)
-    cy.task('log', 'REACT_APP_BACKEND_URL_DEV: '+process.env.REACT_APP_BACKEND_URL_DEV)
+    //cy.task('log', 'LOKIHOMMA: '+process.env.NODE_ENV)
+    //cy.task('log', 'REACT_APP_BACKEND_URL_DEV: '+process.env.REACT_APP_BACKEND_URL_DEV)
   })
 })
 
@@ -13,6 +13,7 @@ describe('unlogged tests', () => {
 
   beforeEach(function() {
     cy.visit('http://localhost:3000')
+    cy.wait(200)
   })
 
   it('mainpage buttons exist', () => {
@@ -49,6 +50,7 @@ describe('logged in tests', () => {
   beforeEach(function() {
     cy.visit('http://localhost:3000')
     cy.contains('Login or create new user').click()
+    cy.wait(200)
     cy.get('input:first').type('reub')
     cy.get('[name="Password"]').first().type('123123')
     cy.contains('login').click()
