@@ -21,7 +21,7 @@ switch(process.env.NODE_ENV) {
     BACKEND = process.env.REACT_APP_BACKEND_URL_DEV
 }
 console.log("BACKEND", BACKEND)
-
+BACKEND = 'http://localhost:3001'
 const apiClient = axios.create({
   baseURL: BACKEND
 })
