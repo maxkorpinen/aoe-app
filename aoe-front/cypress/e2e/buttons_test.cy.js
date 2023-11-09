@@ -36,9 +36,11 @@ describe('unlogged tests', () => {
   })
 
   it('civclicks both', () => {
+    cy.wait(500)
     cy.get('[alt="britons.webp"]').click()
-    cy.wait(200)
+    cy.wait(500)
     cy.get('[alt="franks.webp"]').click()
+    cy.wait(500)
     cy.contains('Winpct')
     cy.contains('Your core unit')
     cy.contains('Opp core unit')
