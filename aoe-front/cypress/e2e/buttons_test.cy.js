@@ -68,19 +68,21 @@ describe('logged in tests', () => {
   })
 
   it('one civ analysis', () => {
-    cy.get('[alt="britons.webp"]').click()
-    cy.wait(100)
-    cy.contains('Analyse with chosen specs').click()
     cy.wait(500)
+    cy.get('[alt="britons.webp"]').click()
+    cy.wait(500)
+    cy.contains('Analyse with chosen specs').click()
+    cy.wait(1000)
     cy.contains('Coreunit')
     cy.contains('Counters to your powerunit')
   })
 
   it('two civ analysis', () => {
+    cy.wait(500)
     cy.get('[alt="britons.webp"]').click()
-    cy.wait(150)
+    cy.wait(500)
     cy.get('[alt="mayans.webp"]').click()
-    cy.wait(150)
+    cy.wait(1000)
     cy.contains('Your core unit')
     cy.contains('Opp core unit')
   })
