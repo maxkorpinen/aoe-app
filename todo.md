@@ -6,9 +6,13 @@
 
 ## Tehtäviä juttuja
 
-- BUGI: loginservice kippaa jos yrittää tehdä samalla nimellä uuden akkon
+- refaktoroi topbuttons
 
-- eslint
+- poista update controller
+
+- siisti frontin apiClient
+
+- BUGI: loginservice kippaa jos yrittää tehdä samalla nimellä uuden akkon
 
 - tee enemmän testejä
 

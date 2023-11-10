@@ -11,6 +11,7 @@ from pathlib import Path
 # 3. Hakee ja tallentaa uusimmat players.parquet ja matches.parquet tiedostot
 # 4. Lukee kirjoitetut tiedostot ja muodostaa niistä result.json tiedoston
 # 5. Siirtää result.jsonin data kansioon ja ylikirjoittaa vanhan result.jsonin
+# 6. Kirjoittaa updater_log.txt:iin päivityslokin
 ##
 start_time = time.time()
 
@@ -87,7 +88,7 @@ date_range = newest["start_date"] + " - " + newest["end_date"]
 curr_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 with open("../matches_update/updater_log.txt", "a+") as file:
     file.write(
-        "Date range of matches:" + date_range + ". Time of writing: " + curr_time + "\n"
+        "Date range of matches: " + date_range + ". Time of writing: " + curr_time + "\n"
     )
 
 print("end: ", time.time() - start_time)

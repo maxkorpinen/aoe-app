@@ -1,6 +1,8 @@
-const router = require('express').Router()
 require('dotenv').config()
-const { spawn } = require('child_process');
+const { spawn } = require('child_process')
+const router = require('express').Router()
+const { getLastUpdate } = require('../utils/helpfuncs')
+
 
 router.get('/', async (req, res)=> {
   if (!process.env.UPDATE_SECRET === req.body.UPDATE_SECRET) {
@@ -11,22 +13,26 @@ router.get('/', async (req, res)=> {
   });
 
   pythonProcess.stdout.on('data', (data) => {
-    console.log(`Python stdout: ${data}`);
+    console.log(`Python stdout: ${data}`)
   });
 
   pythonProcess.stderr.on('data', (data) => {
-    console.error(`Python stderr: ${data}`);
+    console.error(`Python stderr: ${data}`)
   });
   
   pythonProcess.on('close', (code) => {
-    console.log(`Python process exited with code ${code}`);
+    console.log(`Python process exited with code ${code}`)
     if (code === 0) {
-      res.status(200).send('Python script completed successfully');
+      res.status(200).send('Python script completed successfully')
     } else {
-      res.status(500).send('Python script failed');
+      res.status(500).send('Python script failed')
     }
-  });
+  })
+})
 
+router.get('/version', async (req, res)=> { 
+  let version = await getLastUpdate()
+  res.send({'version':version})
 })
 
 module.exports = router

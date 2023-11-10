@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import CivsList from './components/CivsList'
-import Guide from './components/analysis/Guide'
 import Notification from './components/Notification'
 import TopButtons from './components/buttons/TopButtons'
-import UserInfo from './components/UserInfo'
 import { setUser } from './reducers/userReducer'
+import PageChooser from './components/PageChooser'
 
 const App = () => {
   const page = useSelector(state => state.pageState.page)
@@ -22,12 +20,7 @@ const App = () => {
       <Notification/>
       <TopButtons />
       <h1>AoE2 app</h1>
-      {page==='choose' &&
-        <CivsList />}
-      {page ==='guide' &&
-        <Guide/>}
-      {page === 'user' &&
-        <UserInfo />}
+      <PageChooser />
     </div>
   )
 }
