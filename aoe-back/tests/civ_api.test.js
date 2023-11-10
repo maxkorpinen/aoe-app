@@ -17,8 +17,8 @@ beforeEach(async () => {
 
 test('/api/civ works', async () => {
   await api
-  .get('/api/civs')
-  .expect(200)
+    .get('/api/civs')
+    .expect(200)
 })
 
 test('get with id', async () => {
