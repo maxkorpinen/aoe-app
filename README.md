@@ -111,8 +111,11 @@ Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei
 | 8.10  | 3    | uudet testit futaamaan    |
 | 9.10  | 2    | github actionssissa       |
 |       |      |                           |
+| 10.10 | 5    | frontin refaktorointia +  |
+|       |      | matsidatan metatietoja    |
+|       |      | AboutPagessa              |
 
-Yht: 97.25h 6.10. mennessä
+Yht: 109.4h 9.10. mennessä
 
 ## Muu
 

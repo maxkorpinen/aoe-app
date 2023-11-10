@@ -2,17 +2,17 @@
 
 - oma buildorder tekstimuodossa, tallennettuna käyttäjään?
 
-- näytä matsidatan versio ts miltä aikaväliltä ja millä spekseillä se data näytetään ja mistä se on haettu
-
 ## Tehtäviä juttuja
 
-- refaktoroi topbuttons
+- refaktoroi:
+
+  - topbuttons
+  - userinfo?
+  - kansiorakenne siten, että ylänapit omassa kansiossaan, ja selkeät omat sivut omassaan?
 
 - poista update controller
 
 - siisti frontin apiClient
-
-- BUGI: loginservice kippaa jos yrittää tehdä samalla nimellä uuden akkon
 
 - tee enemmän testejä
 

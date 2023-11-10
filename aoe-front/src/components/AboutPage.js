@@ -13,7 +13,10 @@ const AboutPage = () => {
     return null
   }
   return(
-    <p>{version}</p>
+    <div>
+      <a href="https://aoestats.io/api-info/">Civ winpct stats gathered from here</a>
+      <p>{version}</p>
+    </div>
   )
 }
 

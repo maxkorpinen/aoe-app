@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { pageChange, guideChange } from '../../reducers/pageReducer'
+import { pageChange } from '../../reducers/pageReducer'
 import Login from './Login'
 import Logout from './Logout'
 import About from './AboutButton'
@@ -32,6 +32,3 @@ const TopButtons = () => {
 }
 
 export default TopButtons
-
-//<button onClick={() => beginning()}>Start over</button>
-//<button onClick={() => showGuide()}>Analyse with chosen specs</button>
