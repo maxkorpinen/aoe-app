@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 /* const BACKEND = process.env.NODE_ENV === 'development'
   ? process.env.REACT_APP_BACKEND_URL_DEV
   : '' */
-let BACKEND = ''
+/* let BACKEND = ''
 switch(process.env.NODE_ENV) {
   case 'development':
     BACKEND = process.env.REACT_APP_BACKEND_URL_DEV
@@ -20,8 +20,8 @@ switch(process.env.NODE_ENV) {
   default:
     BACKEND = process.env.REACT_APP_BACKEND_URL_DEV
 }
-console.log("BACKEND", BACKEND)
-BACKEND = 'http://localhost:3001'
+console.log("BACKEND", BACKEND) */
+let BACKEND = 'http://localhost:3001'
 const apiClient = axios.create({
   baseURL: BACKEND
 })

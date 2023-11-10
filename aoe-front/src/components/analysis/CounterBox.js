@@ -1,6 +1,6 @@
 import images from '../../utils/imageloader'
 
-const CounterBox = ({pu, setSeenUnit, text, suppUnits}) => {
+const CounterBox = ({ pu, setSeenUnit, text, suppUnits }) => {
   if (typeof pu === typeof [] && pu.length === 0) {
     return
   }
@@ -11,16 +11,16 @@ const CounterBox = ({pu, setSeenUnit, text, suppUnits}) => {
   return(
     <div>
       <p> {text} </p>
-      {counters.map(unitname => 
+      {counters.map(unitname =>
         <button key={unitname}>
-          <img key={unitname+""} 
-            src={images.unitImages[unitname]} 
+          <img key={unitname+""}
+            src={images.unitImages[unitname]}
             height="200"
             width="200"
             alt=""
             onClick={() => seeUnit(unitname)}/>
         </button>
-        )}
+      )}
     </div>
   )
 }

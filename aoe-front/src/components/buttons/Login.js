@@ -2,11 +2,11 @@ import { useState } from 'react'
 import NewUser from './NewUser'
 import LoginForm from './LoginForm'
 
-const Login = ({showLogin, setShowLogin}) => {
-  
+const Login = ({ showLogin, setShowLogin }) => {
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-/*   const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
+  /*   const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
   const dispatch = useDispatch() */
 
   const openLogin = () => {

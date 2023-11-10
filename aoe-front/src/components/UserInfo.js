@@ -18,7 +18,7 @@ const UserInfo = () => {
       favciv: chosenCiv
     }
     userService.update(newUserData, dispatch)
-    dispatch(setUser({username:newUserData.username,token:newUserData.token,favciv:chosenCiv}))
+    dispatch(setUser({ username:newUserData.username,token:newUserData.token,favciv:chosenCiv }))
     console.log("user in userinfo inside buttfunc ", user)
     //favcivmuutos pitää tulla myös usedataan
   }

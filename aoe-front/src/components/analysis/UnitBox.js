@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux/es/hooks/useSelector"
 import f from '../../utils/helpfuncs'
 
-const UnitBox = ({text, unit, imgs, seenUnit, winpct}) => {
+const UnitBox = ({ text, unit, imgs, seenUnit, winpct }) => {
   //const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
-  const {isEmpty} = f
+  const { isEmpty } = f
 
   return(
     <div>
@@ -15,10 +15,10 @@ const UnitBox = ({text, unit, imgs, seenUnit, winpct}) => {
           <p>Winpct {winpct.toFixed(3)*100}</p> }
           {imgs.map((img) => (
             <img key={img} src={img} //vaihda avain!!!
-            height="200"
-            alt=""
-            width="200"/>
-            ))}
+              height="200"
+              alt=""
+              width="200"/>
+          ))}
         </div>
       }
       {seenUnit &&

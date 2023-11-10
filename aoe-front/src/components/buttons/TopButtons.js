@@ -15,12 +15,12 @@ const TopButtons = () => {
   const showLogout = useSelector(state => state.buttonsState.logout)
   const userInfo = window.localStorage.getItem('loggedUser')
   const dispatch = useDispatch()
-  const {isEmpty} = f
+  const { isEmpty } = f
 
   const beginning = () => {
     dispatch(resetCivs())
     dispatch(resetPu())
-    dispatch(pageChange('choose')) 
+    dispatch(pageChange('choose'))
     dispatch(guideChange(''))
     dispatch(civsSetChange(0))
   }

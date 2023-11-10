@@ -107,6 +107,10 @@ Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei
 |       |      |                           |
 | 7.10  | 7.15 | testejä, refaktorointia,  |
 |       |      | säläfeatureita            |
+|       |      |                           |
+| 8.10  | 3    | uudet testit futaamaan    |
+| 9.10  | 2    | github actionssissa       |
+|       |      |                           |
 
 Yht: 97.25h 6.10. mennessä
 

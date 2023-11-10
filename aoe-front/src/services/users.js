@@ -4,13 +4,13 @@ import hf from '../utils/helpfuncs'
 const baseUrl = '/api/users'
 
 const create = async (username, password, dispatch) => {
-  axios.post(baseUrl,{username: username, password: password}).then(res => {
+  axios.post(baseUrl,{ username: username, password: password }).then(res => {
     return res.data
   }).catch(err => {
     dispatch(setError(err.message))
-      setTimeout(() => {
-        dispatch(setError(null))
-      }, 5000)
+    setTimeout(() => {
+      dispatch(setError(null))
+    }, 5000)
   })
 }
 
@@ -19,7 +19,7 @@ const update = async (userdata, dispatch) => {
   const config = {
     headers: {
       authorization: hf.addBearer(token) }
-    }
+  }
   // jos tulee unauthorized niin kirjaa ulos?
   axios.put(baseUrl, userdata, config)
     .then(res => {

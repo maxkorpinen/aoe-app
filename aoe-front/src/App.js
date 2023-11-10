@@ -14,9 +14,8 @@ const App = () => {
   useEffect(() => {
     const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))
     dispatch(setUser(loggedUserJSON))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
+
   //splittaa omaan valintakomponenttiin toi page===, page=== osuus
   return (
     <div>

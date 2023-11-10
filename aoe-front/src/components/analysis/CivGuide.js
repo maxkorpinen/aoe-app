@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
 import images from '../../utils/imageloader'
@@ -13,16 +13,16 @@ const CivGuide= () => {
   return (
     <div className='boxrows'>
       <UnitBox text={'Coreunit: '}
-      unit={pu1[0].unit}
-      imgs={[images.unitImages[unitname]]}
-      seenUnit={seenUnit}
+        unit={pu1[0].unit}
+        imgs={[images.unitImages[unitname]]}
+        seenUnit={seenUnit}
       />
       <CounterBox
-      civ={pu1}
-      text={"Counters to your powerunit"}
-      suppUnits={pu1[0].counters}
-      setSeenUnit={setSeenUnit}/>
+        civ={pu1}
+        text={"Counters to your powerunit"}
+        suppUnits={pu1[0].counters}
+        setSeenUnit={setSeenUnit}/>
     </div>
-)}
+  )}
 
 export default CivGuide

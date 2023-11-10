@@ -7,17 +7,17 @@ const Guide = () => {
   const guideType = useSelector(state => state.pageState.guide)
   return(
     <div>
-    {guideType==='civguide' &&
+      {guideType==='civguide' &&
       <div className='boxrows'>
         <CivGuide/>
       </div>
-    }
-    {guideType==='matchup' && 
+      }
+      {guideType==='matchup' &&
       <div>
         <Matchup/>
       </div>
-    }
-  </div>
+      }
+    </div>
   )
 }
 

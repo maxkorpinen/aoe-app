@@ -4,7 +4,7 @@ import { setError } from '../../reducers/errorReducer'
 import { setUser } from '../../reducers/userReducer'
 import { logoutChange } from '../../reducers/topButtonsReducer'
 
-const LoginForm = ({username, setUsername, password, setPassword}) => {
+const LoginForm = ({ username, setUsername, password, setPassword }) => {
   //const [username, setUsername] = useState('')
   //const [password, setPassword] = useState('')
   const dispatch = useDispatch()
@@ -33,23 +33,23 @@ const LoginForm = ({username, setUsername, password, setPassword}) => {
 
   return(
     <form onSubmit={handleLogin}>
-        <div>
+      <div>
           username
-          <input
+        <input
           type="text"
           value={username}
           name="Username"
-          onChange={({target}) => setUsername(target.value)}/>
-          <div>
+          onChange={({ target }) => setUsername(target.value)}/>
+        <div>
           password<input
-          type="password"
-          value={password}
-          name="Password"
-          onChange={({target})=> setPassword(target.value)}/>
-          </div>
+            type="password"
+            value={password}
+            name="Password"
+            onChange={({ target }) => setPassword(target.value)}/>
         </div>
-        <button type="submit">login</button>
-      </form>
+      </div>
+      <button type="submit">login</button>
+    </form>
 
   )
 }

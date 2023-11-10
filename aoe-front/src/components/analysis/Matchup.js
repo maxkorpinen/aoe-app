@@ -35,23 +35,23 @@ const Matchup = () => {
       <p>matchup stuff</p>
       {pu2[0] &&
       <div className='boxrows'>
-        
-        <UnitBox text={'Your core unit: '} unit={pu1[0].unit} 
-        imgs={[images.unitImages[pu1[0].unit+'.png']]}
-        seenUnit={seenUnit} winpct={civ1wins / (civ1wins+civ2wins)}/>
+
+        <UnitBox text={'Your core unit: '} unit={pu1[0].unit}
+          imgs={[images.unitImages[pu1[0].unit+'.png']]}
+          seenUnit={seenUnit} winpct={civ1wins / (civ1wins+civ2wins)}/>
         <UnitBox text={'Opp core unit: '} unit={pu2[0].unit}
-        imgs={[images.unitImages[pu2[0].unit+'.png']]}
-        winpct={civ2wins / (civ1wins+civ2wins)}/>
+          imgs={[images.unitImages[pu2[0].unit+'.png']]}
+          winpct={civ2wins / (civ1wins+civ2wins)}/>
       </div>
       }
       <div className='boxrows'>
-        <CounterBox 
-          text={"Your supporting units"} 
-          pu={pu2} 
+        <CounterBox
+          text={"Your supporting units"}
+          pu={pu2}
           suppUnits={p2counters}
           setSeenUnit={() => {}}/>
-        <CounterBox 
-          text={"Their supporting units"} 
+        <CounterBox
+          text={"Their supporting units"}
           pu={pu1}
           suppUnits={p1counters}
           setSeenUnit={() => {}}/>
@@ -60,4 +60,4 @@ const Matchup = () => {
   )
 }
 
-export default Matchup 
+export default Matchup

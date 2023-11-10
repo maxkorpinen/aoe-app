@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 //Kontrolloi sivun yläreunan nappuloitten näkyvyyttä
 const topButtonsSlice = createSlice({
   name: 'topbuttons',
-  initialState: {logout: false},
+  initialState: { logout: false },
   reducers: {
     logoutChange(state, action) {
       return{
