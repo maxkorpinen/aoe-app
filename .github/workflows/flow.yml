@@ -12,6 +12,7 @@ jobs:
       TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
       MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
       SEKRET: ${{secrets.SEKRET}}
+      REACT_APP_BACKEND_URL_DEV: ${{secrets.REACT_APP_BACKEND_URL_DEV}}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3

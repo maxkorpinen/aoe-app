@@ -13,7 +13,6 @@ async function getLastUpdate() {
   let latest= ''
   for await (const line of rl) {
     // Each line in input.txt will be successively available here as `line`.
-    //console.log(`Line from file: ${line}`);
     latest= line
   }
   return latest

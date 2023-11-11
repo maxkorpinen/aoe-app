@@ -21,7 +21,11 @@ const NewUser = () => {
         }, 5000)
       })
       .catch(err => {
-        console.log(err)
+        dispatch(setError(err.response.data.error))
+        setTimeout(() => {
+          dispatch(setError(null))
+        }, 5000)
+        //console.log(err)
       })
   }
 

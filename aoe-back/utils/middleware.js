@@ -3,12 +3,10 @@ const jwt = require('jsonwebtoken')
 const User = require('../schemas/user')
 
 const unknownEndpoint = (request, response) => {
-  console.log("UNKNONWENDPOINT")
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
 const errorHandler = (error, request, response, next) => {
-  console.log("ERRORHANDLER")
   logger.error(error.message)
 
   if (error.name === 'CastError') {
@@ -41,12 +39,10 @@ const tokenExtractor = (req, res, next) => {
 
 const userExtractor = async (req, res, next) => {
   const token = getTokenFrom(req)
-  console.log("token:", token)
   if(token) {
     try{
       const decoToken = jwt.verify(token, process.env.SEKRET)
       req.user = await User.findById(decoToken.id)
-      console.log(req.user, "req.user in middleware")
     } catch(err) {
       next(err)
       return

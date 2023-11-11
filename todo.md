@@ -12,6 +12,8 @@
 
 - siirrä kuvat bäkkäriin ja laita että ne haetaan sieltä
 
+- github actions envi kuntoon
+
 - refaktoroi:
 
   - topbuttons
@@ -20,6 +22,7 @@
 
 - tee enemmän testejä
 
+  - kato että virherajatilanteet ei kippaa koko sivua
   - uus käyttäjätesti miten kannattaa tehdä?
 
 - varmista että matchupissa näytettävät supportunitit tulee oikein
