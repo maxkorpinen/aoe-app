@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import userService from '../../services/users'
+import { setError } from '../../reducers/errorReducer'
 
 const NewUser = () => {
   const [username, setUsername] = useState('')
@@ -9,8 +10,19 @@ const NewUser = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const res = await userService.create(username, password, dispatch)
-    //ilmota jos oikein tai ei onnisunut. resistä löytyy status
+    userService.create(username, password, dispatch)
+      .then(res => {
+        setUsername('')
+        setPassword('')
+        console.log(res)
+        dispatch(setError(`New user ${res.username}`))
+        setTimeout(() => {
+          dispatch(setError(null))
+        }, 5000)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return(

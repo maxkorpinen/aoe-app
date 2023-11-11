@@ -13,9 +13,11 @@ usersRouter.post('/', async (req, res, next) => {
     username,
     passwordHash
   })
-
-  const savedUser = await user.save().catch(err => next(err))
-  res.status(201).json(savedUser)
+  user.save().then(result => {
+    res.status(201).json({username:result.username})
+  }).catch(err => {
+    next(err)
+  })
 })
 
 usersRouter.put('/', userExtractor, async (req, res, next) => {
@@ -31,14 +33,13 @@ usersRouter.put('/', userExtractor, async (req, res, next) => {
   res.status(200).send(doc.favciv)
 })
 
-usersRouter.delete('/', async (req, res, next) => {
-  const { username, token } = req.body
-  if (!token) {
+usersRouter.delete('/', userExtractor, async (req, res, next) => {
+  if (!req.token) {
     console.log("no token")
     return res.status(401).json({error:"invalid token"})
   }
-  const dbRes = await User.deleteOne({username:username})
-  if(dbRes.acknowledged === true && dbRes.deletedCount === 1) {
+  const dbRes = await User.findByIdAndDelete(req.user._id)
+  if(dbRes._id.equals(req.user._id)) {
     res.status(204).end()
   } else {
     res.status(404).end()

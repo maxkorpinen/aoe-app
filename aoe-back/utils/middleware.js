@@ -41,11 +41,12 @@ const tokenExtractor = (req, res, next) => {
 
 const userExtractor = async (req, res, next) => {
   const token = getTokenFrom(req)
-  
+  console.log("token:", token)
   if(token) {
     try{
       const decoToken = jwt.verify(token, process.env.SEKRET)
       req.user = await User.findById(decoToken.id)
+      console.log(req.user, "req.user in middleware")
     } catch(err) {
       next(err)
       return

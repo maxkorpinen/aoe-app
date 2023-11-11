@@ -7,6 +7,7 @@ import { resetPu } from '../reducers/powerunitReducer'
 import { pageChange, guideChange, civsSetChange } from '../reducers/pageReducer'
 import { resetUser } from "../reducers/userReducer"
 import { logoutChange } from "../reducers/topButtonsReducer"
+import { setError } from '../reducers/errorReducer'
 
 const UserInfo = () => {
   const dispatch = useDispatch()
@@ -27,35 +28,30 @@ const UserInfo = () => {
   const delUser = async () => {
     const userdata = JSON.parse(window.localStorage.getItem('loggedUser'))
     const res = await userService.deleteUser(userdata)
-    console.log("DEL STATUS",res.status)
     if (res.status === 204) {
+      //resetoidaan sivu
       dispatch(resetCivs())
       dispatch(resetPu())
       dispatch(pageChange('choose'))
       dispatch(guideChange(''))
       dispatch(civsSetChange(0))
 
+      //resetoidaan käyttäjädata
       window.localStorage.clear()
       dispatch(logoutChange(false))
-      dispatch(pageChange('choose'))
       dispatch(resetUser())
       // setShowLogin(false) -> tää sliceen
+
+      dispatch(setError(`User ${userdata.username} deleted`))
+      setTimeout(() => {
+        dispatch(setError(null))
+      }, 5000)
     } else {
-
+      dispatch(setError(`Error occured while attempting to delete ${userdata.username}`))
+      setTimeout(() => {
+        dispatch(setError(null))
+      }, 5000)
     }
-    /*
-    dispatch(resetCivs())
-    dispatch(resetPu())
-    dispatch(pageChange('choose'))
-    dispatch(guideChange(''))
-    dispatch(civsSetChange(0))
-
-    dispatch(logoutChange(false))
-    setShowLogin(false)
-    dispatch(pageChange('choose'))
-    dispatch(resetUser())
-
-    */
   }
 
   return(

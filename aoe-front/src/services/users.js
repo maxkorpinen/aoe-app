@@ -4,14 +4,17 @@ import hf from '../utils/helpfuncs'
 const baseUrl = '/api/users'
 
 const create = async (username, password, dispatch) => {
-  axios.post(baseUrl,{ username: username, password: password }).then(res => {
-    return res
-  }).catch(err => {
-    dispatch(setError(err.message))
-    setTimeout(() => {
-      dispatch(setError(null))
-    }, 5000)
-  })
+  return axios.post(baseUrl, { username, password })
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      dispatch(setError(err.message))
+      setTimeout(() => {
+        dispatch(setError(null))
+      }, 5000)
+      throw err
+    })
 }
 
 const update = async (userdata, dispatch) => {
@@ -43,7 +46,7 @@ const deleteUser = async (userInfo) => {
     headers: {
       authorization: hf.addBearer(token) }
   }
-  const res = await axios.delete(baseUrl, { data: userInfo }, config)
+  const res = await axios.delete(baseUrl, config) // axios.delete(baseUrl, { data: userInfo }, config)
   return res
 }
 
