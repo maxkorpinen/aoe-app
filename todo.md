@@ -2,7 +2,13 @@
 
 - oma buildorder tekstimuodossa, tallennettuna käyttäjään?
 
+- mahdollisuus poistaa oma account
+
 ## Tehtäviä juttuja
+
+- siirrä users.js (front) updatesta ilmotusjutut muualle
+
+- siirrä kuvat bäkkäriin ja laita että ne haetaan sieltä
 
 - refaktoroi:
 

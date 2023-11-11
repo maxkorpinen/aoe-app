@@ -5,7 +5,7 @@ const baseUrl = '/api/users'
 
 const create = async (username, password, dispatch) => {
   axios.post(baseUrl,{ username: username, password: password }).then(res => {
-    return res.data
+    return res
   }).catch(err => {
     dispatch(setError(err.message))
     setTimeout(() => {
@@ -35,5 +35,17 @@ const update = async (userdata, dispatch) => {
       }, 5000)
     })
 }
+
+const deleteUser = async (userInfo) => {
+  const token = userInfo.token
+  const config = {
+    data : userInfo,
+    headers: {
+      authorization: hf.addBearer(token) }
+  }
+  const res = await axios.delete(baseUrl, { data: userInfo }, config)
+  return res
+}
+
 //eslint-disable-next-line
-export default { update, create }
+export default { update, create, deleteUser }

@@ -9,9 +9,8 @@ const NewUser = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(username, password)
     const res = await userService.create(username, password, dispatch)
-    console.log(res)
+    //ilmota jos oikein tai ei onnisunut. resistä löytyy status
   }
 
   return(

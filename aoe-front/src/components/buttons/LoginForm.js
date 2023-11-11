@@ -18,7 +18,6 @@ const LoginForm = ({ username, setUsername, password, setPassword }) => {
       })
       window.localStorage.setItem('loggedUser', JSON.stringify(user))
       const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
-      console.log("userinfo in loginform",userInfo)
       dispatch(setUser(user))
       dispatch(logoutChange(true))
       setUsername('')

@@ -20,7 +20,7 @@ usersRouter.post('/', async (req, res, next) => {
 
 usersRouter.put('/', userExtractor, async (req, res, next) => {
   const { username, token, favciv } = req.body
-  //console.log("username:", username, " token:", token, " favciv:", favciv)
+  console.log("username:", username, " token:", token, " favciv:", favciv, " req.token", req.token)
   if (!req.token) {
     console.log("no token")
     return res.status(401).json({error:"invalid token"})
@@ -28,9 +28,21 @@ usersRouter.put('/', userExtractor, async (req, res, next) => {
 
   let doc = await User.findOneAndUpdate({username: username}, {favciv: favciv})
   doc = await User.findOne({username:username})
-  //miten saadaan virheet kiinni ts jos ei onnistu nii lähetä jotain muuta?
   res.status(200).send(doc.favciv)
+})
 
+usersRouter.delete('/', async (req, res, next) => {
+  const { username, token } = req.body
+  if (!token) {
+    console.log("no token")
+    return res.status(401).json({error:"invalid token"})
+  }
+  const dbRes = await User.deleteOne({username:username})
+  if(dbRes.acknowledged === true && dbRes.deletedCount === 1) {
+    res.status(204).end()
+  } else {
+    res.status(404).end()
+  }
 })
 
 module.exports = usersRouter
