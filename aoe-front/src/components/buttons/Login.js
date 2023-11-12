@@ -1,16 +1,19 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { showLoginChange } from '../../reducers/topButtonsReducer'
 import NewUser from './NewUser'
 import LoginForm from './LoginForm'
 
-const Login = ({ showLogin, setShowLogin }) => {
+
+const Login = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  /*   const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
-  const dispatch = useDispatch() */
+  const showLogin = useSelector(state => state.buttonsState.showLogin)
+  const dispatch = useDispatch()
 
   const openLogin = () => {
-    setShowLogin(true)
+    dispatch(showLoginChange(true))
   }
 
   return(

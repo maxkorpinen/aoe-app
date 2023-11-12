@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { pageChange } from '../../reducers/pageReducer'
 import Login from './Login'
@@ -8,7 +7,6 @@ import StartOver from './StartOver'
 import AnalyseButton from './AnalyseButton'
 
 const TopButtons = () => {
-  const [showLogin, setShowLogin] = useState(false)
   const showLogout = useSelector(state => state.buttonsState.logout)
   const dispatch = useDispatch()
 
@@ -16,16 +14,13 @@ const TopButtons = () => {
     <div>
       <StartOver />
       <AnalyseButton />
-
       { !showLogout &&
-        <Login showLogin={showLogin} setShowLogin={setShowLogin} />
-      }
+        <Login />}
       { showLogout &&
         <>
           <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
-          <Logout setShowLogin={setShowLogin} />
-        </>
-      }
+          <Logout/>
+        </> }
       <About />
     </div>
   )

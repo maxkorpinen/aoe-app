@@ -2,8 +2,9 @@ import { useDispatch } from 'react-redux'
 import { resetUser } from '../../reducers/userReducer'
 import { pageChange } from '../../reducers/pageReducer'
 import { logoutChange } from '../../reducers/topButtonsReducer'
+import { showLoginChange } from '../../reducers/topButtonsReducer'
 
-const Logout = ({ setShowLogin }) => {
+const Logout = () => {
   const dispatch = useDispatch()
   const userInfo = JSON.parse(window.localStorage.getItem('loggedUser'))
   if (! userInfo) {
@@ -11,7 +12,7 @@ const Logout = ({ setShowLogin }) => {
   }
   const logout = () => {
     dispatch(logoutChange(false))
-    setShowLogin(false)
+    dispatch(showLoginChange(false))
     dispatch(pageChange('choose'))
     window.localStorage.clear()
     dispatch(resetUser())
