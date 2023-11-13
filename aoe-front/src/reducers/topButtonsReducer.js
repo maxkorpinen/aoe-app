@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-//Kontrolloi sivun yläreunan nappuloitten näkyvyyttä
+//kontrolloi sivun yläreunan nappuloitten näkyvyyttä
 const topButtonsSlice = createSlice({
   name: 'topbuttons',
   initialState: { logout: false, showLoginForm: false },
