@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { showLoginChange } from '../../reducers/topButtonsReducer'
+import { showLoginFormChange } from '../../reducers/topButtonsReducer'
 import NewUser from './NewUser'
 import LoginForm from './LoginForm'
 
@@ -9,19 +9,19 @@ const LoginNew = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const showLogin = useSelector(state => state.buttonsState.showLogin)
+  const showLoginForm = useSelector(state => state.buttonsState.showLoginForm)
   const dispatch = useDispatch()
 
   const openLogin = () => {
-    dispatch(showLoginChange(true))
+    dispatch(showLoginFormChange(true))
   }
 
   return(
     <>
-      { !showLogin &&
+      { !showLoginForm &&
         <button onClick={() => openLogin()}>Login or create new user</button>
       }
-      { showLogin &&
+      { showLoginForm &&
       <>
         <LoginForm
           username={username}

@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { resetUser } from '../../reducers/userReducer'
 import { pageChange } from '../../reducers/pageReducer'
 import { logoutChange } from '../../reducers/topButtonsReducer'
-import { showLoginChange } from '../../reducers/topButtonsReducer'
+import { showLoginFormChange } from '../../reducers/topButtonsReducer'
 
 const Logout = () => {
   const dispatch = useDispatch()
@@ -12,7 +12,7 @@ const Logout = () => {
   }
   const logout = () => {
     dispatch(logoutChange(false))
-    dispatch(showLoginChange(false))
+    dispatch(showLoginFormChange(false))
     dispatch(pageChange('choose'))
     window.localStorage.clear()
     dispatch(resetUser())
