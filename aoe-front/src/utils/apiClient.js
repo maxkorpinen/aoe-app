@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let BACKEND = 'http://localhost:3001'
+let BACKEND = process.env.REACT_APP_BACKEND_URL_DEV //'http://localhost:3001'
 /* if ( process.env.NODE_ENV === 'development') {
   BACKEND = REACT_APP_BACKEND_URL_DEV
 } else if (process.env.NODE_ENV === 'test') {
