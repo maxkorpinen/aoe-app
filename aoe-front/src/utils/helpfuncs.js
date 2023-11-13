@@ -7,11 +7,12 @@ const isEmpty = (object) => {
 }
 
 /*
+Filters units from counters-list that shouldn't be there
 counters: all counters to civ a's powerunit
 punit: civ b's powerunit
 civUnits: civ b's all available units
 */
-const filterCounters = (counters, punit, civUnits, allUnits) => {
+const filterCounters = (counters, punit, civUnits) => {
   //remove powerunit from possible supporting units
   let ret = counters.filter((el) => !(el===punit))
   //remove non-buildable units from possible supporting units

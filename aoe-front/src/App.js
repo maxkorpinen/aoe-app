@@ -6,7 +6,6 @@ import { setUser } from './reducers/userReducer'
 import PageChooser from './components/PageChooser'
 
 const App = () => {
-  const page = useSelector(state => state.pageState.page)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -14,7 +13,6 @@ const App = () => {
     dispatch(setUser(loggedUserJSON))
   }, [])
 
-  //splittaa omaan valintakomponenttiin toi page===, page=== osuus
   return (
     <div>
       <Notification/>
