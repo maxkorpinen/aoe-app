@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import UnitBox from './UnitBox'
 import CounterBox from './CounterBox'
 import images from '../../utils/imageloader'
 import hf from '../../utils/helpfuncs'
-import unitService from '../../services/units'
+import CounterBoxesHolder from './CounterBoxesHolder'
 import './guide.css'
 
 
@@ -39,8 +39,16 @@ const Matchup = () => {
           winpct={civ2wins / (civ1wins+civ2wins)}/>
       </div>
       }
-      <div className='boxrows'>
-        <CounterBox
+      <>
+        <CounterBoxesHolder/>
+      </>
+    </div>
+  )
+}
+
+export default Matchup
+/*
+<CounterBox
           text={"Your supporting units"}
           pu={pu2}
           suppUnits={p2counters}
@@ -50,9 +58,4 @@ const Matchup = () => {
           pu={pu1}
           suppUnits={p1counters}
           setSeenUnit={() => {}}/>
-      </div>
-    </div>
-  )
-}
-
-export default Matchup
+*/
