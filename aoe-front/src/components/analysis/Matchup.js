@@ -5,30 +5,35 @@ import CounterBox from './CounterBox'
 import images from '../../utils/imageloader'
 import hf from '../../utils/helpfuncs'
 import CounterBoxesHolder from './CounterBoxesHolder'
+import UnitBoxesHolder from './UnitBoxesHolder'
 import './guide.css'
 
 
 const Matchup = () => {
   // eslint-disable-next-line no-unused-vars
-  const [seenUnit, setSeenUnit] = useState('')
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ2 = useSelector(state => state.civs['civ2'])
   const pu1 = useSelector(state => state.powerunits.pu1)
   const pu2 = useSelector(state => state.powerunits.pu2)
-  const civ1wins = useSelector(state => state.stats.civ1wins)
-  const civ2wins = useSelector(state => state.stats.civ2wins)
-
 
   if([pu1, pu2, civ1, civ2].map(a => hf.isEmpty(a)).includes(true)) {
     return
   }
-  let p1counters = hf.filterCounters(pu1[0].counters, pu2[0].unit, civ2[0].units[0])
-  let p2counters = hf.filterCounters(pu2[0].counters, pu1[0].unit, civ1[0].units[0])
+  //let p1counters = hf.filterCounters(pu1[0].counters, pu2[0].unit, civ2[0].units[0])
+  //let p2counters = hf.filterCounters(pu2[0].counters, pu1[0].unit, civ1[0].units[0])
   console.log(civ1)
   return (
     <div>
       <p>matchup stuff</p>
-      {pu2[0] &&
+      <UnitBoxesHolder />
+      <CounterBoxesHolder/>
+    </div>
+  )
+}
+
+export default Matchup
+/*
+{pu2[0] &&
       <div className='boxrows'>
 
         <UnitBox text={'Your core unit: '} unit={pu1[0].unit}
@@ -39,23 +44,4 @@ const Matchup = () => {
           winpct={civ2wins / (civ1wins+civ2wins)}/>
       </div>
       }
-      <>
-        <CounterBoxesHolder/>
-      </>
-    </div>
-  )
-}
-
-export default Matchup
-/*
-<CounterBox
-          text={"Your supporting units"}
-          pu={pu2}
-          suppUnits={p2counters}
-          setSeenUnit={() => {}}/>
-        <CounterBox
-          text={"Their supporting units"}
-          pu={pu1}
-          suppUnits={p1counters}
-          setSeenUnit={() => {}}/>
 */
