@@ -14,7 +14,6 @@ const NewUser = () => {
       .then(res => {
         setUsername('')
         setPassword('')
-        console.log(res)
         dispatch(setError(`New user ${res.username}`))
         setTimeout(() => {
           dispatch(setError(null))
@@ -25,7 +24,6 @@ const NewUser = () => {
         setTimeout(() => {
           dispatch(setError(null))
         }, 5000)
-        //console.log(err)
       })
   }
 
