@@ -6,9 +6,6 @@ import LoginForm from './LoginForm'
 
 
 const LoginNew = () => {
-
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const showLoginForm = useSelector(state => state.buttonsState.showLoginForm)
   const dispatch = useDispatch()
 
@@ -23,11 +20,7 @@ const LoginNew = () => {
       }
       { showLoginForm &&
       <>
-        <LoginForm
-          username={username}
-          setUsername={setUsername}
-          password={password}
-          setPassword={setPassword}/>
+        <LoginForm/>
         <NewUser/>
       </>
       }
