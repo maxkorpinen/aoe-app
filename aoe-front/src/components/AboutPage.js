@@ -5,7 +5,6 @@ const AboutPage = () => {
   const [version, setVersion] = useState('')
   useEffect(() => {
     matchService.getVersion().then((ver) => {
-      console.log("app ver:", ver)
       setVersion(ver.version)
     })
   }, [])

@@ -35,12 +35,10 @@ const UserInfo = () => {
       dispatch(pageChange('choose'))
       dispatch(guideChange(''))
       dispatch(civsSetChange(0))
-
       //resetoidaan käyttäjädata
       window.localStorage.clear()
       dispatch(logoutChange(false))
       dispatch(resetUser())
-      // setShowLogin(false) -> tää sliceen
 
       dispatch(setError(`User ${userdata.username} deleted`))
       setTimeout(() => {
