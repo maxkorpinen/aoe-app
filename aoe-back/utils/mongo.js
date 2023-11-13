@@ -13,10 +13,6 @@ const url =
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
 
-/* const asynkroninenKonteksti = async () => {
-  const un = await Unit.deleteMany({})
-  console.log(un)
-} */
 
 const Unit= require('../schemas/unit')
 const units = require('./units')

@@ -23,7 +23,6 @@ usersRouter.post('/', async (req, res, next) => {
 usersRouter.put('/', userExtractor, async (req, res, next) => {
   const { username, token, favciv } = req.body
   if (!req.token) {
-    console.log("no token")
     return res.status(401).json({error:"invalid token"})
   }
 
@@ -34,7 +33,6 @@ usersRouter.put('/', userExtractor, async (req, res, next) => {
 
 usersRouter.delete('/', userExtractor, async (req, res, next) => {
   if (!req.token) {
-    console.log("no token")
     return res.status(401).json({error:"invalid token"})
   }
   const dbRes = await User.findByIdAndDelete(req.user._id)
