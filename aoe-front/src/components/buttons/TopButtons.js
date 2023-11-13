@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { pageChange } from '../../reducers/pageReducer'
-import Login from './Login'
+import LoginNew from './LoginNew'
 import Logout from './Logout'
 import About from './AboutButton'
 import StartOver from './StartOver'
@@ -15,7 +15,7 @@ const TopButtons = () => {
       <StartOver />
       <AnalyseButton />
       { !showLogout &&
-        <Login />}
+        <LoginNew />}
       { showLogout &&
         <>
           <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>

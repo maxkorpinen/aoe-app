@@ -5,7 +5,7 @@ import NewUser from './NewUser'
 import LoginForm from './LoginForm'
 
 
-const Login = () => {
+const LoginNew = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -35,4 +35,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginNew
