@@ -35,9 +35,20 @@ FROM base
 COPY --from=build /app /app
 
 #install python for matches/update
+#RUN apt-get update -qq && \
+#  apt-get install -y python-is-python3 python3-pip && \
+#  pip3 install pandas
+
+# Install Python and Pandas using a virtual environment
 RUN apt-get update -qq && \
-  apt-get install -y python-is-python3 python3-pip && \
-  pip3 install pandas
+    apt-get install -y python-is-python3 python3-venv
+
+# Create and activate a virtual environment
+RUN python3 -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Install Pandas
+RUN pip install pandas
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
