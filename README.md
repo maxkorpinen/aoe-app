@@ -15,6 +15,11 @@ Vinkit ja ohjeet halutaan tarjota:
 
 ## Käyttöohje
 
+HUOM!
+Alla oleva pätee itsehostattuun instanssiin, ja oletettavasti maksulliseen fly.io:n virtuaalikoneeseen. Ilmaisversion VM tappaa python prosessin ja ilmoittaa "Out of memory". Optimointi työn alla.
+
+---
+
 Ohjelma tarjoaa vivun ottelutilastojen päivittämiselle. Se tapahtuu lähettämällä GET osoitteeseen '/api/update'. Viestin sisällössä tulee olla avain "UPDATE_SECRET", jonka arvo on envissä asetettu halutuksi.
 
 Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei löytänyt kätevää, yhä päivitettyä, kirjastoa tai tapaa käsitellä .parquet tiedostoja javascriptillä.
@@ -114,8 +119,17 @@ Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei
 | 10.10 | 5    | frontin refaktorointia +  |
 |       |      | matsidatan metatietoja    |
 |       |      | AboutPagessa              |
+|       |      |                           |
+| 11.10 | 3    | käyttäjän poistaminen,    |
+|       |      | siistimistä               |
+|       |      |                           |
+| 13.10 | 4    | revertsekoilua, cypressin |
+|       |      | kanssa painimista         |
+|       |      |                           |
+| 14.10 | 5.1  | prodin matches/updaten    |
+|       |      | korjailua/säätöä          |
 
-Yht: 109.4h 9.10. mennessä
+Yht: 126.5h 14.10. mennessä
 
 ## Muu
 
