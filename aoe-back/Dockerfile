@@ -36,7 +36,8 @@ COPY --from=build /app /app
 
 #install python for matches/update
 RUN apt-get update -qq && \
-  apt-get install -y python-is-python3
+  apt-get install -y python-is-python3 python3-pip && \
+  pip3 install pandas
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
