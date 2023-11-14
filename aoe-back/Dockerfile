@@ -48,7 +48,7 @@ RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
 # Install Pandas
-RUN pip install pandas
+RUN pip install pandas requests
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
