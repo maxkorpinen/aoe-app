@@ -36,7 +36,7 @@ COPY --from=build /app /app
 
 #install python for matches/update
 RUN apt-get update -qq && \
-  apt-get install python-is-python3
+  apt-get install -y python-is-python3
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
