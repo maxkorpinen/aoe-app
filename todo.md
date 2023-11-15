@@ -2,7 +2,7 @@
 
 - oma buildorder tekstimuodossa, tallennettuna käyttäjään?
 
-- mahdollisuus poistaa oma account
+- Peilimatsit
 
 ## Tehtäviä juttuja
 
