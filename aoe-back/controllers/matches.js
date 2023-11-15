@@ -5,7 +5,6 @@ const router = require('express').Router()
 const fs = require('fs')
 
 router.get('/winsagainst/', async(req, res)=> {
-  console.log("winsagainst/version")
   const {civ1, civ2} = req.query
   var matchResults = JSON.parse(fs.readFileSync('./data/result.json', 'utf8'))
   let res1 = matchResults[civ1][civ2]
@@ -40,7 +39,6 @@ router.get('/update/', async(req, res)=> {
 })
 
 router.get('/version', async (req, res)=> { 
-  console.log("matches/version")
   let version = await getLastUpdate()
   res.send({'version':version})
 })

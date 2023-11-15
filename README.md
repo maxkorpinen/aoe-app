@@ -15,14 +15,17 @@ Vinkit ja ohjeet halutaan tarjota:
 
 ## Käyttöohje
 
-HUOM!
-Alla oleva pätee itsehostattuun instanssiin, ja oletettavasti maksulliseen fly.io:n virtuaalikoneeseen. Ilmaisversion VM tappaa python prosessin ja ilmoittaa "Out of memory". Optimointi työn alla.
+Valitsemalla yhden sivilisaation ja valitsemalla tämän jälkeen "Analyse with chosen specs" ohjaa sivulle jossa näytetään sivilisaation tehokas yksikkö ja muutama vaihtoehto tukevaksi yksiköksi.
 
----
+Valitsemalla kaksi sivilisaatiota sivu näyttää vasemmalla ensimmäiseksi valitun sivilisaation tehokkaan yksikön, oikealla seuraavaksi valitun. Näitten alla on molempien osapuolten tukiyksiköt, ehdotukset huomioivat vastustajan tehokkaan yksikön. Sivu näyttää myös voittoprosentit sivilisaatioiden välillä 1v1 peleissä.
 
-Ohjelma tarjoaa vivun ottelutilastojen päivittämiselle. Se tapahtuu lähettämällä GET osoitteeseen '/api/update'. Viestin sisällössä tulee olla avain "UPDATE_SECRET", jonka arvo on envissä asetettu halutuksi.
+Uuden käyttäjän voi luoda suunnistamalla "Login or create new user" napista. Sivulta Userinfo voi valita suosikkisivilisaation itsellensä. Uusi valinta korvaa vanhan. Samalta sivulta voi myös poistaa käyttäjänsä.
 
-Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei löytänyt kätevää, yhä päivitettyä, kirjastoa tai tapaa käsitellä .parquet tiedostoja javascriptillä.
+About sivulla kerrotaan mistä voittoprosenttitilastot on kerätty ja miltä ajalta näytetyt tilastot ovat.
+
+Ohjelma tarjoaa vivun voittoprosenttitilastojen päivittämiselle. Se tapahtuu lähettämällä GET osoitteeseen '/api/update'. Viestin sisällössä tulee olla avain "UPDATE_SECRET", jonka arvo on envissä asetettu halutuksi. Helpohko tapa kokeilla tätä on käyttää aoe-back/utils/requests/updateMatches.http tiedostoa, ja https://marketplace.visualstudio.com/items?itemName=humao.rest-client linkin vscode plugaria. UpdateMatchesiin on jätetty fly.io:ssa toimiva UPDATE_SECRET.
+
+Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei löytänyt kätevää, yhä päivitettyä kirjastoa tai muuta tapaa käsitellä .parquet tiedostoja javascriptillä.
 
 ## työaikakirjanpito
 
@@ -128,8 +131,10 @@ Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei
 |       |      |                           |
 | 14.10 | 5.1  | prodin matches/updaten    |
 |       |      | korjailua/säätöä          |
+|       |      |                           |
+| 15.10 | 5.5  | matchesupdater optimointi |
 
-Yht: 126.5h 14.10. mennessä
+Yht: 132h 15.10. mennessä
 
 ## Muu
 

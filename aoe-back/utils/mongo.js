@@ -20,7 +20,6 @@ const units = require('./units')
 let saved = []
 for (i in units) {
   let newunit = Unit(units[i])
-  console.log(newunit)
   newunit.save().then(result => {
     console.log(units[i].name, " saved")
     saved = saved.concat(units[i].id )
