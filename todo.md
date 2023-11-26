@@ -1,10 +1,14 @@
+## Priority
+
+- New fly app for this, so as to remain separate from the original
+
+
 ## Featureita
 
-- oma buildorder tekstimuodossa, tallennettuna käyttäjään?
 
-- Peilimatsit
 
 ## Tehtäviä juttuja
+
 
 - siirrä users.js (front) updatesta ilmotusjutut muualle
 
@@ -20,9 +24,3 @@
   - userinfo?
   - kansiorakenne siten, että ylänapit omassa kansiossaan, ja selkeät omat sivut omassaan?
 
-- tee enemmän testejä
-
-  - kato että virherajatilanteet ei kippaa koko sivua
-  - uus käyttäjätesti miten kannattaa tehdä?
-
-- varmista että matchupissa näytettävät supportunitit tulee oikein
