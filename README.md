@@ -1,9 +1,13 @@
 # AoE2 guide app
 
-App is running in https://fso-aoe.fly.dev/
 
 Aim of developing app was to create a project that would
-1. 
+
+1. Test my ability to produce a coherent website using react + node.js, including all the usual cicd stuff.
+
+2. Very a very usable UI. Ie minimize button presses to get to the core of the app.
+
+Currently ...
 
 
 App itself attempts to: 
