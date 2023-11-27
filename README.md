@@ -1,6 +1,6 @@
 # AoE2 app
 
-## About the app
+## About the app 
 
 Aim of developing app was to create a project that would
 
