@@ -1,8 +1,7 @@
 ## Priority
 
 - New fly app for this, so as to remain separate from the original
-
-- set test env variables to githubrepo
+  - set env FLY_API_TOKEN to github
 
 
 ## Featureita
