@@ -5,20 +5,16 @@ Aim of developing app was to create a project that would
 
 1. Test my ability to produce a coherent website using react + node.js, including all the usual cicd stuff.
 
-2. Very a very usable UI. Ie minimize button presses to get to the core of the app.
-
-Currently ...
-
+2. A compact UI. Ie minimize button presses to get to the core function of the app.
 
 App itself attempts to: 
-Ohjelma pyrkii auttamaan keskitasoista tai tätä huonompaa pelaajaa Age of Empires II pelissä, tarjoamalla yksinkertaisia ohjeita.
+Help lower elo players in Age of Empires II, by giving simple unit instructions.
 
-Vinkit ja ohjeet halutaan tarjota:
+Tips and guides ought to be served in a:
 
-- yksinkertaisessa, helposti ymmärrettävässä muodossa
-- mahdollista käyttää ilman pelaajan ennakkovalmistelua
-  - esim. kun pelaaja näkee vastustajansa valitseman civin, niin tiedon syöttäminen on yksinkertaista, ja ohjelma tarjoaa välittömästi ohjeita järkevässä aikajärjestyksessä
-- Käytännössä siis halutaan antaa karkeita ohjeita mitä yksiköitä tulisi valmistaa, ja miten vastustajan yksikkövalintoihin tulisi reagoida yleisimmissä tapauksissa.
+- simple, easily understandable format
+- Usable without preparation
+  - Core use case is when a player enters a map loading screen and sees the opponents civilization, the player using Aoe-app can click two buttons and see what units approximately ought to be built and what units the opponent is likely to build
 
 ## Instructions
 
