@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 
+/* This module exists to help pushing new data to mongodb, for example if there is need to push new units.
+*/
+
 if (process.argv.length<3) {
   console.log('give password as argument')
   process.exit(1)

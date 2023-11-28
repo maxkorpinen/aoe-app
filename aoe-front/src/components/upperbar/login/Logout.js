@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
-import { resetUser } from '../../reducers/userReducer'
-import { pageChange } from '../../reducers/pageReducer'
-import { logoutChange } from '../../reducers/topButtonsReducer'
-import { showLoginFormChange } from '../../reducers/topButtonsReducer'
+import { resetUser } from '../../../reducers/userReducer'
+import { pageChange } from '../../../reducers/pageReducer'
+import { logoutChange } from '../../../reducers/topButtonsReducer'
+import { showLoginFormChange } from '../../../reducers/topButtonsReducer'
 
 const Logout = () => {
   const dispatch = useDispatch()

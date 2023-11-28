@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux"
-import { resetCivs } from '../../reducers/civReducer'
-import { resetPu } from '../../reducers/powerunitReducer'
-import { pageChange, guideChange, civsSetChange } from '../../reducers/pageReducer'
-import { showLoginFormChange } from "../../reducers/topButtonsReducer"
+import { resetCivs } from '../../../reducers/civReducer'
+import { resetPu } from '../../../reducers/powerunitReducer'
+import { pageChange, guideChange, civsSetChange } from '../../../reducers/pageReducer'
+import { showLoginFormChange } from "../../../reducers/topButtonsReducer"
 
 const StartOver = () => {
   const dispatch = useDispatch()

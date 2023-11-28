@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { showLoginFormChange } from '../../reducers/topButtonsReducer'
+import { showLoginFormChange } from '../../../reducers/topButtonsReducer'
 import NewUser from './NewUser'
 import LoginForm from './LoginForm'
 

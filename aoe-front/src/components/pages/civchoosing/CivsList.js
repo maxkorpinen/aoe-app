@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
-import { pageChange, guideChange, civsSetChange } from '../reducers/pageReducer'
-import { setCiv1, setCiv2 } from '../reducers/civReducer'
-import { setPu1, setPu2 } from "../reducers/powerunitReducer"
-import { setCiv1Wins, setCiv2Wins } from "../reducers/statsReducer"
-import civstuff from "../utils/civ_ids"
-import civService from "../services/civs"
-import matchService from "../services/matches"
+import { pageChange, guideChange, civsSetChange } from '../../../reducers/pageReducer'
+import { setCiv1, setCiv2 } from '../../../reducers/civReducer'
+import { setPu1, setPu2 } from "../../../reducers/powerunitReducer"
+import { setCiv1Wins, setCiv2Wins } from "../../../reducers/statsReducer"
+import civstuff from "../../../utils/civ_ids"
+import civService from "../../../services/civs"
+import matchService from "../../../services/matches"
 import CivButtonHolder from "./CivButtonHolder"
 import CivsListHeader from "./CivsListHeader"
 

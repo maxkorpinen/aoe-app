@@ -1,4 +1,4 @@
-import images from "../utils/imageloader"
+import images from "../../../utils/imageloader"
 import CivButton from "./CivButton"
 
 const CivButtonHolder = ({ f }) => {

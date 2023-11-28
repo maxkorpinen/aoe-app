@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
-import { setUser } from '../reducers/userReducer'
-import CivButtonHolder from "./CivButtonHolder"
-import userService from '../services/users'
-import { resetCivs } from '../reducers/civReducer'
-import { resetPu } from '../reducers/powerunitReducer'
-import { pageChange, guideChange, civsSetChange } from '../reducers/pageReducer'
-import { resetUser } from "../reducers/userReducer"
-import { logoutChange } from "../reducers/topButtonsReducer"
-import { setError } from '../reducers/errorReducer'
+import { setUser } from '../../reducers/userReducer'
+import CivButtonHolder from "./civchoosing/CivButtonHolder"
+import userService from '../../services/users'
+import { resetCivs } from '../../reducers/civReducer'
+import { resetPu } from '../../reducers/powerunitReducer'
+import { pageChange, guideChange, civsSetChange } from '../../reducers/pageReducer'
+import { resetUser } from "../../reducers/userReducer"
+import { logoutChange } from "../../reducers/topButtonsReducer"
+import { setError } from '../../reducers/errorReducer'
 
 const UserInfo = () => {
   const dispatch = useDispatch()

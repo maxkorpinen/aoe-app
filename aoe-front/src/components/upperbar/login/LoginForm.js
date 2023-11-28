@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
-import loginService from '../../services/login'
-import { setError } from '../../reducers/errorReducer'
-import { setUser } from '../../reducers/userReducer'
-import { logoutChange } from '../../reducers/topButtonsReducer'
+import loginService from '../../../services/login'
+import { setError } from '../../../reducers/errorReducer'
+import { setUser } from '../../../reducers/userReducer'
+import { logoutChange } from '../../../reducers/topButtonsReducer'
 
 const LoginForm = () => {
   const [username, setUsername] = useState('')

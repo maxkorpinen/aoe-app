@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import f from '../utils/helpfuncs'
+import f from '../../../utils/helpfuncs'
 
 const CivsListHeader = () => {
   const civ1 = useSelector(state => state.civs['civ1'])

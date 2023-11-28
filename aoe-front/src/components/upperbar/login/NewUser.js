@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import userService from '../../services/users'
-import { setError } from '../../reducers/errorReducer'
+import userService from '../../../services/users'
+import { setError } from '../../../reducers/errorReducer'
 
 const NewUser = () => {
   const [username, setUsername] = useState('')

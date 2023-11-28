@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import './buttonhighlight.css'
-import f from '../utils/helpfuncs'
+import f from '../../../utils/helpfuncs'
 
 const CivButton = (props) => {
   const { image, name, buttFunc } = props

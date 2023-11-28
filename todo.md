@@ -1,8 +1,5 @@
 ## Priority
 
-- New fly app for this, so as to remain separate from the original
-  - set env FLY_API_TOKEN to github
-
 
 ## Featureita
 
@@ -19,9 +16,4 @@
 
 - github actions envi kuntoon
 
-- refaktoroi:
-
-  - topbuttons
-  - userinfo?
-  - kansiorakenne siten, että ylänapit omassa kansiossaan, ja selkeät omat sivut omassaan?
 

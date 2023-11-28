@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setError } from '../../reducers/errorReducer'
-import { pageChange, guideChange } from '../../reducers/pageReducer'
-import f from '../../utils/helpfuncs'
+import { setError } from '../../../reducers/errorReducer'
+import { pageChange, guideChange } from '../../../reducers/pageReducer'
+import f from '../../../utils/helpfuncs'
 
 const AnalyseButton = () => {
   const dispatch = useDispatch()

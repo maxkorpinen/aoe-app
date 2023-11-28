@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import CivsList from './CivsList'
+import CivsList from './pages/civchoosing/CivsList'
 import Guide from './analysis/Guide'
-import UserInfo from './UserInfo'
-import AboutPage from './AboutPage'
+import UserInfo from './pages/UserInfo'
+import AboutPage from './pages/AboutPage'
 
 const PageChooser = () => {
   const page = useSelector(state => state.pageState.page)

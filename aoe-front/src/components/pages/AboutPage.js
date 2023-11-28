@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import matchService from '../services/matches'
+import matchService from '../../services/matches'
 
 const AboutPage = () => {
   const [version, setVersion] = useState('')

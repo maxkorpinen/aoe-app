@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Notification from './components/Notification'
-import TopButtons from './components/buttons/TopButtons'
+import { useDispatch } from 'react-redux'
+import Notification from './components/upperbar/Notification'
+import TopButtons from './components/upperbar/buttons/TopButtons'
 import { setUser } from './reducers/userReducer'
 import PageChooser from './components/PageChooser'
 
