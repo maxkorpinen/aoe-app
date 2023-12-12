@@ -19,17 +19,17 @@ Tips and guides ought to be served in a:
 
 ## Instructions
 
-Valitsemalla yhden sivilisaation ja valitsemalla tämän jälkeen "Analyse with chosen specs" ohjaa sivulle jossa näytetään sivilisaation tehokas yksikkö ja muutama vaihtoehto tukevaksi yksiköksi.
+Core functionality: choose two civilizations from the images in the front pages. Aoe-app will show powerunits for both civilizations and suggests supporting units based on the opposing powerunit. The app also shows win percentages for the civilizations when played against each other. 
 
-Valitsemalla kaksi sivilisaatiota sivu näyttää vasemmalla ensimmäiseksi valitun sivilisaation tehokkaan yksikön, oikealla seuraavaksi valitun. Näitten alla on molempien osapuolten tukiyksiköt, ehdotukset huomioivat vastustajan tehokkaan yksikön. Sivu näyttää myös voittoprosentit sivilisaatioiden välillä 1v1 peleissä.
+By choosing one civilization and clicking "Analyse with chosen specs" the app will show generic information about the chosen civ.
 
-Uuden käyttäjän voi luoda suunnistamalla "Login or create new user" napista. Sivulta Userinfo voi valita suosikkisivilisaation itsellensä. Uusi valinta korvaa vanhan. Samalta sivulta voi myös poistaa käyttäjänsä.
+New user can be created by going to "Login or create new user". In Userinfo user can choose a favorited civilization for the user account. User can also delete the account in question on the same page.
 
-About sivulla kerrotaan mistä voittoprosenttitilastot on kerätty ja miltä ajalta näytetyt tilastot ovat.
+About page explains where the win percentages are gathered and from which time period.
 
-Ohjelma tarjoaa vivun voittoprosenttitilastojen päivittämiselle. Se tapahtuu lähettämällä GET osoitteeseen '/api/update'. Viestin sisällössä tulee olla avain "UPDATE_SECRET", jonka arvo on envissä asetettu halutuksi. Helpohko tapa kokeilla tätä on käyttää aoe-back/utils/requests/updateMatches.http tiedostoa, ja https://marketplace.visualstudio.com/items?itemName=humao.rest-client linkin vscode plugaria. UpdateMatchesiin on jätetty fly.io:ssa toimiva UPDATE_SECRET.
+The program gives possibility to update win percentages. It's done by sending a GET request to '/api/update/'. The message must include header "UPDATE_SECRET". The value must exist in the server environment. Easy way to test this is to use aoe-back/utils/requests/updateMatches.http and the vs code plugin https://marketplace.visualstudio.com/items?itemName=humao.rest-client UpdateMatches in fly.io should have the fitting UPDATE_SECRET.
 
-Matsit päivitetään erillisellä python scriptillä, koska ohjelman tekijä ei löytänyt kätevää, yhä päivitettyä kirjastoa tai muuta tapaa käsitellä .parquet tiedostoja javascriptillä.
+The matches are updated with a separate python script process, as the creator of this app could not find an updated library, or any other practical way to handle .parquet files with JavaScript.
 
 ## Other stuff
 Unit rankings from https://aoe2-de-tools.herokuapp.com/civ-ranking/
