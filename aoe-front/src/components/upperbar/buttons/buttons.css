@@ -1,0 +1,26 @@
+@font-face {
+    font-family: Spectral;
+    src: url('/src/fonts/Spectral-Bold.ttf') format('truetype');
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-width: 1px 0;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, rgba(184,134,45,0), #b8862d, #ffdf91, #b8862d, rgba(184,134,45,0));
+    border-style: solid;
+}
+
+.upper {
+    font-family: Spectral, serif;
+    border: none;
+    background-color: transparent;
+    color: #ffdf91;
+}
+
+button:hover {
+    border: #b8862d;
+}

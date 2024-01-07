@@ -19,7 +19,7 @@ const Logout = () => {
   }
 
   return(
-    <button onClick={() => logout()}>
+    <button className='upper' onClick={() => logout()}>
       Logout</button>
   )
 }
