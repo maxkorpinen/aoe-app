@@ -15,7 +15,7 @@ const StartOver = () => {
     dispatch(showLoginFormChange(false))
   }
   return(
-    <button onClick={() => goBeginning()}>Start over</button>
+    <button className='upper' onClick={() => goBeginning()}>Start over</button>
   )
 }
 

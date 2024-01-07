@@ -46,7 +46,7 @@ const NewUser = () => {
           />
         </div>
       </div>
-      <button type='submit'>create user</button>
+      <button className='upper' type='submit'>create user</button>
     </form>
   )
 }

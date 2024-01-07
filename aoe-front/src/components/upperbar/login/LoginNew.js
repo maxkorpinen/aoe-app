@@ -16,7 +16,7 @@ const LoginNew = () => {
   return(
     <>
       { !showLoginForm &&
-        <button onClick={() => openLogin()}>Login or create new user</button>
+        <button className='upper' onClick={() => openLogin()}>Login or create new user</button>
       }
       { showLoginForm &&
       <>

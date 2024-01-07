@@ -1,0 +1,16 @@
+@font-face {
+    font-family: Spectral;
+    src: url('/src/fonts/Spectral-Bold.ttf') format('truetype');
+}
+
+
+h1 {
+    text-align: center;
+}
+body {
+    font-family: Spectral, serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #ffdf91;
+    background-color: #181c29;
+}

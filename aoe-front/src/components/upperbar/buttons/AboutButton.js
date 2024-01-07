@@ -9,7 +9,7 @@ const About = () => {
   }
 
   return(
-    <button onClick={() => showAbout()}>
+    <button className='upper' onClick={() => showAbout()}>
       About
     </button>
   )

@@ -27,7 +27,7 @@ const AnalyseButton = () => {
   }
 
   return(
-    <button onClick={() => showGuide()}>Analyse with chosen specs</button>
+    <button className='upper' onClick={() => showGuide()}>Analyse with chosen specs</button>
   )
 }
 

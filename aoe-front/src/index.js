@@ -11,6 +11,7 @@ import errorReducer from './reducers/errorReducer'
 import userReducer from './reducers/userReducer'
 import statsReducer from './reducers/statsReducer'
 import topButtonsReducer from './reducers/topButtonsReducer'
+import './main.css'
 
 
 const store = configureStore({

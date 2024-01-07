@@ -5,15 +5,22 @@ import Logout from '../login/Logout'
 import About from './AboutButton'
 import StartOver from './StartOver'
 import AnalyseButton from './AnalyseButton'
+import './buttons.css'
 
 const TopButtons = () => {
   const showLogout = useSelector(state => state.buttonsState.logout)
   const dispatch = useDispatch()
 
   return(
-    <div>
+    <div className="flex-container">
+      <div className='spacer' />
       <StartOver />
       <AnalyseButton />
+      <About />
+      <div className='spacer' />
+      <div className='spacer' />
+      <div className='spacer' />
+      <div className='spacer' />
       { !showLogout &&
         <LoginNew />}
       { showLogout &&
@@ -21,7 +28,8 @@ const TopButtons = () => {
           <button onClick={() => dispatch(pageChange('user'))}>Userinfo</button>
           <Logout/>
         </> }
-      <About />
+      <div className='spacer' />
+      <div className='spacer' />
     </div>
   )
 }

@@ -16,8 +16,8 @@ const App = () => {
   return (
     <div>
       <Notification/>
+      <h1>App of Empires</h1>
       <TopButtons />
-      <h1>AoE2 app</h1>
       <PageChooser />
     </div>
   )
