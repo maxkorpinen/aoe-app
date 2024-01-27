@@ -1,7 +1,5 @@
 # AoE2 app
 
-The app is running at https://aoe-app.fly.dev/
-
 ## About the app 
 
 Aim of developing app was to create a project that would
