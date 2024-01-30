@@ -11,6 +11,7 @@ import errorReducer from './reducers/errorReducer'
 import userReducer from './reducers/userReducer'
 import statsReducer from './reducers/statsReducer'
 import topButtonsReducer from './reducers/topButtonsReducer'
+import allCivsReducer from './reducers/allCivsReducer'
 import './main.css'
 
 
@@ -18,12 +19,13 @@ const store = configureStore({
   reducer: {
     pageState: pageStateReducer,
     civs: civReducer,
+    allCivs: allCivsReducer,
     powerunits: puReducer,
     token: tokenReducer,
     errorMessage: errorReducer,
     user: userReducer,
     stats: statsReducer,
-    buttonsState: topButtonsReducer
+    buttonsState: topButtonsReducer,
   }
 })
 

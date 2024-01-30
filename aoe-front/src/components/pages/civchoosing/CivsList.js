@@ -17,8 +17,8 @@ const CivsList = () => {
 
   const buttFunc = async (civ) => {
     const chosenCiv = civ.split(".")[0].toLowerCase()
-    const civpu = await civService.getCivPowerUnit(ids[chosenCiv])
     const civStuff = await civService.getWithId(ids[chosenCiv])
+    const civpu = await civService.getCivPowerUnit(ids[chosenCiv])
     civpu.civ = chosenCiv
 
     if (civsSet===0) {
