@@ -13,12 +13,17 @@ const CivsList = () => {
   const dispatch = useDispatch()
   const civsSet = useSelector(state => state.pageState.civsSet)
   const civ1 = useSelector(state => state.civs['civ1'])
+  const allCivs = useSelector(state => state.allCivs)
   const { ids } = civstuff
-
   const buttFunc = async (civ) => {
     const chosenCiv = civ.split(".")[0].toLowerCase()
-    const civStuff = await civService.getWithId(ids[chosenCiv])
-    const civpu = await civService.getCivPowerUnit(ids[chosenCiv])
+    const corrId = allCivs.filter((civ) => civ.name.toLowerCase() === chosenCiv)[0].id
+    console.log("CORRID",corrId[0].id)
+    const civStuff = await civService.getWithId(corrId)
+    //const civStuff = await civService.getWithId(ids[chosenCiv])
+    console.log("civStuff: ",civStuff)
+    const civpu = await civService.getCivPowerUnit(corrId)
+    console.log("2", civpu)
     civpu.civ = chosenCiv
 
     if (civsSet===0) {

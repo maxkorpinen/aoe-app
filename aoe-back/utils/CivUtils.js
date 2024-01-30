@@ -22,15 +22,15 @@ const isGoldUnit = (unit) => {
 }
 
 const getPowerUnit = (civ) => {
-  const civUnits = civ[0].units[0]
+  const civUnits = civ[0].units
   let highestValueUnit = ''
   let highestValue = 0
-  for (let unit in civUnits) {
-    if (civUnits[unit] > highestValue && isGoldUnit(unit)) {
-      highestValue = civUnits[unit]
-      highestValueUnit = unit
+  civUnits.forEach((unitEl) => {
+    if(unitEl.powerModifier > highestValue) {
+      highestValue = unitEl.powerModifier
+      highestValueUnit = unitEl.unit.toString()
     }
-  }
+  })
   return {unit: highestValueUnit, value: highestValue}
 }
 

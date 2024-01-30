@@ -17,7 +17,8 @@ const App = () => {
 
   useEffect(() => {
     civService.getAll().then( res => {
-      setAllCivs(res)
+      console.log("CIVS LOADED & READY")
+      dispatch(setAllCivs(res))
     })
   }, [])
 
