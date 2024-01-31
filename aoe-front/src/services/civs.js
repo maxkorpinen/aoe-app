@@ -12,7 +12,6 @@ const getWithId = async (id) => {
 }
 
 const getCivPowerUnit = async (id) => {
-  console.log("stuff:", baseUrl+'/'+id+'/powerunit')
   const res = await axios.get(baseUrl+'/'+id+'/powerunit')
   return res.data
 }

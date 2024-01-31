@@ -12,6 +12,7 @@ import userReducer from './reducers/userReducer'
 import statsReducer from './reducers/statsReducer'
 import topButtonsReducer from './reducers/topButtonsReducer'
 import allCivsReducer from './reducers/allCivsReducer'
+import matchupReducer from './reducers/matchupReducer'
 import './main.css'
 
 
@@ -26,6 +27,7 @@ const store = configureStore({
     user: userReducer,
     stats: statsReducer,
     buttonsState: topButtonsReducer,
+    matchup: matchupReducer,
   }
 })
 

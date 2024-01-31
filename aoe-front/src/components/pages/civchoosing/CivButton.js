@@ -4,11 +4,11 @@ import f from '../../../utils/helpfuncs'
 
 const CivButton = (props) => {
   const { image, name, buttFunc } = props
-  const civ1 = useSelector(state => state.civs['civ1'])
+  const civ1 = useSelector(state => state.civs.civ1)
   const { isEmpty } = f
 
-  if(!isEmpty(civ1[0])){
-    if(civ1[0].name.toLowerCase() === name.split(".")[0].toLowerCase()) {
+  if(!isEmpty(civ1)){
+    if(civ1.toLowerCase() === name.split(".")[0].toLowerCase()) {
       return(
         <button key={name} className="btnhighlight">
           <img src={image}
