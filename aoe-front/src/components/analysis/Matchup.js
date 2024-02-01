@@ -7,10 +7,12 @@ const Matchup = () => {
   return (
     <div>
       <p>matchup stuff</p>
-      <UnitBoxesHolder />
-      <CounterBoxesHolder/>
     </div>
   )
 }
 
 export default Matchup
+/*
+<UnitBoxesHolder />
+      <CounterBoxesHolder/>
+*/

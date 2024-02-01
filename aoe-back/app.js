@@ -11,6 +11,7 @@ const unitRouter = require('./controllers/units')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const matchRouter = require('./controllers/matches')
+const matchupRouter = require('./controllers/matchup')
 
 const mongoUrl = config.MONGODB_URI
 mongoose.connect(mongoUrl)
@@ -23,6 +24,7 @@ app.use('/api/units', unitRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/matches', matchRouter)
+app.use('/api/matchup', matchupRouter)
 if(process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)
