@@ -2,22 +2,36 @@ const mongoose = require('mongoose')
 const Unit = require('./unit')
 
 const civSchema = new mongoose.Schema({
-  //_id: ObjectId,
-  name: String,
-  description: String,
-  units: [{
-    unit: mongoose.ObjectId,
-    powerModifier: Number
-  }]
-})
+    name: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: false
+    },
+    image: {
+      type: String,
+      required: false
+    },
+    units: [{
+      unit: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Unit'
+      },
+      powerModifier: Number,
+      _id: false
+    }]
+  }, {
+    timestamps: true,
+  });
 
 civSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    console.log("ret: ", returnedObject)
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
   }
-})
+});
 
 module.exports = mongoose.model('Civ', civSchema)
