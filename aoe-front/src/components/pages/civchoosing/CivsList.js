@@ -15,21 +15,28 @@ const CivsList = () => {
   const civsSet = useSelector(state => state.pageState.civsSet)
 
   const buttFunc = async (civ) => {
-    const chosenCiv = civ.split(".")[0].toLowerCase()
-    if (civsSet===0) {
+    const chosenCiv = civ
+    console.log(civ)
+    if (civsSet === 0) {
       setChosenCivs([chosenCiv])
       dispatch(civsSetChange(1))
-    } else if (civsSet ===1) {
+    } else if (civsSet === 1) {
       setChosenCivs([...chosenCivs, chosenCiv])
       dispatch(setCivs(chosenCivs))
       const matchParticipants = { civ1: chosenCivs[0], civ2: chosenCiv }
+      console.log(matchParticipants)
+
       // get matchup stuff like suggested units
       const matchupStuff = await MatchupService.getMatchup(matchParticipants)
+
       // get winpct
       dispatch(setMatchup(matchupStuff))
       const matches = await matchService.getWithCivs(
-        { civ1:chosenCivs[0].toLowerCase(),
-          civ2:chosenCiv.toLowerCase() })
+        {
+          civ1: chosenCivs[0].name,
+          civ2: chosenCiv
+        })
+
       dispatch(setCiv1Wins(matches.civ1wins))
       dispatch(setCiv2Wins(matches.civ2wins))
 
@@ -42,7 +49,7 @@ const CivsList = () => {
   return (
     <div>
       <CivsListHeader />
-      <CivButtonHolder f={buttFunc}/>
+      <CivButtonHolder f={buttFunc} />
     </div>
   )
 }
