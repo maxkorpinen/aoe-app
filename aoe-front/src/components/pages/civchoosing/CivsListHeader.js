@@ -6,7 +6,6 @@ const CivsListHeader = () => {
 
   const civ1 = useSelector(state => state.civs['civ1'])
   const civ1Obj = civlist.find(civ => civ.id === civ1);
-  console.log(civlist)
 
   const { isEmpty } = f
   return(
