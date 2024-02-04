@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
     // Find the highest powerModifier unit in yourCiv with isGoldUnit=true
     const yourComp = yourCiv.units
       .filter(({ unit }) => unit && unit.isGoldUnit)
-      .sort((a, b) => b.powerModifier - a.powerModifier)[0]; // Corrected sorting logic
+      .sort((a, b) => b.powerModifier - a.powerModifier)[0];
 
     if (!yourComp) {
       return res.status(404).json({ message: 'No suitable unit found for your civilization.' });
@@ -52,6 +52,20 @@ router.get('/', async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching civilizations:', error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get('/update', async (req, res) => {
+  try {
+    const { yourCiv, oppComp } = req.query;
+
+    console.log('yourCiv:', yourCiv);
+    console.log('oppComp:', oppComp);
+
+    res.json({ message: 'Endpoint called successfully.' });
+  } catch (error) {
+    console.error('Error updating matchup:', error);
     res.status(500).json({ message: error.message });
   }
 });
