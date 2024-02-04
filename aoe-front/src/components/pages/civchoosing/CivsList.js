@@ -16,15 +16,14 @@ const CivsList = () => {
 
   const buttFunc = async (civ) => {
     const chosenCiv = civ
-    console.log(civ)
     if (civsSet === 0) {
       setChosenCivs([chosenCiv])
       dispatch(civsSetChange(1))
+      dispatch(setCivs([chosenCiv])) // Dispatching the first civ to the state
     } else if (civsSet === 1) {
       setChosenCivs([...chosenCivs, chosenCiv])
-      dispatch(setCivs(chosenCivs))
+      dispatch(setCivs([...chosenCivs, chosenCiv])) // Dispatching both civs to the state
       const matchParticipants = { civ1: chosenCivs[0], civ2: chosenCiv }
-      console.log(matchParticipants)
 
       // get matchup stuff like suggested units
       const matchupStuff = await MatchupService.getMatchup(matchParticipants)
@@ -44,6 +43,7 @@ const CivsList = () => {
       dispatch(pageChange('guide'))
       setChosenCivs([]) // resetoi
     }
+
   }
 
   return (

@@ -14,6 +14,7 @@ import topButtonsReducer from './reducers/topButtonsReducer'
 import allCivsReducer from './reducers/allCivsReducer'
 import matchupReducer from './reducers/matchupReducer'
 import './main.css'
+import allUnitsReducer from './reducers/allUnitsReducer'
 
 
 const store = configureStore({
@@ -21,6 +22,7 @@ const store = configureStore({
     pageState: pageStateReducer,
     civs: civReducer,
     allCivs: allCivsReducer,
+    allUnits: allUnitsReducer,
     powerunits: puReducer,
     token: tokenReducer,
     errorMessage: errorReducer,

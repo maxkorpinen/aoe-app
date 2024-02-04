@@ -6,9 +6,12 @@ const matchupSlice = createSlice({
   reducers: {
     setMatchup(state, action) {
       return action.payload
+    },
+    updateMatchup(state, action) {
+      return action.payload
     }
   }
 })
 
-export const { setMatchup } = matchupSlice.actions
+export const { setMatchup, updateMatchup } = matchupSlice.actions
 export default matchupSlice.reducer
