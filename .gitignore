@@ -8,3 +8,4 @@ aoe-back/data/matches.parquet
 aoe-back/data/players.parquet
 aoe-front/cypress/screenshots
 aoe-back/matches_update/chunker.py
+*eslintrc.js
