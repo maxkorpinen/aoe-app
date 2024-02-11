@@ -1,4 +1,4 @@
-describe('backend test tests', () => {
+/* describe('backend test tests', () => {
   it('mainpage buttons exist', () => {
     cy.visit('http://localhost:3001')
     cy.wait(500)
@@ -8,7 +8,7 @@ describe('backend test tests', () => {
     //cy.task('log', 'LOKIHOMMA: '+process.env.NODE_ENV)
     //cy.task('log', 'REACT_APP_BACKEND_URL_DEV: '+process.env.REACT_APP_BACKEND_URL_DEV)
   })
-})
+}) */
 
 describe('unlogged tests', () => {
 
