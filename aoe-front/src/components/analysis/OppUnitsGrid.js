@@ -5,9 +5,23 @@ const OppUnitsGrid = ({ oppUnits, onUnitToggle }) => {
     <div>
       <p>Change opponent unit comp</p>
       {oppUnits.map(unit => (
-        <button key={unit.unit.id} onClick={() => onUnitToggle(unit.unit.id)}>
-          {unit.unit.name}
-        </button>
+        <div
+          key={unit.unit.id}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '5px',
+            cursor: 'pointer'
+          }}
+          onClick={() => onUnitToggle(unit.unit.id)}
+        >
+          <img
+            src={unit.unit.image}
+            alt={unit.unit.name}
+            style={{ width: '50px', height: '50px' }}
+          />
+        </div>
       ))}
     </div>
   );
