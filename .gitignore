@@ -9,3 +9,5 @@ aoe-back/data/players.parquet
 aoe-front/cypress/screenshots
 aoe-back/matches_update/chunker.py
 *eslintrc.js
+aoe-back/build/*
+aoe-front/build/*
