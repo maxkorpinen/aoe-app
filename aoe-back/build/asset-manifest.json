@@ -1,26 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.21cb06aa.css",
-    "main.js": "/static/js/main.2d147fa9.js",
-    "static/media/carcher.png": "/static/media/carcher.9699042e3a0453f3deed.png",
-    "static/media/knight.png": "/static/media/knight.97856518e3472a9bbbce.png",
-    "static/media/skirmisher.png": "/static/media/skirmisher.80b38ee75939783053f9.png",
-    "static/media/scout.png": "/static/media/scout.4ea722202bc39e312fa4.png",
-    "static/media/archer.png": "/static/media/archer.2dc2a85ef952eeec1a1f.png",
-    "static/media/eagle.png": "/static/media/eagle.ec60d71e1f2d0698335c.png",
-    "static/media/spearman.png": "/static/media/spearman.1589f94a13b5c1f34c93.png",
-    "static/media/militia.png": "/static/media/militia.a832c097104b9dccd6e3.png",
-    "static/media/mayans.webp": "/static/media/mayans.04084922f67a96488f47.webp",
-    "static/media/goths.webp": "/static/media/goths.eb813b8dce005af01902.webp",
-    "static/media/mongols.webp": "/static/media/mongols.e8c7fe2b2254e8eac655.webp",
-    "static/media/franks.webp": "/static/media/franks.be3b705d01bf8403b3c7.webp",
-    "static/media/britons.webp": "/static/media/britons.6134b3fec6aac3fb5610.webp",
+    "main.css": "/static/css/main.d1a5cfa8.css",
+    "main.js": "/static/js/main.e6324e62.js",
+    "static/media/Spectral-Bold.ttf": "/static/media/Spectral-Bold.5d4eefbbf928be162735.ttf",
     "index.html": "/index.html",
-    "main.21cb06aa.css.map": "/static/css/main.21cb06aa.css.map",
-    "main.2d147fa9.js.map": "/static/js/main.2d147fa9.js.map"
+    "main.d1a5cfa8.css.map": "/static/css/main.d1a5cfa8.css.map",
+    "main.e6324e62.js.map": "/static/js/main.e6324e62.js.map"
   },
   "entrypoints": [
-    "static/css/main.21cb06aa.css",
-    "static/js/main.2d147fa9.js"
+    "static/css/main.d1a5cfa8.css",
+    "static/js/main.e6324e62.js"
   ]
 }
