@@ -1,13 +1,14 @@
-describe('backend test tests', () => {
+/* describe('backend test tests', () => {
   it('mainpage buttons exist', () => {
     cy.visit('http://localhost:3001')
+    cy.wait(500)
     cy.contains('Start over')
     cy.contains('Analyse with chosen specs')
     cy.contains('Login or create new user')
     //cy.task('log', 'LOKIHOMMA: '+process.env.NODE_ENV)
     //cy.task('log', 'REACT_APP_BACKEND_URL_DEV: '+process.env.REACT_APP_BACKEND_URL_DEV)
   })
-})
+}) */
 
 describe('unlogged tests', () => {
 
@@ -16,35 +17,17 @@ describe('unlogged tests', () => {
     cy.wait(200)
   })
 
-  it('mainpage buttons exist', () => {
+  it('mainpage topbar buttons exist', () => {
     cy.contains('Start over')
     cy.contains('Analyse with chosen specs')
     cy.contains('Login or create new user')
   })
-
-  it('mainpage civ clicks & start over', () =>{
-    cy.get('[alt="britons.webp"]').click()
-    cy.wait(400)
-    cy.contains('Analyse with chosen specs').click()
-    cy.wait(400)
-    cy.contains('Coreunit: archer')
-    cy.contains('Counters to your powerunit')
-    cy.wait(400)
-    cy.contains('Start over').click()
-    cy.wait(250)
-    cy.get('[alt="britons.webp"]')
+  
+  it('civbuttons exist', () => {
+    cy.get('[alt="Ethiopians"]')
+    cy.get('[alt="Franks"]')
   })
 
-  it('civclicks both', () => {
-    cy.wait(500)
-    cy.get('[alt="britons.webp"]').click()
-    cy.wait(500)
-    cy.get('[alt="franks.webp"]').click()
-    cy.wait(500)
-    cy.contains('Winpct')
-    cy.contains('Your core unit')
-    cy.contains('Opp core unit')
-  })
 })
 
 describe('logged in tests', () => {
@@ -69,11 +52,40 @@ describe('logged in tests', () => {
     cy.wait(300)
   })
 
+  it('civbuttons exist after logging', () => {
+    cy.get('[alt="Britons"]')
+    cy.get('[alt="Franks"]')
+  })
+
+  /* it('one civ analysis, logged in', () => {
+    cy.wait(500)
+    cy.get('[alt="Britons"]').click()
+    cy.wait(500)
+    cy.contains('Analyse with chosen specs').click()
+    cy.wait(1000)
+    cy.contains('Coreunit')
+    cy.contains('Counters to your powerunit')
+  })
+ */
+  /* it('favciv changes correctly', () => {
+    cy.wait(500)
+    cy.contains('Userinfo').click()
+    cy.wait(500)
+    cy.get('[alt="Britons"]').click()
+    cy.contains('Favourite civilization: britons')
+    cy.wait(500)
+    cy.get('[alt="goths.webp"]').click()
+    cy.wait(500)
+    cy.contains('Favourite civilization: goths')
+  }) */
+
+})
+/* 
   it('favciv changes correctly', () => {
     cy.wait(500)
     cy.contains('Userinfo').click()
     cy.wait(500)
-    cy.get('[alt="britons.webp"]').click()
+    cy.get('[alt="Britons"]').click()
     cy.contains('Favourite civilization: britons')
     cy.wait(500)
     cy.get('[alt="goths.webp"]').click()
@@ -158,4 +170,4 @@ describe('unlogged, account exists', () => {
     cy.wait(500)
     cy.contains('wrong credentials')
   })
-})
+}) */

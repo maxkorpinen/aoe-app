@@ -3,17 +3,18 @@ import './buttonhighlight.css'
 import f from '../../../utils/helpfuncs'
 
 const CivButton = (props) => {
-  const { image, name, buttFunc } = props
-  const civ1 = useSelector(state => state.civs['civ1'])
+  const { image, name, id, buttFunc } = props
+  const civ1 = useSelector(state => state.civs.civ1)
   const { isEmpty } = f
 
-  if(!isEmpty(civ1[0])){
-    if(civ1[0].name.toLowerCase() === name.split(".")[0].toLowerCase()) {
+  if(!isEmpty(civ1)){
+    if(civ1.toLowerCase() === name.split(".")[0].toLowerCase()) {
       return(
-        <button key={name} className="btnhighlight">
+        <button key={id} className="btnhighlight">
           <img src={image}
+            value={id}
             alt = {name}
-            onClick={() => buttFunc(name)}
+            onClick={() => buttFunc(id)}
             width={100}
             height={100}/>
         </button>
@@ -22,10 +23,11 @@ const CivButton = (props) => {
   }
 
   return (
-    <button key={name}>
+    <button key={id}>
       <img src={image}
+        value={id}
         alt = {name}
-        onClick={() => buttFunc(name)}
+        onClick={() => buttFunc(id)}
         width={100}
         height={100}/>
     </button>

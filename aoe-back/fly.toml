@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for aoe-app on 2023-11-27T14:42:22+02:00
+# fly.toml app configuration file generated for aoe-app-keimo-1 on 2024-02-11T13:38:59+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "aoe-app"
-primary_region = "arn"
+app = 'aoe-app-keimo-1'
+primary_region = 'arn'
 
 [build]
 
 [env]
-  PORT = "3000"
+  PORT = '3000'
 
 [http_service]
   internal_port = 3000
@@ -17,9 +17,9 @@ primary_region = "arn"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
 [[vm]]
-  cpu_kind = "shared"
+  cpu_kind = 'shared'
   cpus = 1
   memory_mb = 1024
