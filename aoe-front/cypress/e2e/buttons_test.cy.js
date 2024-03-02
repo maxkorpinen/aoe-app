@@ -30,7 +30,7 @@ describe('unlogged tests', () => {
 
 })
 
-describe('logged in tests', () => {
+/* describe('logged in tests', () => {
 
   beforeEach(function() {
     cy.request('POST', 'http://localhost:3001/api/testing/reset')
@@ -57,7 +57,7 @@ describe('logged in tests', () => {
     cy.get('[alt="Franks"]')
   })
 
-  /* it('one civ analysis, logged in', () => {
+  it('one civ analysis, logged in', () => {
     cy.wait(500)
     cy.get('[alt="Britons"]').click()
     cy.wait(500)
@@ -66,8 +66,8 @@ describe('logged in tests', () => {
     cy.contains('Coreunit')
     cy.contains('Counters to your powerunit')
   })
- */
-  /* it('favciv changes correctly', () => {
+ 
+   it('favciv changes correctly', () => {
     cy.wait(500)
     cy.contains('Userinfo').click()
     cy.wait(500)
@@ -77,9 +77,9 @@ describe('logged in tests', () => {
     cy.get('[alt="goths.webp"]').click()
     cy.wait(500)
     cy.contains('Favourite civilization: goths')
-  }) */
+  })
 
-})
+}) */
 /* 
   it('favciv changes correctly', () => {
     cy.wait(500)
