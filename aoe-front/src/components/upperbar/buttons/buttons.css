@@ -1,6 +1,7 @@
 @font-face {
     font-family: Spectral;
-    src: url('/src/fonts/Spectral-Bold.ttf') format('truetype');
+    src: url('/src/fonts/Spectral-Bold.ttf') format('truetype'),
+    url('/src/fonts/Spectral-Regular.ttf') format('truetype');
 }
 
 .flex-container {
@@ -17,10 +18,12 @@
 .upper {
     font-family: Spectral, serif;
     border: none;
-    background-color: transparent;
+    background: transparent;
     color: #ffdf91;
+    text-transform: uppercase;
 }
 
-button:hover {
-    border: #b8862d;
+.upper:hover {
+    background: linear-gradient(90deg, rgba(3, 77, 112, 0), #034d70 15% 85%, rgba(3, 77, 112, 0));
+    color:#ffefc1
 }

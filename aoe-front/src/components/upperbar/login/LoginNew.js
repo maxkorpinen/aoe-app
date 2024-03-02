@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { showLoginFormChange } from '../../../reducers/topButtonsReducer'
-import NewUser from './NewUser'
-import LoginForm from './LoginForm'
+import Dropdown from '../buttons/dropDown'
 
 
 const LoginNew = () => {
@@ -20,8 +19,7 @@ const LoginNew = () => {
       }
       { showLoginForm &&
       <>
-        <LoginForm/>
-        <NewUser/>
+        <Dropdown/>
       </>
       }
     </>
