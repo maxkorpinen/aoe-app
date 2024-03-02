@@ -23,7 +23,7 @@ const store = configureStore({
     errorMessage: errorReducer,
     user: userReducer,
     stats: statsReducer,
-    buttonsState: topButtonsReducer
+    buttonsState: topButtonsReducer,
   }
 })
 
