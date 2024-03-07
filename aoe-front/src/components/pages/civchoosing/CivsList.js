@@ -26,10 +26,10 @@ const CivsList = () => {
       const matchParticipants = { civ1: chosenCivs[0], civ2: chosenCiv }
 
       // get matchup stuff like suggested units
-      const matchupStuff = await MatchupService.getMatchup(matchParticipants)
+      //const matchupStuff = await MatchupService.getMatchup(matchParticipants)
 
       // get winpct
-      dispatch(setMatchup(matchupStuff))
+      //dispatch(setMatchup(matchupStuff))
       const matches = await matchService.getWithCivs(
         {
           civ1: chosenCivs[0].name,
