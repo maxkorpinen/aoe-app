@@ -5,21 +5,10 @@ const {punit, getPowerUnit, getCounters} = require('../utils/CivUtils')
 // Endpoint for GETting all civs
 router.get('/', async (req, res) => {
   try {
-    const civs = await Civ.find({})
-    let ret = []
-    for (const [key, value] of Object.entries(civs)) {
-      let cur = civs[key]
-      let newCivObj = {
-        id: cur.id,
-        name: cur.name,
-        description: cur.description,
-        units: cur.units,
-        image: cur.image,
-      }
-      ret.push(newCivObj);
-    }
-    res.json(ret);
+    const civs = await Civ.find({}).populate('units.unit');
+    res.json(civs);
   } catch (error) {
+    console.error(error); // Log the error to the console
     res.status(500).json({ message: error.message })
   }
 });

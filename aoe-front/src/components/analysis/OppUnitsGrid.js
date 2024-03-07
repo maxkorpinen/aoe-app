@@ -1,12 +1,12 @@
 import React from 'react';
 
-const OppUnitsGrid = ({ oppUnits, onUnitToggle }) => {
+const OppUnitsGrid = ({ oppUnits, onUnitToggle, oppComp }) => {
   return (
     <div>
       <p>Change opponent unit comp</p>
       {oppUnits.map(unit => (
         <div
-          key={unit.unit.id}
+          key={unit.id}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -14,12 +14,16 @@ const OppUnitsGrid = ({ oppUnits, onUnitToggle }) => {
             margin: '5px',
             cursor: 'pointer'
           }}
-          onClick={() => onUnitToggle(unit.unit.id)}
+          onClick={() => onUnitToggle(unit.id)}
         >
           <img
-            src={unit.unit.image}
-            alt={unit.unit.name}
-            style={{ width: '50px', height: '50px' }}
+            src={unit.image}
+            alt={unit.name}
+            style={{
+              width: '50px',
+              height: '50px',
+              border: oppComp.some(oppUnit => oppUnit.id === unit.id) ? '2px solid gold' : 'none'
+            }}
           />
         </div>
       ))}

@@ -35,10 +35,9 @@ router.get('/', async (req, res) => {
     }
 
     // Convert to desired format
-    const formatUnit = ({ unit, powerModifier }) => ({
-      ...unit.toObject(),
-      powerModifier
-    });
+    const formatUnit = ({ unit }) => {
+      return unit.toJSON();
+    };
 
     console.log('Opponent Civ:', oppCiv.name); 
     console.log('Opponent Power Unit:', formatUnit(oppComp).name);
@@ -58,9 +57,10 @@ router.get('/', async (req, res) => {
 
 router.get('/update', async (req, res) => {
   try {
-    const { yourCiv, oppComp } = req.query;
+    const { yourCiv, oppCiv, oppComp } = req.query;
 
     console.log('yourCiv:', yourCiv);
+    console.log('oppCiv:', oppCiv);
     console.log('oppComp:', oppComp);
 
     res.json({ message: 'Endpoint called successfully.' });

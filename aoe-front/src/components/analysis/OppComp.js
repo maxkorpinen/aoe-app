@@ -6,7 +6,7 @@ const OppComp = ({ oppUnits, oppComp, onUnitToggle }) => {
   return (
     <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
       <OppCompDisplay oppComp={oppComp} />
-      <OppUnitsGrid oppUnits={oppUnits} onUnitToggle={onUnitToggle} />
+      <OppUnitsGrid oppComp={oppComp} oppUnits={oppUnits} onUnitToggle={onUnitToggle} />
     </div>
   );
 };

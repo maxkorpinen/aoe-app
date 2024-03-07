@@ -1,40 +1,63 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import OppComp from './OppComp';
 import YourComp from './YourComp';
 import matchupService from '../../services/matchup';
 
 const Guide = () => {
-  const dispatch = useDispatch();
+  const [matchup, setMatchup] = useState(null);
+  const [yourComp, setYourComp] = useState([]);
+  const [oppComp, setOppComp] = useState([]);
 
   const civs = useSelector(state => state.civs);
-
   const allCivs = useSelector(state => state.allCivs);
   const allUnits = useSelector(state => state.allUnits);
-  console.log(allUnits)
 
   const yourCiv = allCivs.find(civ => civ.id === civs.civ1);
   const oppCiv = allCivs.find(civ => civ.id === civs.civ2);
-  console.log('yourCiv', yourCiv);
-  console.log('oppCiv', oppCiv);
 
-  const yourComp = useSelector(state => state.matchup.yourComp);
-  const oppComp = useSelector(state => state.matchup.oppComp);
-  console.log('yourComp', yourComp);
-  console.log('oppComp', oppComp);
+  const oppUnits = oppCiv.units.map(unitObj => unitObj.unit);
 
-  const oppUnits = oppCiv.units.map(unit => {
-    const fullUnit = allUnits.find(u => u.id === unit.unit);
-    return { unit: fullUnit, powerModifier: unit.powerModifier };
-  });
+  useEffect(() => {
+    const fetchMatchup = async () => {
+      const initialMatchup = await matchupService.getMatchup(civs);
+      setMatchup(initialMatchup);
+      setYourComp(initialMatchup.yourComp);
+      setOppComp(initialMatchup.oppComp);
+    };
 
-  const handleUnitToggle = async (unitId) => {
-    console.log('Unit button clicked:', unitId);
-  };
+    fetchMatchup();
+  }, [civs]);
+
+  const handleUnitToggle = useCallback((unitId) => {
+    const clickedUnit = oppUnits.find(unit => unit.id === unitId);
+    setOppComp(prevOppComp => {
+      // Check if the clicked unit is already in OppComp
+      const isUnitInOppComp = prevOppComp.some(unit => unit.id === unitId);
+
+      if (isUnitInOppComp) {
+        // If the unit is already in OppComp, remove it
+        return prevOppComp.filter(unit => unit.id !== unitId);
+      } else {
+        // If the unit isn't in OppComp, add it
+        return [...prevOppComp, clickedUnit];
+      }
+    });
+
+    // Move the API call inside the useEffect hook
+  }, [oppUnits]); // Add oppUnits to the dependency array
+
+  useEffect(() => {
+    if (oppComp.length > 0) {
+      matchupService.updateMatchup(yourCiv.id, oppCiv.id, oppComp.map(unit => unit.id));
+    }
+  }, [oppComp, yourCiv.id, oppCiv.id]); // Run the effect whenever oppComp, yourCiv.id, or oppCiv.id changes
+
 
   return (
     <div>
-      <YourComp yourComp={yourComp} />
+      <h2>{yourCiv.name} vs {oppCiv.name}</h2>
+      <YourComp yourComp={yourComp} yourCiv={yourCiv} />
       <OppComp oppUnits={oppUnits} oppComp={oppComp} onUnitToggle={(unitId) => handleUnitToggle(unitId)} />
     </div>
   );
