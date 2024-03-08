@@ -49,10 +49,16 @@ const Guide = () => {
 
   useEffect(() => {
     if (oppComp.length > 0) {
-      matchupService.updateMatchup(yourCiv.id, oppCiv.id, oppComp.map(unit => unit.id));
+      matchupService.updateMatchup(yourCiv.id, oppCiv.id, oppComp.map(unit => unit.id))
+        .then(response => {
+          // Assuming you have a state update function called setYourComp
+          setYourComp(response.yourComp);
+        })
+        .catch(error => {
+          console.error('Error updating matchup:', error);
+        });
     }
-  }, [oppComp, yourCiv.id, oppCiv.id]); // Run the effect whenever oppComp, yourCiv.id, or oppCiv.id changes
-
+  }, [oppComp, yourCiv.id, oppCiv.id]);
 
   return (
     <div>
