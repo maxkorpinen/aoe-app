@@ -13,6 +13,14 @@ const unitSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
+  isMeta: {
+    type: Boolean,
+    required: true
+  },
+  isUnique: {
+    type: Boolean,
+    required: true
+  },
   counterOf: [],
   counteredBy: [],
   image: {
