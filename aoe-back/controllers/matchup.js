@@ -26,9 +26,15 @@ router.get('/', async (req, res) => {
     }
 
     // Find the highest powerModifier unit in yourCiv with isGoldUnit=true
-    const yourComp = yourCiv.units
-      .filter(({ unit }) => unit && unit.isGoldUnit)
+    let yourComp = yourCiv.units
+      .filter(({ unit }) => unit && unit.isGoldUnit && !oppComp.unit.counterOf.includes(unit.id))
       .sort((a, b) => b.powerModifier - a.powerModifier)[0];
+
+    if (!yourComp) {
+      yourComp = yourCiv.units
+        .filter(({ unit }) => unit && !oppComp.unit.counterOf.includes(unit.id))
+        .sort((a, b) => b.powerModifier - a.powerModifier)[0];
+    }
 
     if (!yourComp) {
       return res.status(404).json({ message: 'No suitable unit found for your civilization.' });
