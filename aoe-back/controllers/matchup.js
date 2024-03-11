@@ -68,7 +68,15 @@ router.get('/update', async (req, res) => {
 
     // Fetch civs and units from the database
     const yourCiv = await Civ.findById(yourCivId).populate('units.unit');
+    const oppCiv = await Civ.findById(oppCivId).populate('units.unit');
+    console.log('Opp civ:', oppCiv);
+
     const oppComp = await Unit.find({ _id: { $in: oppCompIds } });
+    console.log('Opponent comp:', oppComp);
+
+    // Calculate the average powerModifier of the opponent's comp
+    const oppCompPowerModifier = oppComp.reduce((sum, { powerModifier }) => sum + powerModifier, 0) / oppComp.length;
+    console.log('Opponent comp powerModifier:', oppCompPowerModifier);
 
     // Filter for gold units which have all the opponent units' ids in their counterOf array
     const yourCounterGoldUnits = yourCiv.units
@@ -92,10 +100,12 @@ router.get('/update', async (req, res) => {
       return res.json({ yourComp: [yourGoldUnit.unit.toJSON()] });
     }
 
-    // If oppComp has more than 3 units, return the highest powerModifier unit
+    // If oppComp has more than 3 units, return the highest powerModifier gold unit
     if (oppComp.length > 3) {
       return res.json({ yourComp: [yourGoldUnit.unit.toJSON()] });
     }
+
+    // If no easy gold counter is found, we will calculate the best combination of up to 2 units
 
     // Create a list of all possible combinations of up to 2 units
     const combinations = getCombinations(yourCiv.units, 2);
@@ -111,8 +121,25 @@ router.get('/update', async (req, res) => {
       return { combination, score };
     });
 
-    // Sort combinations by score and return the one with the highest score
-    let { combination: yourComp } = scoredCombinations.sort((a, b) => b.score - a.score)[0];
+    // Sort combinations by score, isMeta count, and number of units, and return the one with the highest score, isMeta count, and fewer units
+    let { combination: yourComp } = scoredCombinations.sort((a, b) => {
+      // If scores are equal, prefer the combination with more units with isMeta = true
+      if (a.score === b.score) {
+        const aMetaCount = a.combination.filter(({ unit }) => unit.isMeta).length;
+        const bMetaCount = b.combination.filter(({ unit }) => unit.isMeta).length;
+        if (aMetaCount === bMetaCount) {
+          // If Meta counts are equal, prefer the combination with fewer units if there is a unit that has all opponent unit IDs in its counterOf array
+          const aHasCounter = a.combination.some(({ unit }) => oppComp.every(oppUnit => unit.counterOf.includes(oppUnit.id)));
+          const bHasCounter = b.combination.some(({ unit }) => oppComp.every(oppUnit => unit.counterOf.includes(oppUnit.id)));
+          if (aHasCounter && bHasCounter) {
+            return a.combination.length - b.combination.length;
+          }
+        }
+        return bMetaCount - aMetaCount;
+      }
+      // Otherwise, prefer the combination with the higher score
+      return b.score - a.score;
+    })[0];
 
     // Format yourComp to match the format in the / endpoint
     yourComp = yourComp.map(({ unit }) => unit.toJSON());
