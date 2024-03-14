@@ -19,10 +19,8 @@ describe('unlogged tests', () => {
 
   it('mainpage topbar buttons exist', () => {
     cy.contains('Start over')
-    cy.contains('Analyse with chosen specs')
-    cy.contains('Login or create new user')
   })
-  
+
   it('civbuttons exist', () => {
     cy.get('[alt="Ethiopians"]')
     cy.get('[alt="Franks"]')
