@@ -15,3 +15,24 @@ body {
     color: #ffdf91;
     background-color: #181c29;
 }
+.civlist {
+
+}
+.civbuttonholder {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 1008px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 1020px) {
+    .civbuttonholder {
+        width: 560px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .civbuttonholder {
+        width: 336px;
+    }
+}

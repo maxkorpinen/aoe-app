@@ -47,7 +47,7 @@ const CivsList = () => {
   }
 
   return (
-    <div>
+    <div className="civlist">
       <CivsListHeader />
       <CivButtonHolder f={buttFunc} />
     </div>
