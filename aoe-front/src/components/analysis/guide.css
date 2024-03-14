@@ -13,6 +13,11 @@
   justify-content: center;
 }
 
+.civicon {
+  width: 30px;
+  height: 30px;
+}
+
 .overcomp {
   display: flex;
   flex-direction: column;

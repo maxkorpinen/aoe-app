@@ -63,7 +63,7 @@ const Guide = () => {
 
   return (
     <div className='content'>
-      <h2>{yourCiv.name} vs {oppCiv.name}</h2>
+      <h2>{yourCiv.name} <img className='civicon' src={yourCiv.image} /> vs <img className='civicon' src={oppCiv.image} /> {oppCiv.name}</h2>
       <div className='overcomp'>
         <YourComp yourComp={yourComp} yourCiv={yourCiv} />
         <OppComp oppUnits={oppUnits} oppComp={oppComp} onUnitToggle={(unitId) => handleUnitToggle(unitId)} />
