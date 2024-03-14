@@ -6,7 +6,7 @@ const CivButtonHolder = ({ f }) => {
   const civlist = useSelector(state => state.allCivs);
 
   return(
-    <div>
+    <div className='civbuttonholder'>
       {civlist.map((n) => (
         <CivButton
           key={n.id}
