@@ -9,14 +9,14 @@ const CivsListHeader = () => {
 
   const { isEmpty } = f
   return(
-    <>
+    <div className='choosehead'>
       {isEmpty(civ1) &&
         <p>Choose your civ </p>
       }
       {!isEmpty(civ1) &&
         <p>Your civ: {civ1Obj && civ1Obj.name}. Choose opponents civ!</p>
       }
-    </>
+    </div>
   )
 }
 

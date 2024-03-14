@@ -15,8 +15,15 @@ body {
     color: #ffdf91;
     background-color: #181c29;
 }
+/*
 .civlist {
 
+}
+*/
+.choosehead {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 .civbuttonholder {
     display: flex;
