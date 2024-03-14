@@ -18,6 +18,10 @@
   height: 30px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .overcomp {
   display: flex;
   flex-direction: column;
