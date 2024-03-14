@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import OppComp from './OppComp';
 import YourComp from './YourComp';
 import matchupService from '../../services/matchup';
+import './guide.css'
 
 const Guide = () => {
   const [matchup, setMatchup] = useState(null);
@@ -61,10 +62,12 @@ const Guide = () => {
   }, [oppComp, yourCiv.id, oppCiv.id]);
 
   return (
-    <div>
+    <div className='content'>
       <h2>{yourCiv.name} vs {oppCiv.name}</h2>
-      <YourComp yourComp={yourComp} yourCiv={yourCiv} />
-      <OppComp oppUnits={oppUnits} oppComp={oppComp} onUnitToggle={(unitId) => handleUnitToggle(unitId)} />
+      <div className='overcomp'>
+        <YourComp yourComp={yourComp} yourCiv={yourCiv} />
+        <OppComp oppUnits={oppUnits} oppComp={oppComp} onUnitToggle={(unitId) => handleUnitToggle(unitId)} />
+      </div>
     </div>
   );
 };

@@ -16,14 +16,51 @@
 }
 
 .upper {
+    padding: 0 12px;
     font-family: Spectral, serif;
-    border: none;
+    border: 1px solid #181c29;
     background: transparent;
     color: #ffdf91;
     text-transform: uppercase;
 }
 
-.upper:hover {
-    background: linear-gradient(90deg, rgba(3, 77, 112, 0), #034d70 15% 85%, rgba(3, 77, 112, 0));
-    color:#ffefc1
+/* for devices with hover capability */
+@media (hover: hover) {
+    @keyframes pulse {
+        0% {
+            border-color: #181c29;
+        }
+        50% {
+            border-color: #b8862d;
+        }
+        100% {
+            border-color: #181c29;
+        }
+    }
+    .upper:hover {
+        
+        border-radius: 5px;
+        animation: pulse 1s;
+        background: linear-gradient(90deg, rgba(3, 77, 112, 0), #034d70 8% 92%, rgba(3, 77, 112, 0));
+        color:#ffefc1;
+        
+    }
+}
+/* for touchscreens */
+@media (hover: none){
+    @keyframes bgpulse{
+        0% {
+            background: #181c29;
+        }
+        33% {
+            background: linear-gradient(90deg, rgba(3, 77, 112, 0), #034d70 8% 92%, rgba(3, 77, 112, 0));
+        }
+        100% {
+            background: #181c29;
+        }
+    }
+    .upper:active {
+        animation: bgpulse 0.5s;
+        color: #ffefc1;
+    }
 }
