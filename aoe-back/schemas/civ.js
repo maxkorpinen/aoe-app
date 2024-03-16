@@ -57,13 +57,15 @@ civSchema.set('toJSON', {
     delete returnedObject.__v;
 
     ['feudal', 'castle', 'imperial'].forEach(age => {
-      returnedObject.units[age] = returnedObject.units[age].map(unitObj => {
-        if (unitObj.unit._id) {
-          unitObj.unit.id = unitObj.unit._id.toString();
-          delete unitObj.unit._id;
-        }
-        return unitObj;
-      });
+      if (Array.isArray(returnedObject.units[age])) {
+        returnedObject.units[age] = returnedObject.units[age].map(unitObj => {
+          if (unitObj.unit._id) {
+            unitObj.unit.id = unitObj.unit._id.toString();
+            delete unitObj.unit._id;
+          }
+          return unitObj;
+        });
+      }
     });
   }
 });
