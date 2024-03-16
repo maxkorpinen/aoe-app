@@ -5,18 +5,18 @@ const Unit = require('../schemas/unit');
 // Endpoint for returning the opponent's powerModifier unit with isGoldUnit=true
 router.get('/', async (req, res) => {
   try {
-    const { oppCivId } = req.query;
+    const { oppCivId, oppAge } = req.query;
     console.log('Civ:', oppCivId);
 
     // Fetch Civ document and populate its units
-    const oppCiv = await Civ.findById(oppCivId).populate('units.unit');
+    const oppCiv = await Civ.findById(oppCivId).populate('units.feudal.unit units.castle.unit units.imperial.unit');
 
     if (!oppCiv) {
       return res.status(404).json({ message: 'Civilization not found.' });
     }
 
     // Identify highest opponent powerModifier unit with isGoldUnit=true
-    const oppComp = oppCiv.units
+    const oppComp = oppCiv.units[oppAge]
       .filter(({ unit }) => unit && unit.isGoldUnit)
       .sort((a, b) => b.powerModifier - a.powerModifier)[0];
 
@@ -44,16 +44,18 @@ router.get('/', async (req, res) => {
 router.get('/update', async (req, res) => {
   try {
     // We get IDs of both civs and an array of unit IDs from the request query
-    const { yourCiv: yourCivId, oppCiv: oppCivId, oppComp: oppCompIds } = req.query;
+    const { yourCiv: yourCivId, oppCiv: oppCivId, oppComp: oppCompIds, yourAge, oppAge } = req.query;
 
+    console.log(oppCompIds)
     // Fetch civs and units from the database
-    const yourCiv = await Civ.findById(yourCivId).populate('units.unit');
-    const oppCiv = await Civ.findById(oppCivId).populate('units.unit');
+    // Fetch civs and units from the database
+    const yourCiv = await Civ.findById(yourCivId).populate(`units.${yourAge}.unit`);
+    const oppCiv = await Civ.findById(oppCivId).populate(`units.${oppAge}.unit`);
 
     // console.log('Your Units:', yourCiv.units);
 
     // Here we add powerModifiers to the opponent's units
-    const oppComp = oppCiv.units
+    const oppComp = oppCiv.units[oppAge]
       .filter(({ unit }) => oppCompIds.includes(unit._id.toString()))
       .map(({ unit, powerModifier }) => ({
         ...unit._doc,
@@ -69,7 +71,7 @@ router.get('/update', async (req, res) => {
     const PM_AVERAGE = 4;
 
     // Find the highest powerModifier unit with isGoldUnit = True
-    const yourGoldUnit = yourCiv.units
+    const yourGoldUnit = yourCiv.units[yourAge]
       .filter(({ unit }) => unit.isGoldUnit)
       .sort((a, b) => b.powerModifier - a.powerModifier)[0];
 
@@ -77,19 +79,18 @@ router.get('/update', async (req, res) => {
     if (oppComp.length === 1) {
       const oppUnitId = oppComp[0]._id;
     
-      const yourGoldUnit = yourCiv.units
+      const yourGoldUnit = yourCiv.units[yourAge]
         .filter(({ unit }) => unit.isGoldUnit)
         .filter(({ unit }) => unit.isMeta)
         .sort((a, b) => b.powerModifier - a.powerModifier)[0];
 
-      console.log('Your Gold Unit:', yourGoldUnit.unit.name)
+      //console.log('Your Gold Unit:', yourGoldUnit)
       // If this unit counters the enemy unit, return it
       if (yourGoldUnit.unit.counterOf.includes(oppUnitId)) {
-        console.log('your power unit is enough')
         return res.json({ yourComp: [yourGoldUnit.unit.toJSON()] });
       }
 
-      const yourCounterNonGoldUnit = yourCiv.units
+      const yourCounterNonGoldUnit = yourCiv.units[yourAge]
         .filter(({ unit }) => !unit.isGoldUnit && unit.counterOf.includes(oppUnitId))
         .sort((a, b) => b.powerModifier - a.powerModifier)[0];
     
@@ -103,7 +104,7 @@ router.get('/update', async (req, res) => {
     }
 
     // Filter for gold units which have all the opponent units' ids in their counterOf array and that are meta and that have reasonable powerModifier
-    const yourCounterGoldUnits = yourCiv.units
+    const yourCounterGoldUnits = yourCiv.units[yourAge]
       .filter(({ unit }) => unit.isGoldUnit)
       .filter(({ unit }) => unit.isMeta)
       .filter(({ powerModifier }) => powerModifier > PM_AVERAGE)
@@ -129,7 +130,7 @@ router.get('/update', async (req, res) => {
     // If no easy gold counter is found, we will calculate the best combination of up to 2 units
 
     // Create a list of all possible combinations of up to 2 units
-    const combinations = getCombinations(yourCiv.units, 2);
+    const combinations = getCombinations(yourCiv.units[yourAge], 2);
 
     // Filter out combinations where more than one unit has isGoldUnit = True
     const validCombinations = combinations.filter(

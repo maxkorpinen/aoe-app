@@ -3,13 +3,13 @@ import axios from '../utils/apiClient';
 const baseUrl = '/api/matchup';
 const updateUrl = '/api/matchup/update';
 
-const getMatchup = async (oppCivId) => {
-  const res = await axios.get(baseUrl, { params: { oppCivId: oppCivId } });
+const getMatchup = async (oppCivId, oppAge) => {
+  const res = await axios.get(baseUrl, { params: { oppCivId: oppCivId, oppAge: oppAge } });
   return res.data;
 };
 
-const updateMatchup = async (yourCiv, oppCiv, oppComp) => {
-  const res = await axios.get(updateUrl, { params: { yourCiv, oppCiv, oppComp } });
+const updateMatchup = async (yourCiv, oppCiv, oppComp, yourAge, oppAge) => {
+  const res = await axios.get(updateUrl, { params: { yourCiv, oppCiv, oppComp, yourAge, oppAge } });
   console.log(res.data)
   return res.data;
 };
