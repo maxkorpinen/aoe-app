@@ -5,7 +5,7 @@ const {punit, getPowerUnit, getCounters} = require('../utils/CivUtils')
 // Endpoint for GETting all civs
 router.get('/', async (req, res) => {
   try {
-    const civs = await Civ.find({}).populate('units.unit');
+    const civs = await Civ.find({}).populate('units.feudal.unit units.castle.unit units.imperial.unit');
     res.json(civs);
   } catch (error) {
     console.error(error); // Log the error to the console

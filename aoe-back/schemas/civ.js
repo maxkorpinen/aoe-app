@@ -14,14 +14,38 @@ const civSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  units: [{
-    unit: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Unit'
-    },
-    powerModifier: Number,
-    _id: false
-  }]
+  units: {
+    feudal: [
+      {
+        unit: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Unit'
+        },
+        powerModifier: Number,
+        _id: false
+      }
+    ],
+    castle: [
+      {
+        unit: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Unit'
+        },
+        powerModifier: Number,
+        _id: false
+      }
+    ],
+    imperial: [
+      {
+        unit: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Unit'
+        },
+        powerModifier: Number,
+        _id: false
+      }
+    ]
+  }
 }, {
   timestamps: true,
 });
@@ -32,12 +56,14 @@ civSchema.set('toJSON', {
     delete returnedObject._id;
     delete returnedObject.__v;
 
-    returnedObject.units = returnedObject.units.map(unit => {
-      if (unit._id) {
-        unit.id = unit._id.toString();
-        delete unit._id;
-      }
-      return unit;
+    ['feudal', 'castle', 'imperial'].forEach(age => {
+      returnedObject.units[age] = returnedObject.units[age].map(unit => {
+        if (unit._id) {
+          unit.id = unit._id.toString();
+          delete unit._id;
+        }
+        return unit;
+      });
     });
   }
 });
