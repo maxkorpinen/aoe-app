@@ -2,19 +2,17 @@ const router = require('express').Router();
 const Civ = require('../schemas/civ');
 const Unit = require('../schemas/unit');
 
-// Endpoint for returning unit comp based on civs
+// Endpoint for returning the opponent's powerModifier unit with isGoldUnit=true
 router.get('/', async (req, res) => {
   try {
-    const { civ1, civ2 } = req.query;
+    const { oppCivId } = req.query;
+    console.log('Civ:', oppCivId);
 
-    // Fetch both Civ documents and populate their units
-    const [yourCiv, oppCiv] = await Promise.all([
-      Civ.findById(civ1).populate('units.unit'),
-      Civ.findById(civ2).populate('units.unit')
-    ]);
+    // Fetch Civ document and populate its units
+    const oppCiv = await Civ.findById(oppCivId).populate('units.unit');
 
-    if (!yourCiv || !oppCiv) {
-      return res.status(404).json({ message: 'One or both civilizations not found.' });
+    if (!oppCiv) {
+      return res.status(404).json({ message: 'Civilization not found.' });
     }
 
     // Identify highest opponent powerModifier unit with isGoldUnit=true
@@ -26,21 +24,6 @@ router.get('/', async (req, res) => {
       return res.status(404).json({ message: 'No suitable opponent unit found.' });
     }
 
-    // Find the highest powerModifier unit in yourCiv with isGoldUnit=true
-    let yourComp = yourCiv.units
-      .filter(({ unit }) => unit && unit.isGoldUnit && !oppComp.unit.counterOf.includes(unit.id))
-      .sort((a, b) => b.powerModifier - a.powerModifier)[0];
-
-    if (!yourComp) {
-      yourComp = yourCiv.units
-        .filter(({ unit }) => unit && !oppComp.unit.counterOf.includes(unit.id))
-        .sort((a, b) => b.powerModifier - a.powerModifier)[0];
-    }
-
-    if (!yourComp) {
-      return res.status(404).json({ message: 'No suitable unit found for your civilization.' });
-    }
-
     // Convert to desired format
     const formatUnit = ({ unit }) => {
       return unit.toJSON();
@@ -48,40 +31,83 @@ router.get('/', async (req, res) => {
 
     console.log('Opponent Civ:', oppCiv.name);
     console.log('Opponent Power Unit:', formatUnit(oppComp).name);
-    console.log('Your Civ', yourCiv.name);
-    console.log('Your Power Unit:', formatUnit(yourComp).name);
 
-    // Respond with yourComp and oppComp
-    res.json({
-      oppComp: oppComp ? [formatUnit(oppComp)] : [],
-      yourComp: yourComp ? [formatUnit(yourComp)] : []
-    });
+    // Respond with oppComp
+    res.json(oppComp ? [formatUnit(oppComp)] : []);
   } catch (error) {
-    console.error('Error fetching civilizations:', error);
+    console.error('Error fetching civilization:', error);
     res.status(500).json({ message: error.message });
   }
 });
 
+// Endpoint for updating the user's best counter to the opponent's comp
 router.get('/update', async (req, res) => {
   try {
+    // We get IDs of both civs and an array of unit IDs from the request query
     const { yourCiv: yourCivId, oppCiv: oppCivId, oppComp: oppCompIds } = req.query;
 
     // Fetch civs and units from the database
     const yourCiv = await Civ.findById(yourCivId).populate('units.unit');
     const oppCiv = await Civ.findById(oppCivId).populate('units.unit');
-    console.log('Opp civ:', oppCiv);
 
-    const oppComp = await Unit.find({ _id: { $in: oppCompIds } });
-    console.log('Opponent comp:', oppComp);
+    // console.log('Your Units:', yourCiv.units);
+
+    // Here we add powerModifiers to the opponent's units
+    const oppComp = oppCiv.units
+      .filter(({ unit }) => oppCompIds.includes(unit._id.toString()))
+      .map(({ unit, powerModifier }) => ({
+        ...unit._doc,
+        powerModifier
+      }));
 
     // Calculate the average powerModifier of the opponent's comp
     const oppCompPowerModifier = oppComp.reduce((sum, { powerModifier }) => sum + powerModifier, 0) / oppComp.length;
-    console.log('Opponent comp powerModifier:', oppCompPowerModifier);
 
-    // Filter for gold units which have all the opponent units' ids in their counterOf array
+    // Constants
+    const MAX_UNITS = 2;
+    const OPPONENT_UNIT_THRESHOLD = 3;
+    const PM_AVERAGE = 4;
+
+    // Find the highest powerModifier unit with isGoldUnit = True
+    const yourGoldUnit = yourCiv.units
+      .filter(({ unit }) => unit.isGoldUnit)
+      .sort((a, b) => b.powerModifier - a.powerModifier)[0];
+
+    // If opponent only has one unit, return your highest powerModifier gold unit and the highest powerModifier non-gold unit which has the opponent unit's id in it's counterOf array.
+    if (oppComp.length === 1) {
+      const oppUnitId = oppComp[0]._id;
+    
+      const yourGoldUnit = yourCiv.units
+        .filter(({ unit }) => unit.isGoldUnit)
+        .filter(({ unit }) => unit.isMeta)
+        .sort((a, b) => b.powerModifier - a.powerModifier)[0];
+
+      console.log('Your Gold Unit:', yourGoldUnit.unit.name)
+      // If this unit counters the enemy unit, return it
+      if (yourGoldUnit.unit.counterOf.includes(oppUnitId)) {
+        console.log('your power unit is enough')
+        return res.json({ yourComp: [yourGoldUnit.unit.toJSON()] });
+      }
+
+      const yourCounterNonGoldUnit = yourCiv.units
+        .filter(({ unit }) => !unit.isGoldUnit && unit.counterOf.includes(oppUnitId))
+        .sort((a, b) => b.powerModifier - a.powerModifier)[0];
+    
+      if (!yourCounterNonGoldUnit) {
+        console.log('No non-gold unit found that counters the opponent\'s unit');
+      }
+    
+      if (yourGoldUnit && yourCounterNonGoldUnit) {
+        return res.json({ yourComp: [yourGoldUnit.unit.toJSON(), yourCounterNonGoldUnit.unit.toJSON()] });
+      }
+    }
+
+    // Filter for gold units which have all the opponent units' ids in their counterOf array and that are meta and that have reasonable powerModifier
     const yourCounterGoldUnits = yourCiv.units
       .filter(({ unit }) => unit.isGoldUnit)
-      .filter(({ unit }) => oppComp.every(oppUnit => unit.counterOf.includes(oppUnit.id)));
+      .filter(({ unit }) => unit.isMeta)
+      .filter(({ powerModifier }) => powerModifier > PM_AVERAGE)
+      .filter(({ unit }) => oppComp.every(oppUnit => oppUnit.counteredBy.includes(unit.id)));
 
     // If such units exist, return the one with the highest powerModifier
     if (yourCounterGoldUnits.length > 0) {
@@ -90,17 +116,12 @@ router.get('/update', async (req, res) => {
       return res.json({ yourComp: [yourCounterGoldUnit.unit.toJSON()] });
     }
 
-    // Find the highest powerModifier unit with isGoldUnit = True
-    const yourGoldUnit = yourCiv.units
-      .filter(({ unit }) => unit.isGoldUnit)
-      .sort((a, b) => b.powerModifier - a.powerModifier)[0];
-
     // If the id of your highest powerModifier unit which is a gold unit is not in the counterOf array of any of the opponent's units, return this unit
     if (!oppComp.some(oppUnit => oppUnit.counterOf.includes(yourGoldUnit.unit._id))) {
       return res.json({ yourComp: [yourGoldUnit.unit.toJSON()] });
     }
 
-    // If oppComp has more than 3 units, return the highest powerModifier gold unit
+    // If oppComp has more than 3 units, return your highest powerModifier gold unit
     if (oppComp.length > 3) {
       return res.json({ yourComp: [yourGoldUnit.unit.toJSON()] });
     }
