@@ -1,7 +1,6 @@
 import React from 'react';
 
 const OppCompDisplay = ({ oppComp }) => {
-  console.log('OppComp in OppCompDisplay:', oppComp);
   return (
     <div>
       <p>Opponent Unit Composition</p>

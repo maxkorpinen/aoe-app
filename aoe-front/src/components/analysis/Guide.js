@@ -17,7 +17,6 @@ const Guide = () => {
 
   const yourCiv = allCivs.find(civ => civ.id === civs.civ1);
   const oppCiv = allCivs.find(civ => civ.id === civs.civ2);
-  console.log('OppCiv:', oppCiv)
 
   const oppUnits = oppCiv.units[oppAge].map(unitObj => unitObj.unit);
 
@@ -25,7 +24,6 @@ const Guide = () => {
   useEffect(() => {
     const fetchMatchup = async () => {
       const oppComp = await matchupService.getMatchup(oppCiv.id, oppAge);
-      console.log('OppComp:', oppComp);
       setOppComp(oppComp);
     };
 
@@ -46,7 +44,6 @@ const Guide = () => {
         matchupService.updateMatchup(yourCiv.id, oppCiv.id, oppComp.map(unit => unit.id), yourAge, oppAge)
           .then(response => {
             setYourComp(response.yourComp);
-            console.log('YourComp:', response.yourComp);
           })
           .catch(error => {
             console.error('Error updating matchup:', error);
