@@ -10,7 +10,6 @@ const getMatchup = async (oppCivId, oppAge) => {
 
 const updateMatchup = async (yourCiv, oppCiv, oppComp, yourAge, oppAge) => {
   const res = await axios.get(updateUrl, { params: { yourCiv, oppCiv, oppComp, yourAge, oppAge } });
-  console.log(res.data)
   return res.data;
 };
 

@@ -6,26 +6,34 @@ const AgeUp = ({ yourAge, oppAge, setYourAge, setOppAge }) => {
   return (
     <div>
       <h2>Your Age</h2>
-      {ages.map(age => (
-        <button
-          key={age}
-          disabled={yourAge === age}
-          onClick={() => setYourAge(age)}
-        >
-          {age}
-        </button>
-      ))}
+      {ages.map(age => {
+        const imagePath = `/images/ages/${age}.webp`;
+
+        return (
+          <button
+            key={age}
+            disabled={yourAge === age}
+            onClick={() => setYourAge(age)}
+          >
+            <img src={imagePath} alt={age} />
+          </button>
+        );
+      })}
 
       <h2>Opponents Age</h2>
-      {ages.map(age => (
-        <button
-          key={age}
-          disabled={oppAge === age}
-          onClick={() => setOppAge(age)}
-        >
-          {age}
-        </button>
-      ))}
+      {ages.map(age => {
+        const imagePath = `/images/ages/${age}.webp`;
+
+        return (
+          <button
+            key={age}
+            disabled={oppAge === age}
+            onClick={() => setOppAge(age)}
+          >
+            <img src={imagePath} alt={age} />
+          </button>
+        );
+      })}
     </div>
   );
 };

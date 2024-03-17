@@ -52,19 +52,28 @@ const civSchema = new mongoose.Schema({
 
 civSchema.set('toJSON', {
   transform: (document, returnedObject) => {
+    // Convert _id to id and remove _id and __v
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
     delete returnedObject.__v;
 
+    // Iterate over each age in the units object
     ['feudal', 'castle', 'imperial'].forEach(age => {
+      // Check if units[age] is an array
       if (Array.isArray(returnedObject.units[age])) {
+        // Map over each unit in the array
         returnedObject.units[age] = returnedObject.units[age].map(unitObj => {
-          if (unitObj.unit._id) {
+          // Check if unit._id exists
+          if (unitObj.unit && unitObj.unit._id) {
+            // Convert unit._id to unit.id and remove unit._id
             unitObj.unit.id = unitObj.unit._id.toString();
             delete unitObj.unit._id;
           }
           return unitObj;
         });
+      } else {
+        // If units[age] is not an array, initialize it as an empty array
+        returnedObject.units[age] = [];
       }
     });
   }
