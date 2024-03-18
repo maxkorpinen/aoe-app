@@ -5,9 +5,9 @@ const CivButtonHolder = ({ f }) => {
   //const imageNames = Object.keys(images.civImages)
   const civlist = useSelector(state => state.allCivs);
 
-  return(
-    <div>
-      {civlist.map((n) => (
+  return (
+    <div className='civbuttonholder'>
+      {[...civlist].sort((a, b) => a.name.localeCompare(b.name)).map((n) => (
         <CivButton
           key={n.id}
           id={n.id}

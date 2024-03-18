@@ -12,17 +12,15 @@
 
 describe('unlogged tests', () => {
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit('http://localhost:3000')
     cy.wait(200)
   })
 
   it('mainpage topbar buttons exist', () => {
     cy.contains('Start over')
-    cy.contains('Analyse with chosen specs')
-    cy.contains('Login or create new user')
   })
-  
+
   it('civbuttons exist', () => {
     cy.get('[alt="Ethiopians"]')
     cy.get('[alt="Franks"]')
@@ -38,7 +36,7 @@ describe('unlogged tests', () => {
       username: 'reub',
       password: '123123'
     }
-    cy.request('POST', 'http://localhost:3001/api/users/', user) 
+    cy.request('POST', 'http://localhost:3001/api/users/', user)
     cy.wait(500)
     cy.visit('http://localhost:3000')
     cy.wait(500)
@@ -66,7 +64,7 @@ describe('unlogged tests', () => {
     cy.contains('Coreunit')
     cy.contains('Counters to your powerunit')
   })
- 
+
    it('favciv changes correctly', () => {
     cy.wait(500)
     cy.contains('Userinfo').click()
@@ -80,7 +78,7 @@ describe('unlogged tests', () => {
   })
 
 }) */
-/* 
+/*
   it('favciv changes correctly', () => {
     cy.wait(500)
     cy.contains('Userinfo').click()
@@ -127,7 +125,7 @@ describe('login & logout & userinfo', () => {
     cy.contains('login').click()
     cy.wait(100)
     cy.contains('Userinfo').click()
-    cy.contains('Favourite civilization') 
+    cy.contains('Favourite civilization')
     cy.contains('Currently logged in as: reub')
     cy.contains('Logout').click()
     cy.wait(100)
@@ -143,7 +141,7 @@ describe('unlogged, account exists', () => {
       username: 'reub',
       password: '123123'
     }
-    cy.request('POST', 'http://localhost:3001/api/users/', user) 
+    cy.request('POST', 'http://localhost:3001/api/users/', user)
     cy.wait(500)
     cy.visit('http://localhost:3000')
   })

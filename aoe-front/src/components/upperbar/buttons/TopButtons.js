@@ -4,7 +4,6 @@ import LoginNew from '../login/LoginNew'
 import Logout from '../login/Logout'
 import About from './AboutButton'
 import StartOver from './StartOver'
-import AnalyseButton from './AnalyseButton'
 import './buttons.css'
 import Dropdown from './dropDown'
 import { useState } from 'react'
@@ -17,7 +16,6 @@ const TopButtons = () => {
     <div className="flex-container">
       <div className='spacer' />
       <StartOver />
-      <AnalyseButton />
       <About />
       <div className='spacer' />
       <div className='spacer' />

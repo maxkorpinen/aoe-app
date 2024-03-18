@@ -7,24 +7,10 @@ const OppUnitsGrid = ({ oppUnits, onUnitToggle, oppComp }) => {
       {oppUnits.map(unit => (
         <div
           key={unit.id}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '5px',
-            cursor: 'pointer'
-          }}
+          className='unitgrid'
           onClick={() => onUnitToggle(unit.id)}
         >
-          <img
-            src={unit.image}
-            alt={unit.name}
-            style={{
-              width: '50px',
-              height: '50px',
-              border: oppComp.some(oppUnit => oppUnit.id === unit.id) ? '2px solid gold' : 'none'
-            }}
-          />
+          {oppComp.some(oppUnit => oppUnit.id === unit.id) ? <img src={unit.image} alt={unit.name} className='selectunit' /> : <img src={unit.image} alt={unit.name}className='nounit' /> }
         </div>
       ))}
     </div>

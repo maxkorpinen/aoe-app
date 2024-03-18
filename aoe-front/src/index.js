@@ -16,6 +16,8 @@ import matchupReducer from './reducers/matchupReducer'
 import './main.css'
 import allUnitsReducer from './reducers/allUnitsReducer'
 
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react'
 
 const store = configureStore({
   reducer: {
@@ -33,8 +35,17 @@ const store = configureStore({
   }
 })
 
+posthog.init(
+  process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
+  {
+    api_host: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
+  }
+);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
-  </Provider>
+    <PostHogProvider client={posthog}>
+      <App />
+    </PostHogProvider>
+  </Provider >
 )
