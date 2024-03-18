@@ -1,0 +1,6 @@
+GET http://localhost:3001/api/matches/updatetest HTTP/1.1
+content-type: application/json
+
+{
+  "UPDATE_SECRET": "paternosterquiesincoelissanctificeturnomentuumadveniatregnumtuumfiatvoluntastuasicutincoeloetinterrapanemnostrumquotidianumdanobishodieetdimittenobisdebitanostra"
+}
