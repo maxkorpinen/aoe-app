@@ -3,11 +3,9 @@ import { useState } from "react"
 import { pageChange, guideChange, civsSetChange } from '../../../reducers/pageReducer'
 import { setCivs } from '../../../reducers/civReducer'
 import { setCiv1Wins, setCiv2Wins } from "../../../reducers/statsReducer"
-import { setMatchup } from "../../../reducers/matchupReducer"
-import matchService from "../../../services/matches"
 import CivButtonHolder from "./CivButtonHolder"
 import CivsListHeader from "./CivsListHeader"
-import MatchupService from "../../../services/matchup"
+import civService from "../../../services/civs"
 
 const CivsList = () => {
   const [chosenCivs, setChosenCivs] = useState([])
@@ -30,11 +28,8 @@ const CivsList = () => {
 
       // get winpct
       //dispatch(setMatchup(matchupStuff))
-      const matches = await matchService.getWithCivs(
-        {
-          civ1: chosenCivs[0].name,
-          civ2: chosenCiv
-        })
+      const matches = await civService.getCivWinPct(
+        matchParticipants)
 
       dispatch(setCiv1Wins(matches.civ1wins))
       dispatch(setCiv2Wins(matches.civ2wins))

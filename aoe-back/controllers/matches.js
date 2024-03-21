@@ -4,6 +4,7 @@ const { getLastUpdate } = require('../utils/helpfuncs')
 const fs = require('fs')
 const Winstat = require('../schemas/winstats')
 const router = require('express').Router()
+const Civ = require('../schemas/civ')
 
 router.get('/winsagainst/', async (req, res) => {
   res.send({ 'civ1wins': 'res1', 'civ2wins': 'res2' })
@@ -57,7 +58,21 @@ router.get('/update/', async (req, res) => {
 
 router.get('/updatetest/', async (req, res) => {
   console.log("TESTGO")
-  const fsp = require('fs').promises
+  //const id1 = req.params.id1
+  //const id2 = req.params.id2
+  /* Winstat.find({}).then(stats => {
+    dada = JSON.parse(stats[0].data)
+  //  console.log("statten: ",dada['hindustanis'])
+  //  console.log("tpye:", typeof(dada))
+  }) */
+  const data = await Winstat.find({})
+  const civ1 = await Civ.find({ _id:id1})
+  const civ2 = await Civ.find({ _id:id2})
+  const dada = JSON.parse(data[0].data)
+  console.log(data)
+  console.log(civ1,civ2)
+  
+  /* const fsp = require('fs').promises
   fsp.readFile('./data/result.json', 'utf8')
   .then(data => {
     const jsonData = JSON.parse(data)
@@ -72,7 +87,7 @@ router.get('/updatetest/', async (req, res) => {
   })
   .catch(err => {
     console.error('An error occurred:', err)
-  })
+  }) */
 })
 
 router.get('/version', async (req, res) => {

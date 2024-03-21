@@ -6,6 +6,15 @@ const getAll = async () => {
   return res.data
 }
 
+const getCivWinPct = async(civs) => {
+  const url = '/'+civs['civ1']+'/vs/'+civs['civ2']
+  const res = await axios.get(baseUrl+url, {
+    params: civs
+  })
+  console.log("RESdada:",res.data)
+  return res.data
+}
+
 const getWithId = async (id) => {
   const res = await axios.get(baseUrl+"/"+id)
   return res.data
@@ -17,4 +26,4 @@ const getCivPowerUnit = async (id) => {
 }
 
 //eslint-disable-next-line
-export default { getAll, getCivPowerUnit, getWithId }
+export default { getAll, getCivPowerUnit, getWithId, getCivWinPct }
