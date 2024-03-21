@@ -5,8 +5,6 @@ import Logout from '../login/Logout'
 import About from './AboutButton'
 import StartOver from './StartOver'
 import './buttons.css'
-import Dropdown from './dropDown'
-import { useState } from 'react'
 
 const TopButtons = () => {
   const showLogout = useSelector(state => state.buttonsState.logout)

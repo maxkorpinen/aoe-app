@@ -14,6 +14,23 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id1/vs/:id2', async (req, res) => {
+  try {
+  const id1 = req.params.id1
+  const id2 = req.params.id2
+  const data = await Winstats.find({})
+  const civ1 = await Civ.find({ _id:id1})
+  const civ2 = await Civ.find({ _id:id2})
+  const dada = JSON.parse(data[0].data)
+  civ1name = civ1[0].name.toLowerCase()
+  civ2name = civ2[0].name.toLowerCase()
+  return res.status(200).json({ civ1wins: dada[civ1name][civ2name], 
+                                civ2wins: dada[civ2name][civ1name]})
+  } catch (err) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
 // Endpoint for GETting a civ by id
 router.get('/:id', async (req, res) => {
   try {
@@ -35,17 +52,6 @@ router.get('/:id/powerunit', async (req, res) => {
   //const counters = getCounters(powerunit.unit)
   //powerunit.counters = counters
   res.send(powerunit)
-})
-
-router.get('/test', async (req, res) => { //'/:id1/vs/:id2'
-  const id1 = req.params.id1
-  const id2 = req.params.id2
-  //65a3d54e904c90227b6641f9
-  //65a3d695904c90227b66422a
-  const data = await Winstat.find({})
-  const civ1 = await Civ.find({ _id:id1})
-  const civ2 = await Civ.find({ _id:id2})
-  const dada = JSON.parse(data[0].data)
 })
 
 module.exports = router
