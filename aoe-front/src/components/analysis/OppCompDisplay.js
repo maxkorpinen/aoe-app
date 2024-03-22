@@ -1,9 +1,10 @@
 import React from 'react';
 
-const OppCompDisplay = ({ oppComp }) => {
+const OppCompDisplay = ({ oppComp, oppCivWinP }) => {
   return (
     <div>
-      <p>Opponent Unit Composition</p>
+      <h3>Opponent Unit Composition</h3>
+      <p>Win Percentage: {oppCivWinP}%</p>
       <div className='compbox'>
         {oppComp.map(unit => (
           <div key={unit.id} className='unitholder'>

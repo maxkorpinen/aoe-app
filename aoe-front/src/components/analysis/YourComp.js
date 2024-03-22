@@ -1,9 +1,10 @@
 import React from 'react';
 
-const YourComp = ({ yourComp }) => {
+const YourComp = ({ yourComp, yourCivWinP }) => {
   return (
     <div className="compholder">
-      <p>Your Unit Composition</p>
+      <h3>Your Unit Composition</h3>
+      <p>Win Percentage: {yourCivWinP}%</p>
       <div className="compbox">
         {yourComp.map(unit => (
           <div key={unit.id} className='unitholder'>
