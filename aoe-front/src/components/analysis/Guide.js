@@ -15,6 +15,10 @@ const Guide = () => {
   const civs = useSelector(state => state.civs);
   const allCivs = useSelector(state => state.allCivs);
 
+  const matches = useSelector(state => state.stats);
+  const yourCivWinP = (matches.civ1wins / (matches.civ1wins + matches.civ2wins) * 100).toFixed(1);
+  const oppCivWinP = (matches.civ2wins / (matches.civ1wins + matches.civ2wins) * 100).toFixed(1);
+
   const yourCiv = allCivs.find(civ => civ.id === civs.civ1);
   const oppCiv = allCivs.find(civ => civ.id === civs.civ2);
 
@@ -78,26 +82,13 @@ const Guide = () => {
     });
   }, [oppUnits]);
 
-  /*   useEffect(() => {
-      if (oppComp.length > 0) {
-        matchupService.updateMatchup(yourCiv.id, oppCiv.id, oppComp.map(unit => unit.id))
-          .then(response => {
-            // Assuming you have a state update function called setYourComp
-            setYourComp(response.yourComp);
-          })
-          .catch(error => {
-            console.error('Error updating matchup:', error);
-          });
-      }
-    }, [oppComp, yourCiv.id, oppCiv.id]); */
-
   return (
     <div className='content'>
       <h2>{yourCiv.name} <img className='civicon' src={yourCiv.image} /> vs <img className='civicon' src={oppCiv.image} /> {oppCiv.name}</h2>
       <div className='overcomp'>
         <AgeUp yourAge={yourAge} oppAge={oppAge} setYourAge={setYourAge} setOppAge={setOppAge} />
-        <YourComp yourComp={yourComp} yourCiv={yourCiv} />
-        <OppComp oppUnits={oppUnits} oppComp={oppComp} onUnitToggle={(unitId) => handleUnitToggle(unitId)} />
+        <YourComp yourComp={yourComp} yourCiv={yourCiv} yourCivWinP={yourCivWinP} />
+        <OppComp oppUnits={oppUnits} oppComp={oppComp} oppCivWinP={oppCivWinP} onUnitToggle={(unitId) => handleUnitToggle(unitId)} />
       </div>
     </div>
   );

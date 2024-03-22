@@ -25,28 +25,28 @@ router.get('/update/', async (req, res) => {
   pythonProcess.stderr.on('data', (data) => {
     console.error(`Python stderr: ${data}`)
   });
-  
+
   pythonProcess.on('close', (code) => {
     console.log(`Python process exited with code ${code}`)
     if (code === 0) {
       //save the data to mongo
       const fsp = require('fs').promises
       fsp.readFile('./data/result.json', 'utf8')
-      .then(data => {
-        const jsonData = JSON.parse(data)
-        const wins = new Winstat({
-          data: data
+        .then(data => {
+          const jsonData = JSON.parse(data)
+          const wins = new Winstat({
+            data: data
+          })
+          return wins.save()
         })
-        return wins.save()
-      })
-      .then(result => {
-        console.log("Save result:", result)
-        res.status(201).json({"status": "ok"})
-      })
-      .catch(err => {
-        console.error('An error occurred:', err)
-        res.status(500).send('Error with saving the data')
-      })
+        .then(result => {
+          console.log("Save result:", result)
+          res.status(201).json({ "status": "ok" })
+        })
+        .catch(err => {
+          console.error('An error occurred:', err)
+          res.status(500).send('Error with saving the data')
+        })
       //
       res.status(200).send('Python script completed successfully')
     } else {
@@ -66,12 +66,12 @@ router.get('/updatetest/', async (req, res) => {
   //  console.log("tpye:", typeof(dada))
   }) */
   const data = await Winstat.find({})
-  const civ1 = await Civ.find({ _id:id1})
-  const civ2 = await Civ.find({ _id:id2})
+  const civ1 = await Civ.find({ _id: id1 })
+  const civ2 = await Civ.find({ _id: id2 })
   const dada = JSON.parse(data[0].data)
   console.log(data)
-  console.log(civ1,civ2)
-  
+  console.log(civ1, civ2)
+
   /* const fsp = require('fs').promises
   fsp.readFile('./data/result.json', 'utf8')
   .then(data => {
