@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const Civ = require('../schemas/civ');
 const Unit = require('../schemas/unit');
+const mongoose = require('mongoose');
 
-// Endpoint for returning the opponent's powerModifier unit with isGoldUnit=true
+const { pickBestMainUnit, oppCompAnalyzer, powerModifierAverage, supportUnitPicker, compEvaluator, compChooser } = require('../utils/matchupFuncs');
+
+// Endpoint for returning the opponent's highest powerModifier meta unit
 router.get('/', async (req, res) => {
   try {
     const { oppCivId, oppAge } = req.query;
-    console.log('Civ:', oppCivId);
 
     // Fetch Civ document and populate its units
     const oppCiv = await Civ.findById(oppCivId).populate('units.feudal.unit units.castle.unit units.imperial.unit');
@@ -16,22 +18,22 @@ router.get('/', async (req, res) => {
     }
 
     // Identify highest opponent powerModifier unit with isGoldUnit=true
-    const oppComp = oppCiv.units[oppAge]
-      .filter(({ unit }) => unit && unit.isGoldUnit)
-      .sort((a, b) => b.powerModifier - a.powerModifier)[0];
+    const oppComp = pickBestMainUnit(oppCiv.units, oppAge);
+    //console.log('Opponent Comp:', oppComp);
 
     if (!oppComp) {
       return res.status(404).json({ message: 'No suitable opponent unit found.' });
     }
 
     // Convert to desired format
-    const formatUnit = ({ unit }) => {
-      return unit.toJSON();
+    const formatUnit = (unit) => {
+      if (unit) {
+        return unit.toJSON();
+      } else {
+        // Handle the case where unit is undefined
+        console.error('Unit is undefined');
+      }
     };
-
-    console.log('Opponent Civ:', oppCiv.name);
-    console.log('Opponent Power Unit:', formatUnit(oppComp).name);
-
     // Respond with oppComp
     res.json(oppComp ? [formatUnit(oppComp)] : []);
   } catch (error) {
@@ -46,13 +48,9 @@ router.get('/update', async (req, res) => {
     // We get IDs of both civs and an array of unit IDs from the request query
     const { yourCiv: yourCivId, oppCiv: oppCivId, oppComp: oppCompIds, yourAge, oppAge } = req.query;
 
-    console.log(oppCompIds)
-    // Fetch civs and units from the database
     // Fetch civs and units from the database
     const yourCiv = await Civ.findById(yourCivId).populate(`units.${yourAge}.unit`);
     const oppCiv = await Civ.findById(oppCivId).populate(`units.${oppAge}.unit`);
-
-    // console.log('Your Units:', yourCiv.units);
 
     // Here we add powerModifiers to the opponent's units
     const oppComp = oppCiv.units[oppAge]
@@ -63,7 +61,8 @@ router.get('/update', async (req, res) => {
       }));
 
     // Calculate the average powerModifier of the opponent's comp
-    const oppCompPowerModifier = oppComp.reduce((sum, { powerModifier }) => sum + powerModifier, 0) / oppComp.length;
+    const oppCompPowerModifier = powerModifierAverage(oppComp);
+    console.log('Opponent Comp PowerModifier:', oppCompPowerModifier);
 
     // Constants
     const MAX_UNITS = 2;
@@ -78,7 +77,7 @@ router.get('/update', async (req, res) => {
     // If opponent only has one unit, return your highest powerModifier gold unit and the highest powerModifier non-gold unit which has the opponent unit's id in it's counterOf array.
     if (oppComp.length === 1) {
       const oppUnitId = oppComp[0]._id;
-    
+
       const yourGoldUnit = yourCiv.units[yourAge]
         .filter(({ unit }) => unit.isGoldUnit)
         .filter(({ unit }) => unit.isMeta)
@@ -93,11 +92,11 @@ router.get('/update', async (req, res) => {
       const yourCounterNonGoldUnit = yourCiv.units[yourAge]
         .filter(({ unit }) => !unit.isGoldUnit && unit.counterOf.includes(oppUnitId))
         .sort((a, b) => b.powerModifier - a.powerModifier)[0];
-    
+
       if (!yourCounterNonGoldUnit) {
         console.log('No non-gold unit found that counters the opponent\'s unit');
       }
-    
+
       if (yourGoldUnit && yourCounterNonGoldUnit) {
         return res.json({ yourComp: [yourGoldUnit.unit.toJSON(), yourCounterNonGoldUnit.unit.toJSON()] });
       }
