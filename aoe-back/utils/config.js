@@ -29,6 +29,4 @@ console.log("Node env:", process.env.NODE_ENV)
 module.exports = {
   MONGODB_URI,
   PORT,
-  HOG_HOST,
-  HOG_KEY,
 }
