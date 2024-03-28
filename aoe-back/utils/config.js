@@ -12,16 +12,23 @@ if (typeof MONGODB_URI == 'undefined') {
   console.log("MONGODB_URI IS UNDEFINED")
 }
 
-//POSTHOGTEST
-const hogs = process.env.REACT_APP_PUBLIC_POSTHOG_HOST
-if(hogs) {
-  console.log("Hogs exists, last 3 letters")
-  console.log(hogs.slice(-3))
-} else {
-  console.log("NO HOGS")
-}
+//POSTHOG
+/*
+  NODE_ENV:istä kattava -> laita fly:hin prod ja määrittele hogin sen perusteella
+*/
+/* const HOG_HOST = process.env.NODE_ENV === 'production'
+? process.env.REACT_APP_PUBLIC_POSTHOG_HOST
+: ''
+
+const HOG_KEY = process.env.NODE_ENV === 'production'
+? process.env.REACT_APP_PUBLIC_POSTHOG_KEY
+: '' */
+
+console.log("Node env:", process.env.NODE_ENV)
 
 module.exports = {
   MONGODB_URI,
-  PORT
+  PORT,
+  HOG_HOST,
+  HOG_KEY,
 }

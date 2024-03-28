@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const Civ = require('../schemas/civ');
 const Unit = require('../schemas/unit');
+const {compEval} = require('../utils/compEval')
 
 // Endpoint for returning the opponent's powerModifier unit with isGoldUnit=true
 router.get('/', async (req, res) => {
   try {
     const { oppCivId, oppAge } = req.query;
-    console.log('Civ:', oppCivId);
+    //console.log('Civ:', oppCivId);
 
     // Fetch Civ document and populate its units
     const oppCiv = await Civ.findById(oppCivId).populate('units.feudal.unit units.castle.unit units.imperial.unit');
@@ -29,8 +30,8 @@ router.get('/', async (req, res) => {
       return unit.toJSON();
     };
 
-    console.log('Opponent Civ:', oppCiv.name);
-    console.log('Opponent Power Unit:', formatUnit(oppComp).name);
+    //console.log('Opponent Civ:', oppCiv.name);
+    //console.log('Opponent Power Unit:', formatUnit(oppComp).name);
 
     // Respond with oppComp
     res.json(oppComp ? [formatUnit(oppComp)] : []);
@@ -46,7 +47,7 @@ router.get('/update', async (req, res) => {
     // We get IDs of both civs and an array of unit IDs from the request query
     const { yourCiv: yourCivId, oppCiv: oppCivId, oppComp: oppCompIds, yourAge, oppAge } = req.query;
 
-    console.log(oppCompIds)
+    //console.log(oppCompIds)
     // Fetch civs and units from the database
     // Fetch civs and units from the database
     const yourCiv = await Civ.findById(yourCivId).populate(`units.${yourAge}.unit`);
@@ -97,6 +98,8 @@ router.get('/update', async (req, res) => {
       if (!yourCounterNonGoldUnit) {
         console.log('No non-gold unit found that counters the opponent\'s unit');
       }
+
+      compEval(oppComp, [yourGoldUnit, yourCounterNonGoldUnit])
     
       if (yourGoldUnit && yourCounterNonGoldUnit) {
         return res.json({ yourComp: [yourGoldUnit.unit.toJSON(), yourCounterNonGoldUnit.unit.toJSON()] });

@@ -35,12 +35,11 @@ const store = configureStore({
   }
 })
 
-posthog.init(
-  process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
-  {
+/* posthog.init(
+  process.env.REACT_APP_PUBLIC_POSTHOG_KEY,{
     api_host: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
   }
-);
+) */
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
