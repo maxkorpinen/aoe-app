@@ -3,13 +3,13 @@ const Civ = require('../schemas/civ');
 const Unit = require('../schemas/unit');
 const mongoose = require('mongoose');
 
+
 const { pickBestMainUnit, oppCompAnalyzer, powerModifierAverage, supportUnitPicker, compEvaluator, compChooser } = require('../utils/matchupFuncs');
 
 // Endpoint for returning the opponent's highest powerModifier meta unit
 router.get('/', async (req, res) => {
   try {
     const { oppCivId, oppAge } = req.query;
-
     // Fetch Civ document and populate its units
     const oppCiv = await Civ.findById(oppCivId).populate('units.feudal.unit units.castle.unit units.imperial.unit');
 
@@ -47,7 +47,6 @@ router.get('/update', async (req, res) => {
   try {
     // We get IDs of both civs and an array of unit IDs from the request query
     const { yourCiv: yourCivId, oppCiv: oppCivId, oppComp: oppCompIds, yourAge, oppAge } = req.query;
-
     // Fetch civs and units from the database
     const yourCiv = await Civ.findById(yourCivId).populate(`units.${yourAge}.unit`);
     const oppCiv = await Civ.findById(oppCivId).populate(`units.${oppAge}.unit`);

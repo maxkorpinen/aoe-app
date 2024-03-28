@@ -11,7 +11,6 @@ const getCivWinPct = async(civs) => {
   const res = await axios.get(baseUrl+url, {
     params: civs
   })
-  console.log("RESdada:",res.data)
   return res.data
 }
 
