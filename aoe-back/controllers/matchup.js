@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const Civ = require('../schemas/civ');
 const Unit = require('../schemas/unit');
-const {compEval} = require('../utils/compEval')
 const mongoose = require('mongoose');
 
 
@@ -96,7 +95,7 @@ router.get('/update', async (req, res) => {
       if (!yourCounterNonGoldUnit) {
         console.log('No non-gold unit found that counters the opponent\'s unit');
       }
-      
+
       if (yourGoldUnit && yourCounterNonGoldUnit) {
         return res.json({ yourComp: [yourGoldUnit.unit.toJSON(), yourCounterNonGoldUnit.unit.toJSON()] });
       }
