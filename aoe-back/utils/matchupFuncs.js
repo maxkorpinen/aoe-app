@@ -40,8 +40,63 @@ function oppCompAnalyzer(oppComp) {
   console.log('Opponent Comp Analyzer');
 }
 
-function supportUnitPicker(mainUnit, yourAge, oppComp) {
-  console.log('Support Unit Picker');
+function supportUnitPicker(mainUnit, yourAge, oppComp, yourCiv) {
+  const SUPP_UNIT_COUNTERS_F = 1 //Factor for: how many opposing units player support unit counters
+  const OPPONENT_COUNTERS_TO_SUPP_F = -0.5 //How many opposing units counter players support unit
+  //normalize & filter for non-gold  units
+  const availableUnits = yourCiv.units[yourAge]
+  var normalized = normalizeObject(availableUnits)
+  var nfSupp = normalized.filter(u => !u.isGoldUnit)
+
+  //If oppComp has gold units, check only those first, later check 
+  //non goldunits for lower value
+  const oppCompN = normalizeObject(oppComp)
+  const oppGolds = oppCompN.filter(u => u.isGoldUnit)
+  const relevantOpp = oppGolds.length > 0
+  ? oppGolds
+  : oppCompN
+  
+  //how many opp units possible support units counter
+  const counteredByComb = relevantOpp.reduce(
+    (acc, curr) => acc.concat(curr.counteredBy), []
+  )
+  var supCandidates = []
+  nfSupp.forEach(sup => {
+    const id = sup._id.toString()
+    const counterInstances = counteredByComb.filter(
+      u => u === id
+    ).length
+    var supc = sup
+    supc['goldCounterInstances'] = counterInstances
+    supCandidates.push(supc)
+  })
+
+  const ret1 = supCandidates.reduce((acc, curr) => {
+    return (acc.goldCounterInstances > curr.goldCounterInstances) ? acc : curr;
+  })
+  
+  //how many opponent units counter your possible support unit
+  //based on all opponent units
+  const countersOfComb = oppCompN.reduce(
+    (acc, curr) => acc.concat(curr.countersOf), []
+  )
+  var supCandidates2 = supCandidates
+  supCandidates.forEach(sup => {
+    const id = sup._id.toString()
+    const counterInstances = countersOfComb.filter(
+      u => u === id
+    ).length
+    var supc = sup
+    supc['opponentCountersCount'] = counterInstances
+    supCandidates2.push(supc)
+    console.log(counterInstances, sup.name)
+  })
+  const ret2 = supCandidates.reduce((acc, curr) => {
+    return (acc.goldCounterInstances*SUPP_UNIT_COUNTERS_F+(acc.opponentCountersCount*OPPONENT_COUNTERS_TO_SUPP_F) > 
+          curr.goldCounterInstances*SUPP_UNIT_COUNTERS_F+(curr.opponentCountersCount*OPPONENT_COUNTERS_TO_SUPP_F)) ? acc : curr;
+  })
+  console.log(ret2.name)
+  return ret2
 }
 
 function compEvaluator(playerComp, oppComp) {
