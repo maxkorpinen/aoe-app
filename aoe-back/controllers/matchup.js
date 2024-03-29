@@ -82,7 +82,7 @@ router.get('/update', async (req, res) => {
         .filter(({ unit }) => unit.isMeta)
         .sort((a, b) => b.powerModifier - a.powerModifier)[0];
       
-      //supportUnitPicker(yourGoldUnit, yourAge, oppComp, yourCiv)
+      supportUnitPicker(yourGoldUnit, yourAge, oppComp, yourCiv)
 
       //console.log('Your Gold Unit:', yourGoldUnit)
       // If this unit counters the enemy unit, return it

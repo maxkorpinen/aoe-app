@@ -42,7 +42,7 @@ function oppCompAnalyzer(oppComp) {
 
 function supportUnitPicker(mainUnit, yourAge, oppComp, yourCiv) {
   const SUPP_UNIT_COUNTERS_F = 1 //Factor for: how many opposing units player support unit counters
-  const OPPONENT_COUNTERS_TO_SUPP_F = 0.5 //How many opposing units counter players support unit
+  const OPPONENT_COUNTERS_TO_SUPP_F = -0.5 //How many opposing units counter players support unit
   //normalize & filter for non-gold  units
   const availableUnits = yourCiv.units[yourAge]
   var normalized = normalizeObject(availableUnits)
@@ -95,6 +95,7 @@ function supportUnitPicker(mainUnit, yourAge, oppComp, yourCiv) {
     return (acc.goldCounterInstances*SUPP_UNIT_COUNTERS_F+(acc.opponentCountersCount*OPPONENT_COUNTERS_TO_SUPP_F) > 
           curr.goldCounterInstances*SUPP_UNIT_COUNTERS_F+(curr.opponentCountersCount*OPPONENT_COUNTERS_TO_SUPP_F)) ? acc : curr;
   })
+  console.log(ret2.name)
   return ret2
 }
 
