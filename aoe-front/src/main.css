@@ -8,10 +8,16 @@
 h1 {
     text-align: center;
     font-weight: bold;
+    text-transform: uppercase;
+}
+h2 {
+    text-transform: uppercase;
+}
+h3 {
+    text-transform: uppercase;
 }
 body {
     font-family: Spectral, serif;
-    text-transform: uppercase;
     color: #ffdf91;
     background-color: #181c29;
 }
