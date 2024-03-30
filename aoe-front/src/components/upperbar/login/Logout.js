@@ -17,11 +17,12 @@ const Logout = () => {
     window.localStorage.clear()
     dispatch(resetUser())
   }
-
+  /*
   return(
     <button className='upper' onClick={() => logout()}>
       Logout</button>
-  )
+  )*/
+  return null;
 }
 
 export default Logout
