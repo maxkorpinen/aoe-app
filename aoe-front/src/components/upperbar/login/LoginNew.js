@@ -12,7 +12,7 @@ const LoginNew = () => {
     dispatch(showLoginFormChange(true))
   }
 
-  return(
+  /*return(
     <>
       { !showLoginForm &&
         <button className='upper' onClick={() => openLogin()}>Login or create new user</button>
@@ -23,7 +23,9 @@ const LoginNew = () => {
       </>
       }
     </>
-  )
+  )*/
+
+  return null;
 }
 
 export default LoginNew
